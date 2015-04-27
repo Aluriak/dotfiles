@@ -65,6 +65,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 		NeoBundle 'Shougo/unite.vim'
         " Terminal in vim (need Unite)
 		NeoBundle 'Shougo/vimshell.vim'
+        " powerful status line
+                NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " other
         " Tetris game
@@ -280,6 +282,10 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+" powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
+
 " Plugin key-mappings.
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
@@ -325,7 +331,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup vimrc_autocmds
         autocmd!
         "highlight characters past column 120
-        autocmd FileType python highlight Excess ctermbg=Blue guibg=White
+        autocmd FileType python highlight Excess guibg=Green ctermbg=Blue
         autocmd FileType python match Excess /\%80v.*/
         autocmd FileType python set nowrap
 augroup END
