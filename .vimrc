@@ -74,12 +74,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " Rogue game
 		"NeoBundle 'katono/rogue.vim'
 " à tester
-        " gestion des issues github
+        " github issues
 		"NeoBundle 'jaxbot/github-issues.vim'
-        " édition de l'EPUB
+        " EPUB edition
                 "NeoBundle 'etnadji/vim-epub'
-        " powerline instead of simple line
-		"NeoBundle 'Lokaltog/vim-powerline' 
         " random tip for learn new things about vim
                 "Neobundle 'mhinz/vim-randomtag'
         " efficient motions
@@ -91,9 +89,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
-" usable
+" usable 
         " colaborativ vim
-		"NeoBundle 'FredKSchott/CoVim'
+                "NeoBundle 'FredKSchott/CoVim'
 
 
 
@@ -332,7 +330,7 @@ augroup vimrc_autocmds
         autocmd!
         "highlight characters past column 120
         autocmd FileType python highlight Excess guibg=Green ctermbg=Blue
-        autocmd FileType python match Excess /\%80v.*/
+        autocmd FileType python match Excess /\%81v.*/
         autocmd FileType python set nowrap
 augroup END
 
