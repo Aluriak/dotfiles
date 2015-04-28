@@ -46,9 +46,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
 		NeoBundle 'MattesGroeger/vim-bookmarks'
-        " snippets
+        " snippets (synergies: neocomplcache)
                 NeoBundle 'Shougo/neosnippet'
                 NeoBundle 'Shougo/neosnippet-snippets'
+        " subvertion with {} and coercition
+                NeoBundle 'tpope/vim-abolish'
         " . repeat whole maps
 		NeoBundle 'tpope/vim-repeat'
         " necessary for efficiency Unite, with options for automatize compilation
@@ -63,10 +65,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                         \ }
         " powerful finder of whatever you want
 		NeoBundle 'Shougo/unite.vim'
+                NeoBundle 'bronson/vim-visual-star-search'
         " Terminal in vim (need Unite)
 		NeoBundle 'Shougo/vimshell.vim'
-        " powerful status line
-                NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+        " dates management
+                NeoBundle 'tpope/vim-speeddating'
+        " 
 
 " other
         " Tetris game
@@ -90,6 +94,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
 " usable 
+        " need vim compiled with --with-features=big
+        " can be installed from AUR package (assure usage with other tools)
+                "NeoBundle 'powerline/powerline'
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
 
@@ -122,6 +129,10 @@ set nu                  "affichage des numéros de ligne
 set autoindent          "indentation gardée après saut de ligne
 set expandtab           "pas de tab, uniquement des espaces
 
+" Mark efficiently tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
 " important details
 set nomodeline " security about modelines
 
@@ -141,10 +152,11 @@ set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
 "let g:SuperTabMappingTabLiteral='<c-e>'
 
 " Encryption : use of Blofish algorithm
-set cm=blowfish  
+set cm=blowfish
+
 
 " Abolish
-abbreviate Subvert S
+cabbrev S Subvert
 nmap lr <Plug>Coerce
 
 " Remap and shortcuts for vim-bookmarks
@@ -158,9 +170,9 @@ nmap ®c <Plug>BookmarkClear
 nmap ®x <Plug>BookmarkClearAll
 let g:bookmark_auto_save_file="/home/lucas/.vim/vim-bookmarks"
 "Enables line centering when jumping to bookmark
-let g:bookmark_center = 1 
-"color of sign column 
-highlight SignColumn ctermbg=black   
+let g:bookmark_center = 1
+"color of sign column
+highlight SignColumn ctermbg=black
 
 
 " vimfiler module definitions
@@ -169,7 +181,7 @@ let g:vimfiler_as_default_explorer = 1
 
 " For multiple cursors :
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
-let g:multi_cursor_next_key='<C-n>' 
+let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
@@ -236,16 +248,16 @@ filetype plugin indent on       "Indentation selon extension de fichier (nécess
 syntax on                       "affichage des couleurs
 au BufNewFile,BufRead *.pde setf arduino
 au BufNewFile,BufRead *.mkd setf mkd
-au BufNewFile,BufRead *.asm setf asm
 au BufNewFile,BufRead *.adb setf ada*/
 au BufNewFile,BufRead *.ads setf ada*/
 au BufNewFile,BufRead *.py  setf python 
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
-au BufNewFile,BufRead *.scala setf scala
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
-au BufNewFile,BufRead *.lp setf prolog
 
+
+" Delete ~/.vim/.netrwhist file after generation
+au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif 
 
 " NEOCOMPLCACHE settings
 " Disable AutoComplPop.
