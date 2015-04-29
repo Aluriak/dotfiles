@@ -96,7 +96,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " usable 
         " need vim compiled with --with-features=big
         " can be installed from AUR package (assure usage with other tools)
-                "NeoBundle 'powerline/powerline'
+                "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
 
@@ -190,6 +190,9 @@ let g:multi_cursor_quit_key='<Esc>'
 nnoremap <C-f> :Unite file_rec/async<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 
+" powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
+set laststatus=2
 
 
 " Snippets
@@ -291,10 +294,6 @@ if !exists('g:neocomplcache_keyword_patterns')
         let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
 
 " Plugin key-mappings.
 inoremap <expr><C-g> neocomplcache#undo_completion()
