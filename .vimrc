@@ -36,12 +36,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 		NeoBundle 'Shougo/vimfiler.vim'
         " commenter des portions de code à la volée
 		NeoBundle 'aluriak/nerdcommenter'
+        " lines of same indentation as text objects
+                NeoBundle 'michaeljsmith/vim-indent-object'
         " support de git
 		NeoBundle 'tpope/vim-fugitive'
         " multiple line insertion
 		NeoBundle 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell, unite)
 		NeoBundle 'Shougo/neocomplcache.vim'
+        " syntax checker
+                "NeoBundle 'scrooloose/syntastic'
         " complete abbreviations and research
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
@@ -70,7 +74,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 		NeoBundle 'Shougo/vimshell.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
-        " 
+        " coloured and efficient HUI
+                NeoBundle 'bling/vim-airline'
 
 " other
         " Tetris game
@@ -94,9 +99,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
 " usable 
-        " need vim compiled with --with-features=big
-        " can be installed from AUR package (assure usage with other tools)
-                "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
 
@@ -114,8 +116,10 @@ NeoBundleCheck
 
 
 
-" initialisation of vundle is terminate
+
+" neobundle initialization terminated
 " vimrc begin here
+
 
 
 
@@ -133,27 +137,30 @@ set expandtab           "pas de tab, uniquement des espaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-" important details
-set nomodeline " security about modelines
+" Details
+set nomodeline          " security about modelines
+set cm=blowfish         " Encryption : use of Blofish algorithm
+set mouse=a             " mouse for all modes
+set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
+set wildmenu            " Better command-line completion
 
-
-" Affichage de la barre de statut, et ?
+" Status line
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 set laststatus=2
 
+" airline setup
+let g:airline_powerline_fonts = 1
+set laststatus=2
+set noshowmode
+"to fix the font and lot of strange characters and colors
+let g:airline_theme='wombat'
+set encoding=utf-8
+set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
 
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
 set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
-
-
-" SuperTab
-"let g:SuperTabNoCompleteAfter=['^', '\s', ',', ' ']
-"let g:SuperTabMappingTabLiteral='<c-e>'
-
-" Encryption : use of Blofish algorithm
-set cm=blowfish
-
 
 " Abolish
 cabbrev S Subvert
@@ -167,17 +174,17 @@ nmap ®a <Plug>BookmarkShowAll
 nmap ®þ <Plug>BookmarkNext
 nmap ®ß <Plug>BookmarkPrev
 nmap ®c <Plug>BookmarkClear
+nmap ®d <Plug>BookmarkClear
 nmap ®x <Plug>BookmarkClearAll
 let g:bookmark_auto_save_file="/home/lucas/.vim/vim-bookmarks"
 "Enables line centering when jumping to bookmark
 let g:bookmark_center = 1
 "color of sign column
-highlight SignColumn ctermbg=black
-
+highlight SignColumn ctermbg=NONE
+highlight BookmarkSign ctermbg=NONE ctermfg=LightGreen
 
 " vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
-
 
 " For multiple cursors :
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
@@ -190,10 +197,23 @@ let g:multi_cursor_quit_key='<Esc>'
 nnoremap <C-f> :Unite file_rec/async<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 
-" powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
-
+" Syntastic setup
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
+" error in source code highlighted in blue
+highlight SyntasticError        ctermbg=blue ctermfg=NONE
+highlight SyntasticWarning      ctermbg=blue ctermfg=NONE
+" sign in sign column are in red and yellow
+highlight SyntasticErrorSign    cterm=bold ctermbg=NONE ctermfg=red
+highlight SyntasticWarningSign  ctermbg=NONE ctermfg=yellow
+" current line in error buffer is highlighted in blue
+highlight Search                ctermbg=blue ctermfg=NONE
 
 " Snippets
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
