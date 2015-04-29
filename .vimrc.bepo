@@ -13,7 +13,7 @@ onoremap iÉ iW
 noremap w <C-w>
 noremap W <C-w><C-w>
 
-" [HJKL] -> {CTSR} and {CNÇR}
+" [HJKL] -> {C†ĳR}
 " ————————————————
 " {cr} = « gauche / droite »
 noremap c h
@@ -24,16 +24,17 @@ noremap s k
 " {CR} = « haut / bas de l'écran »
 noremap C H
 noremap R L
-" {NÇ} = « joindre / aide »
-noremap N J
-noremap Ç K
+" {†ĳ} = « joindre / aide » " TS already used for quick movements 
+"  (on bepo: altgr + j and altgr + h)
+noremap ĳ J
+noremap † K
 " Corollaire : repli suivant / précédent
 noremap zs zj
 noremap zt zk
 
 " {HJKL} <- [CTSR]
 " ————————————————
-" {J} = « Jusqu'à »            (j = suivant, J = précédant)
+" {J} = « Jusqu'à »            (j = suivant, J = précédent)
 noremap j t
 noremap J T
 " {L} = « Change »             (l = attend un mvt, L = jusqu'à la fin de ligne)
@@ -72,13 +73,12 @@ noremap wp <C-w>o
 noremap w<SPACE> :split<CR>
 noremap w<CR> :vsplit<CR>
 
-" Utilisation de , ` ç altgr+t et altgr+s
+" Utilisation de ` ç altgr+t et altgr+s
 " ————————————————————————
-noremap ; gv
 noremap ` gv
 noremap ç :w<CR>
 noremap Ç :wa<CR>
-vnoremap þ <gv 
+vnoremap þ <gv
 vnoremap ß >gv
 
 " Indentation possible avec «»
@@ -90,9 +90,9 @@ noremap » >
 " ————————————————————————
 noremap " 1
 noremap 1 "
-noremap « 2
+noremap < 2
 noremap 2 <
-noremap » 3
+noremap > 3
 noremap 3 >
 noremap ( 4
 noremap 4 (
@@ -108,3 +108,10 @@ noremap / 9
 noremap 9 /
 noremap * 0
 noremap 0 *
+
+" Touches inutilisées
+" ————————————————————————
+" æ: altgr+a
+" ¡: altgr+!
+" ¿: altgr+?
+" ©: altgr+c
