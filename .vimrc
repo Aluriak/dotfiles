@@ -29,6 +29,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 		NeoBundle 'ada.vim'
         " markdown support
                 NeoBundle 'tpope/vim-markdown'
+        " python
+                NeoBundle 'hynek/vim-python-pep8-indent'
 " features
         " liste des fonctions/variables
 		NeoBundle 'taglist.vim'
