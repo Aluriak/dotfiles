@@ -235,7 +235,7 @@ endif
 
 
 " remappages importants
-let mapleader = ","
+let mapleader = "\<space>"
 " bépo transcription
 if !empty(system("setxkbmap -print|grep bepo"))
         source ~/.vimrc.bepo
