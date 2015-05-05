@@ -142,7 +142,6 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " Details
 set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
-set mouse=a             " mouse for all modes
 set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
 
@@ -200,9 +199,9 @@ nnoremap <C-f> :Unite file_rec/async<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 
 " Syntastic setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
