@@ -286,9 +286,9 @@ noremap <F9> :VimShellInteractive make<cr>
 " paste (before|after) and leave cursor at the beginning
 noremap œ P`[
 noremap Œ p`[
-" write only one character (before|after) cursor [DONT WORK ?]
-noremap <leader>i i?<Esc>h 
-noremap <leader>a a?<Esc>h 
+" write only one character (before|after) cursor
+noremap <leader>i i?<Esc>r
+noremap <leader>a a?<Esc>r
 
 " Modif selon type de fichier
 filetype plugin indent on       "Indentation selon extension de fichier (nécessaire pour vundle)
