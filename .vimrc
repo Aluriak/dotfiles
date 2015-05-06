@@ -76,9 +76,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 		NeoBundle 'Shougo/vimshell.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
+" fluff
         " coloured and efficient HUI
                 NeoBundle 'bling/vim-airline'
-
+        " easy themes
+                NeoBundle 'reedes/vim-thematic'
+        " lots of colorschemes
+                NeoBundle 'flazz/vim-colorschemes'
 " other
         " Tetris game
 		"NeoBundle 'vim-scripts/TeTrIs.vim'         
@@ -149,15 +153,37 @@ set wildmenu            " Better command-line completion
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
 set laststatus=2
 
-" airline setup
+" airline setup (complete setup in thematic)
 let g:airline_powerline_fonts = 1
-set laststatus=2
 set noshowmode
 "to fix the font and lot of strange characters and colors
-let g:airline_theme='wombat'
 set encoding=utf-8
-set t_Co=256
+"set t_Co=256
 "set fillchars+=stl:\ ,stlnc:\
+
+" thematic setup
+let g:thematic#themes = {
+\ 'pencil_lite' :{ 'colorscheme': 'default',
+\                  'background': 'dark',
+\                  'airline-theme': 'wombat',
+\                  'laststatus': 2,
+\                  'ruler': 1,
+\                  'typeface': 'Source Code Pro',
+\                  'fullscreen': 1,
+\                  'font-size': 20,
+\                },
+\ 'flatcolor' :  { 'colorscheme': 'flatcolor',
+\                  'background': 'dark',
+\                  'airline-theme': 'wombat',
+\                  'laststatus': 2,
+\                  'ruler': 1,
+\                  'typeface': 'Source Code Pro',
+\                  'fullscreen': 1,
+\                  'font-size': 20,
+\                },
+\ }
+" interesting themes: mango, railscasts, 256-jungle
+let g:thematic#theme_name = 'pencil_lite'
 
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
