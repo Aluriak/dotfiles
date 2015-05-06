@@ -385,7 +385,6 @@ augroup vimrc_autocmds
         "highlight characters past column 120
         autocmd FileType python highlight Excess guibg=Green ctermbg=Blue
         autocmd FileType python match Excess /\%81v.*/
-        autocmd FileType python set nowrap
 augroup END
 
 " Enable heavy omni completion.
