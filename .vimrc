@@ -85,7 +85,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'flazz/vim-colorschemes'
 " other
         " Tetris game
-		"NeoBundle 'vim-scripts/TeTrIs.vim'         
+		"NeoBundle 'vim-scripts/TeTrIs.vim'
         " Rogue game
 		"NeoBundle 'katono/rogue.vim'
 " à tester
@@ -104,7 +104,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
-" usable 
+" usable
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
 
@@ -150,7 +150,7 @@ set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
 
 " Status line
-set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 
 " airline setup (complete setup in thematic)
@@ -279,14 +279,14 @@ noremap <S-up> 50k
 noremap <S-down> 50j
 
 " Fx assigns
-noremap <F1> :TlistToggle<cr> 
-noremap <F2> :VimFilerBuffer<cr> 
+noremap <F1> :TlistToggle<cr>
+noremap <F2> :VimFilerBuffer<cr>
 noremap <F4> :VimShellTab<cr>
-noremap <F6> :Gstatus<cr> 
-noremap <F7> :Gcommit<cr> 
+noremap <F6> :Gstatus<cr>
+noremap <F7> :Gcommit<cr>
 noremap <F9> :VimShellInteractive make<cr>
 
-" paste (before|after) and leave cursor at the beginning 
+" paste (before|after) and leave cursor at the beginning
 noremap œ P`[
 noremap Œ p`[
 " write only one character (before|after) cursor [DONT WORK ?]
@@ -300,14 +300,14 @@ au BufNewFile,BufRead *.pde setf arduino
 au BufNewFile,BufRead *.mkd setf mkd
 au BufNewFile,BufRead *.adb setf ada*/
 au BufNewFile,BufRead *.ads setf ada*/
-au BufNewFile,BufRead *.py  setf python 
+au BufNewFile,BufRead *.py  setf python
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
 
 
 " Delete ~/.vim/.netrwhist file after generation
-au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif 
+au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
 
 " NEOCOMPLCACHE settings
 " Disable AutoComplPop.
@@ -349,7 +349,7 @@ inoremap <expr><C-l> neocomplcache#complete_common_string()
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() 
+function! s:my_cr_function()
         return neocomplcache#smart_close_popup() . "\<CR>"
         " For no inserting <CR> key.
         "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
@@ -405,5 +405,4 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\
 "let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Delete ~/.vim/.netrwhist file after generation
-au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif 
-
+au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
