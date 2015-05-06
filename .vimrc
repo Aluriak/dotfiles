@@ -190,7 +190,7 @@ let g:thematic#theme_name = 'pencil_lite'
 set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
 
 " Abolish
-cabbrev S Subvert
+cabbrev :S :Subvert
 nmap lr <Plug>Coerce
 
 " Remap and shortcuts for vim-bookmarks
