@@ -258,8 +258,6 @@ if has('conceal')
         set conceallevel=2 concealcursor=i
 endif
 
-
-
 " remappages importants
 let mapleader = "\<space>"
 " bépo transcription
@@ -270,7 +268,6 @@ endif
 "Abbréviations d'ordre générales
 ab actual source ~/.vimrc
 ab tq tabclose
-
 
 " déplacement haut-bas
 noremap <S-s> 50k
@@ -383,7 +380,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 augroup vimrc_autocmds
         autocmd!
         "highlight characters past column 120
