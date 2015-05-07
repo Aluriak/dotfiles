@@ -43,7 +43,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " git support: commit in vim + gitconfig indent and syntax
                 NeoBundle 'tpope/vim-fugitive'
                 NeoBundle 'tpope/vim-git'
-        " multiple line insertion
+        " multiple cursor edition
                 NeoBundle 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell, unite)
                 NeoBundle 'Shougo/neocomplcache.vim'
@@ -73,10 +73,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " powerful finder of whatever you want
                 NeoBundle 'Shougo/unite.vim'
                 NeoBundle 'bronson/vim-visual-star-search'
+                " this one needs the_silver_searcher package installed
+                NeoBundle 'ervandew/ag'
         " Terminal in vim (need Unite)
                 NeoBundle 'Shougo/vimshell.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
+        " better buffer closing management
+                NeoBundle 'moll/vim-bbye'
 " fluff
         " coloured and efficient HUI
                 NeoBundle 'bling/vim-airline'
@@ -150,6 +154,9 @@ set cm=blowfish         " Encryption : use of Blofish algorithm
 set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
 
+" close buffers with leader+q
+nnoremap <Leader>q :Bdelete<CR>
+
 " Status line
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
@@ -164,7 +171,16 @@ set encoding=utf-8
 
 " thematic setup
 let g:thematic#themes = {
-\ 'pencil_lite' :{ 'colorscheme': 'default',
+\ 'default' :    { 'colorscheme': 'default',
+\                  'background': 'dark',
+\                  'airline-theme': 'wombat',
+\                  'laststatus': 2,
+\                  'ruler': 1,
+\                  'typeface': 'Source Code Pro',
+\                  'fullscreen': 1,
+\                  'font-size': 20,
+\                },
+\ 'wombat' :     { 'colorscheme': 'wombat256i',
 \                  'background': 'dark',
 \                  'airline-theme': 'wombat',
 \                  'laststatus': 2,
@@ -183,8 +199,8 @@ let g:thematic#themes = {
 \                  'font-size': 20,
 \                },
 \ }
-" interesting themes: mango, railscasts, 256-jungle
-let g:thematic#theme_name = 'pencil_lite'
+" interesting themes: mango, railscasts, 256-jungle, wombat256i
+let g:thematic#theme_name = 'default'
 
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
