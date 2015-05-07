@@ -48,7 +48,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " complementation (synergies: vimshell, unite)
                 NeoBundle 'Shougo/neocomplcache.vim'
         " syntax checker
-                "NeoBundle 'scrooloose/syntastic'
+                NeoBundle 'scrooloose/syntastic'
+                NeoBundle 'myint/syntastic-extras'
         " complete abbreviations and research
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
@@ -137,8 +138,15 @@ NeoBundleCheck
 """""""""
 " VIMRC "
 """""""""
-" pour que l'indentation avec tab soit la même qu'avec les chevrons
-set shiftwidth=8        "indentation = N cases
+" important remapping
+let mapleader = "\<space>"
+
+" some abbreviations
+cabbrev actual source ~/.vimrc
+cabbrev tq tabclose
+
+" cool and smart indentation
+set shiftwidth=4        "indentation = N cases
 set smarttab            "chevrons équivalent à la touche tab
 set nu                  "affichage des numéros de ligne
 set autoindent          "indentation gardée après saut de ligne
@@ -155,7 +163,7 @@ set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
 
 " close buffers with leader+q
-nnoremap <Leader>q :Bdelete<CR>
+nnoremap <leader>q :Bdelete<CR>
 
 " Status line
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -224,8 +232,8 @@ let g:bookmark_auto_save_file="/home/lucas/.vim/vim-bookmarks"
 "Enables line centering when jumping to bookmark
 let g:bookmark_center = 1
 "color of sign column
-highlight SignColumn ctermbg=NONE
-highlight BookmarkSign ctermbg=NONE ctermfg=LightGreen
+highlight SignColumn ctermbg=None ctermfg=LightGreen
+highlight BookmarkSign ctermbg=None ctermfg=LightGreen
 
 " vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
@@ -239,25 +247,33 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " Unite
 nnoremap <C-f> :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite grep:.<cr>
+nmap <Leader>/ :Unite grep:.<cr>
 
 " Syntastic setup
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+nmap <Leader>s :SyntasticCheck<cr>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cursor_column = 0
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_mode_map = { "mode": "active" }
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_auto_jump = 3 " only jump to errors
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
 " error in source code highlighted in blue
-highlight SyntasticError        ctermbg=blue ctermfg=NONE
-highlight SyntasticWarning      ctermbg=blue ctermfg=NONE
+highlight SyntasticError        ctermbg=blue ctermfg=None
+highlight SyntasticWarning      ctermbg=blue ctermfg=None
 " sign in sign column are in red and yellow
-highlight SyntasticErrorSign    cterm=bold ctermbg=NONE ctermfg=red
-highlight SyntasticWarningSign  ctermbg=NONE ctermfg=yellow
+highlight SyntasticErrorSign    cterm=bold ctermbg=None ctermfg=red
+highlight SyntasticWarningSign  cterm=bold ctermbg=None ctermfg=yellow
 " current line in error buffer is highlighted in blue
-highlight Search                ctermbg=blue ctermfg=NONE
+highlight Search                ctermbg=blue ctermfg=None
+
 
 " Snippets
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -275,16 +291,10 @@ if has('conceal')
         set conceallevel=2 concealcursor=i
 endif
 
-" remappages importants
-let mapleader = "\<space>"
 " bépo transcription
 if !empty(system("setxkbmap -print | grep bepo"))
         source ~/.vimrc.bepo
 endif
-
-"Abbréviations d'ordre générales
-ab actual source ~/.vimrc
-ab tq tabclose
 
 " déplacement haut-bas
 noremap <S-s> 50k
