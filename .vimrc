@@ -22,45 +22,46 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Languages forge
         " prolog support
-		NeoBundle 'mndrix/prolog.vim'
+                NeoBundle 'mndrix/prolog.vim'
         " ASP support
                 NeoBundle 'aluriak/asp.vim'
         " Ada support
-		NeoBundle 'ada.vim'
+                NeoBundle 'ada.vim'
         " markdown support
                 NeoBundle 'tpope/vim-markdown'
         " python
                 NeoBundle 'hynek/vim-python-pep8-indent'
 " features
         " liste des fonctions/variables
-		NeoBundle 'taglist.vim'
+                NeoBundle 'taglist.vim'
         " powerful file explorator (need unite)
-		NeoBundle 'Shougo/vimfiler.vim'
+                NeoBundle 'Shougo/vimfiler.vim'
         " commenter des portions de code à la volée
-		NeoBundle 'aluriak/nerdcommenter'
+                NeoBundle 'aluriak/nerdcommenter'
         " lines of same indentation as text objects
                 NeoBundle 'michaeljsmith/vim-indent-object'
-        " support de git
-		NeoBundle 'tpope/vim-fugitive'
+        " git support: commit in vim + gitconfig indent and syntax
+                NeoBundle 'tpope/vim-fugitive'
+                NeoBundle 'tpope/vim-git'
         " multiple line insertion
-		NeoBundle 'terryma/vim-multiple-cursors'
+                NeoBundle 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell, unite)
-		NeoBundle 'Shougo/neocomplcache.vim'
+                NeoBundle 'Shougo/neocomplcache.vim'
         " syntax checker
                 "NeoBundle 'scrooloose/syntastic'
         " complete abbreviations and research
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
-		NeoBundle 'MattesGroeger/vim-bookmarks'
+                NeoBundle 'MattesGroeger/vim-bookmarks'
         " snippets (synergies: neocomplcache)
                 NeoBundle 'Shougo/neosnippet'
                 NeoBundle 'Shougo/neosnippet-snippets'
         " subvertion with {} and coercition
                 NeoBundle 'tpope/vim-abolish'
         " . repeat whole maps
-		NeoBundle 'tpope/vim-repeat'
+                NeoBundle 'tpope/vim-repeat'
         " necessary for efficiency Unite, with options for automatize compilation
-		NeoBundle 'Shougo/vimproc.vim', {
+                NeoBundle 'Shougo/vimproc.vim', {
                         \ 'build' : {
                         \     'windows' : 'tools\\update-dll-mingw',
                         \     'cygwin' : 'make -f make_cygwin.mak',
@@ -70,10 +71,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                         \    },
                         \ }
         " powerful finder of whatever you want
-		NeoBundle 'Shougo/unite.vim'
+                NeoBundle 'Shougo/unite.vim'
                 NeoBundle 'bronson/vim-visual-star-search'
         " Terminal in vim (need Unite)
-		NeoBundle 'Shougo/vimshell.vim'
+                NeoBundle 'Shougo/vimshell.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
 " fluff
@@ -85,12 +86,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'flazz/vim-colorschemes'
 " other
         " Tetris game
-		"NeoBundle 'vim-scripts/TeTrIs.vim'
+                "NeoBundle 'vim-scripts/TeTrIs.vim'
         " Rogue game
-		"NeoBundle 'katono/rogue.vim'
+                "NeoBundle 'katono/rogue.vim'
 " à tester
         " github issues
-		"NeoBundle 'jaxbot/github-issues.vim'
+                "NeoBundle 'jaxbot/github-issues.vim'
         " EPUB edition
                 "NeoBundle 'etnadji/vim-epub'
         " random tip for learn new things about vim
@@ -99,7 +100,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'Lokaltog/vim-easymotion'
 " unused
         " powerful research " UNCOMPREHENSIBLE
-		"NeoBundle 'mileszs/ack.vim'
+                "NeoBundle 'mileszs/ack.vim'
         " scala support " yes, a day i will code in scala
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
