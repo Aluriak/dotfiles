@@ -60,7 +60,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " complete abbreviations and research
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
-                NeoBundle 'MattesGroeger/vim-bookmarks'
+                NeoBundle 'kshenoy/vim-signature'
         " tabs and file tree
                 NeoBundle 'scrooloose/nerdtree'
                 NeoBundle 'jistr/vim-nerdtree-tabs'
@@ -220,23 +220,6 @@ highlight BookmarkSign ctermbg=None ctermfg=white
 " Abolish
 cabbrev :S :Subvert
 nmap lr <Plug>Coerce
-
-" Remap and shortcuts for vim-bookmarks
-nmap ®® <Plug>BookmarkToggle
-nmap ®i <Plug>BookmarkAnnotate
-nmap ®o <Plug>BookmarkAnnotate TODO<cr>
-nmap ®a <Plug>BookmarkShowAll
-nmap ®þ <Plug>BookmarkNext
-nmap ®ß <Plug>BookmarkPrev
-nmap ®c <Plug>BookmarkClear
-nmap ®d <Plug>BookmarkClear
-nmap ®x <Plug>BookmarkClearAll
-let g:bookmark_auto_save_file="/home/lucas/.vim/vim-bookmarks"
-"Enables line centering when jumping to bookmark
-let g:bookmark_center = 1
-"color of sign column
-highlight SignColumn ctermbg=None ctermfg=white
-highlight BookmarkSign ctermbg=None ctermfg=white
 
 " vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
