@@ -85,10 +85,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " fluff
         " coloured and efficient HUI
                 NeoBundle 'bling/vim-airline'
-        " easy themes
-                NeoBundle 'reedes/vim-thematic'
-        " lots of colorschemes
-                NeoBundle 'flazz/vim-colorschemes'
+        " colorscheme
+                NeoBundle 'blueyed/vim-colors-solarized'
 " other
         " Tetris game
                 "NeoBundle 'vim-scripts/TeTrIs.vim'
@@ -161,6 +159,9 @@ set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
 set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
+set cursorline
+"set cursorcolumn
+highlight CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=None
 
 " close buffers with leader+q
 nnoremap <leader>q :Bdelete<CR>
@@ -169,46 +170,25 @@ nnoremap <leader>q :Bdelete<CR>
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 
-" airline setup (complete setup in thematic)
+" airline setup
 let g:airline_powerline_fonts = 1
 set noshowmode
 "to fix the font and lot of strange characters and colors
 set encoding=utf-8
-"set t_Co=256
+let g:airline_theme='wombat'
+set t_Co=256
 "set fillchars+=stl:\ ,stlnc:\
 
-" thematic setup
-let g:thematic#themes = {
-\ 'default' :    { 'colorscheme': 'default',
-\                  'background': 'dark',
-\                  'airline-theme': 'wombat',
-\                  'laststatus': 2,
-\                  'ruler': 1,
-\                  'typeface': 'Source Code Pro',
-\                  'fullscreen': 1,
-\                  'font-size': 20,
-\                },
-\ 'wombat' :     { 'colorscheme': 'wombat256i',
-\                  'background': 'dark',
-\                  'airline-theme': 'wombat',
-\                  'laststatus': 2,
-\                  'ruler': 1,
-\                  'typeface': 'Source Code Pro',
-\                  'fullscreen': 1,
-\                  'font-size': 20,
-\                },
-\ 'flatcolor' :  { 'colorscheme': 'flatcolor',
-\                  'background': 'dark',
-\                  'airline-theme': 'wombat',
-\                  'laststatus': 2,
-\                  'ruler': 1,
-\                  'typeface': 'Source Code Pro',
-\                  'fullscreen': 1,
-\                  'font-size': 20,
-\                },
-\ }
-" interesting themes: mango, railscasts, 256-jungle, wombat256i
-let g:thematic#theme_name = 'default'
+" solarized setup
+colorscheme solarized
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_bold      =1
+let g:solarized_underline =1
+let g:solarized_italic    =1
+" high or low or normal values
+let g:solarized_contrast  ="high"
+let g:solarized_visibility="normal"
 
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
@@ -232,8 +212,8 @@ let g:bookmark_auto_save_file="/home/lucas/.vim/vim-bookmarks"
 "Enables line centering when jumping to bookmark
 let g:bookmark_center = 1
 "color of sign column
-highlight SignColumn ctermbg=None ctermfg=LightGreen
-highlight BookmarkSign ctermbg=None ctermfg=LightGreen
+highlight SignColumn ctermbg=None ctermfg=white
+highlight BookmarkSign ctermbg=None ctermfg=white
 
 " vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
