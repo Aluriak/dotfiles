@@ -103,8 +103,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " efficient motions
                 "NeoBundle 'Lokaltog/vim-easymotion'
 " unused
-        " powerful research " UNCOMPREHENSIBLE
-                "NeoBundle 'mileszs/ack.vim'
         " scala support " yes, a day i will code in scala
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
