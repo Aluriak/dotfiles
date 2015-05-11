@@ -3,6 +3,10 @@ copy:
 	cp ~/.vimrc ./
 	cp ~/.vimrc.bepo ./
 
+u: update
+update:
+	cp .vimrc ~/.vimrc
+
 df:
 	git diff 
 dfv:
