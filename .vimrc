@@ -234,6 +234,10 @@ nmap <Leader>S :SyntasticReset<cr>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_gitcommit_checkers = ['language_check']
+let g:syntastic_svn_checkers = ['language_check']
+let g:syntastic_python_checkers = ['pyflakes_with_warnings']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
