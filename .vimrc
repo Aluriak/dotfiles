@@ -302,8 +302,8 @@ filetype plugin indent on       "Indentation selon extension de fichier (nécess
 syntax on                       "affichage des couleurs
 au BufNewFile,BufRead *.pde setf arduino
 au BufNewFile,BufRead *.mkd setf mkd
-au BufNewFile,BufRead *.adb setf ada*/
-au BufNewFile,BufRead *.ads setf ada*/
+au BufNewFile,BufRead *.adb setf ada
+au BufNewFile,BufRead *.ads setf ada
 au BufNewFile,BufRead *.py  setf python
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
