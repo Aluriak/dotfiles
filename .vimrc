@@ -230,6 +230,7 @@ nmap <Leader>/ :Unite grep:.<cr>
 
 " Syntastic setup
 nmap <Leader>s :SyntasticCheck<cr>
+nmap <Leader>S :SyntasticReset<cr>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -239,9 +240,9 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_cursor_column = 0
 let g:syntastic_enable_highlighting = 0
-let g:syntastic_mode_map = { "mode": "active" }
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_auto_jump = 3 " only jump to errors
+let g:syntastic_mode_map = { "mode": "passive" }
+let g:syntastic__checkers = ['pylint']
+let g:syntastic_auto_jump = 4 " only jump to errors
 "let g:syntastic_error_symbol = "✗"
 "let g:syntastic_warning_symbol = "⚠"
 " error in source code highlighted in blue
