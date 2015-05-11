@@ -32,12 +32,20 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " features
         " liste des fonctions/variables
                 NeoBundle 'taglist.vim'
+        " paired chars
+                NeoBundle 'jiangmiao/auto-pairs'
+        " replacements by cycles
+                NeoBundle 'AndrewRadev/switch.vim'
+        " quick opening/manipulation of header + source files
+                NeoBundle 'vim-scripts/a.vim'
         " powerful file explorator (need unite)
                 NeoBundle 'Shougo/vimfiler.vim'
         " commenter des portions de code à la volée
                 NeoBundle 'aluriak/nerdcommenter'
         " lines of same indentation as text objects
                 NeoBundle 'michaeljsmith/vim-indent-object'
+        " quick motions with f, t and others
+                NeoBundle 'Lokaltog/vim-easymotion'
         " git support: commit in vim + gitconfig indent and syntax
                 NeoBundle 'tpope/vim-fugitive'
                 NeoBundle 'tpope/vim-git'
@@ -53,6 +61,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
                 NeoBundle 'MattesGroeger/vim-bookmarks'
+        " tabs and file tree
+                NeoBundle 'scrooloose/nerdtree'
+                NeoBundle 'jistr/vim-nerdtree-tabs'
         " snippets (synergies: neocomplcache)
                 NeoBundle 'Shougo/neosnippet'
                 NeoBundle 'Shougo/neosnippet-snippets'
@@ -136,6 +147,9 @@ NeoBundleCheck
 " important remapping
 let mapleader = "\<space>"
 
+" easy motion setup
+map <Leader>f <Plug>(easymotion-prefix)
+
 " some abbreviations
 cabbrev actual source ~/.vimrc
 cabbrev tq tabclose
@@ -159,6 +173,18 @@ set wildmenu            " Better command-line completion
 set cursorline
 "set cursorcolumn
 highlight CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=None
+set nofoldenable " no weird and unefficient folding
+
+" session manager have the default comportement, except that is not save the
+" local and global mappings/options.
+set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
+
+" NERDTree setup (+ nerdtree tabs setup)
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=0
+let g:nerdtree_tabs_smart_startup_focus=1
+let g:nerdtree_tabs_open_on_new_tab=0
+let g:nerdtree_tabs_focus_on_files=1
 
 " close buffers with leader+q
 nnoremap <leader>q :Bdelete<CR>
@@ -187,9 +213,9 @@ let g:solarized_italic    =1
 let g:solarized_contrast  ="high"
 let g:solarized_visibility="normal"
 
-" session manager have the default comportement, except that is not save the
-" local and global mappings/options.
-set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
+"color of sign column
+highlight SignColumn ctermbg=None ctermfg=white
+highlight BookmarkSign ctermbg=None ctermfg=white
 
 " Abolish
 cabbrev :S :Subvert
@@ -214,6 +240,16 @@ highlight BookmarkSign ctermbg=None ctermfg=white
 
 " vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
+
+" switch setup
+nnoremap <Leader>é :Switch<cr>
+let b:switch_custom_definitions = [
+      \   {
+      \     '\<[a-z0-9]\+\s*,\s*[a-z0-9]\+\>': {
+      \       '\([a-z0-9]\+\)\(\s*\),\(\s*\)\([a-z0-9]\+\)': '\4\2,\3\1'
+      \     },
+      \   }
+      \ ]
 
 " For multiple cursors :
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
@@ -287,6 +323,7 @@ noremap <S-down> 50j
 " Fx assigns
 noremap <F1> :TlistToggle<cr>
 noremap <F2> :VimFilerBuffer<cr>
+noremap <F3> :NERDTreeTabsToggle<cr>
 noremap <F4> :VimShellTab<cr>
 noremap <F6> :Gstatus<cr>
 noremap <F7> :Gcommit<cr>
