@@ -43,6 +43,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " git support: commit in vim + gitconfig indent and syntax
                 NeoBundle 'tpope/vim-fugitive'
                 NeoBundle 'tpope/vim-git'
+                NeoBundle 'airblade/vim-gitgutter'
         " multiple cursor edition
                 NeoBundle 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell, unite)
