@@ -44,6 +44,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'aluriak/nerdcommenter'
         " lines of same indentation as text objects
                 NeoBundle 'michaeljsmith/vim-indent-object'
+        " alignment of line
+                NeoBundle 'orbisvicis/tabular'
         " quick motions with f, t and others
                 NeoBundle 'Lokaltog/vim-easymotion'
         " git support: commit in vim + gitconfig indent and syntax
@@ -97,6 +99,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'bling/vim-airline'
         " colorscheme
                 NeoBundle 'blueyed/vim-colors-solarized'
+        " tabulation mark
+                NeoBundle 'Yggdroot/indentLine'
 " other
         " Tetris game
                 "NeoBundle 'vim-scripts/TeTrIs.vim'
@@ -165,6 +169,9 @@ set expandtab           "pas de tab, uniquement des espaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
+" indent line setup
+let g:indentLine_char = '︙'
+
 " Details
 set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
@@ -188,6 +195,12 @@ let g:nerdtree_tabs_focus_on_files=1
 
 " close buffers with leader+q
 nnoremap <leader>q :Bdelete<CR>
+
+" tabular setup
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
 
 " Status line
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
