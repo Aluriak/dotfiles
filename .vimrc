@@ -154,7 +154,8 @@ NeoBundleCheck
 let mapleader = "\<space>"
 
 " easy motion setup
-map <Leader>f <Plug>(easymotion-prefix)
+nmap <Leader>f <Plug>(easymotion-prefix)
+vmap <Leader>f <Plug>(easymotion-prefix)
 
 " some abbreviations
 cabbrev actual source ~/.vimrc
@@ -192,7 +193,7 @@ set nofoldenable " no weird and unefficient folding
 set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
 
 " NERDTree setup (+ nerdtree tabs setup)
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+nmap <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:nerdtree_tabs_smart_startup_focus=1
 let g:nerdtree_tabs_open_on_new_tab=0
@@ -331,11 +332,11 @@ noremap <F7> :Gcommit<cr>
 noremap <F9> :VimShellInteractive make<cr>
 
 " paste (before|after) and leave cursor at the beginning
-noremap œ P`[
-noremap Œ p`[
+nnoremap œ P`[
+nnoremap Œ p`[
 " write only one character (before|after) cursor
-noremap <leader>i i?<Esc>r
-noremap <leader>a a?<Esc>r
+nnoremap <leader>i i?<Esc>r
+nnoremap <leader>a a?<Esc>r
 
 " Modif selon type de fichier
 filetype plugin indent on       "Indentation selon extension de fichier (nécessaire pour vundle)
