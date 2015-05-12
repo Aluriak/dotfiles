@@ -60,8 +60,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " syntax checker
                 NeoBundle 'scrooloose/syntastic'
                 NeoBundle 'myint/syntastic-extras'
-        " complete abbreviations and research
-                NeoBundle 'tpope/vim-abolish'
         " vim bookmarks
                 NeoBundle 'kshenoy/vim-signature'
         " tabs and file tree
@@ -119,7 +117,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " random tip for learn new things about vim
                 "Neobundle 'mhinz/vim-randomtag'
 " unused
-        " scala support " yes, a day i will code in scala
+        " scala support  (yes, a day i will code in scala)
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
