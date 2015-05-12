@@ -174,7 +174,8 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " indent line setup
 "let g:indentLine_char = '︙'
 let g:indentLine_color_term = 000
-let g:indentLine_char = '¦'
+let g:indentLine_char = '┆'
+let g:indentLine_faster = 1
 
 " Details
 set nomodeline          " security about modelines
