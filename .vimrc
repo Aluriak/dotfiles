@@ -241,8 +241,8 @@ let g:vimfiler_as_default_explorer = 1
 nnoremap <Leader>é :Switch<cr>
 let b:switch_custom_definitions = [
       \   {
-      \     '\<[a-z0-9]\+\s*,\s*[a-z0-9]\+\>': {
-      \       '\([a-z0-9]\+\)\(\s*\),\(\s*\)\([a-z0-9]\+\)': '\4\2,\3\1'
+      \     '\<[a-zA-Z_0-9]\+\s*,\s*[a-zA-Z_0-9]\+\>': {
+      \       '\([a-zA-Z_0-9]\+\)\(\s*\),\(\s*\)\([a-zA-Z_0-9]\+\)': '\4\2,\3\1'
       \     },
       \   }
       \ ]
