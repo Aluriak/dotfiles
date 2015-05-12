@@ -38,7 +38,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " replacements by cycles
                 NeoBundle 'AndrewRadev/switch.vim'
         " quick opening/manipulation of header + source files
-                NeoBundle 'vim-scripts/a.vim'
+                NeoBundle 'fanchangyong/a.vim'
         " powerful file explorator (need unite)
                 NeoBundle 'Shougo/vimfiler.vim'
         " commenter des portions de code à la volée
