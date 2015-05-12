@@ -102,6 +102,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'blueyed/vim-colors-solarized'
         " tabulation mark
                 NeoBundle 'Yggdroot/indentLine'
+        " automatic line numbering
+                NeoBundle 'voanhduy1512/vim-numbertoggle'
 " other
         " Tetris game
                 "NeoBundle 'vim-scripts/TeTrIs.vim'
@@ -116,8 +118,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'etnadji/vim-epub'
         " random tip for learn new things about vim
                 "Neobundle 'mhinz/vim-randomtag'
-        " efficient motions
-                "NeoBundle 'Lokaltog/vim-easymotion'
 " unused
         " scala support " yes, a day i will code in scala
                 "NeoBundle 'derekwyatt/vim-scala'
@@ -126,7 +126,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " usable
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
-
 
 
 call neobundle#end()
@@ -173,7 +172,9 @@ set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 " indent line setup
-let g:indentLine_char = '︙'
+"let g:indentLine_char = '︙'
+let g:indentLine_color_term = 000
+let g:indentLine_char = '¦'
 
 " Details
 set nomodeline          " security about modelines
