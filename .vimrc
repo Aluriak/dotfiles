@@ -29,6 +29,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'ada.vim'
         " python
                 NeoBundle 'hynek/vim-python-pep8-indent'
+                NeoBundle 'vim-scripts/python_match.vim'
 " features
         " liste des fonctions/variables
                 NeoBundle 'taglist.vim'
@@ -109,6 +110,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " à tester
         " github issues
                 "NeoBundle 'jaxbot/github-issues.vim'
+        " windows for manipulate commit and modified files
+                "NeoBundle 'int3/vim-extradite'
         " EPUB edition
                 "NeoBundle 'etnadji/vim-epub'
         " random tip for learn new things about vim
