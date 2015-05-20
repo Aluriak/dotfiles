@@ -33,8 +33,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " features
         " liste des fonctions/variables
                 NeoBundle 'taglist.vim'
-        " paired chars
-                NeoBundle 'jiangmiao/auto-pairs'
         " replacements by cycles
                 NeoBundle 'AndrewRadev/switch.vim'
         " quick opening/manipulation of header + source files
