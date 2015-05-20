@@ -7,8 +7,6 @@ u: update
 update:
 	cp .vimrc ~/.vimrc
 
-df:
-	git diff 
 dfv:
 	git diff .vimrc
 
@@ -25,3 +23,6 @@ addall: add addbepo
 
 commit: copy addall
 	git commit
+
+df:
+	vimdiff ~/.vimrc ./.vimrc
