@@ -352,6 +352,12 @@ au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
 
+" Store temporary files in a central spot
+" see here: https://github.com/tpope/vim-obsession/issues/18#issuecomment-69852130
+let vimtmp = $HOME . '/.vim/tmp/' . getpid()
+silent! call mkdir(vimtmp, "p", 0700)
+let &backupdir=vimtmp
+let &directory=vimtmp
 
 " Delete ~/.vim/.netrwhist file after generation
 au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
