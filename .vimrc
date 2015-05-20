@@ -150,8 +150,14 @@ NeoBundleCheck
 let mapleader = "\<space>"
 
 " easy motion setup
-nmap <Leader>f <Plug>(easymotion-prefix)
-vmap <Leader>f <Plug>(easymotion-prefix)
+nmap <Leader>f <Plug>(easymotion-prefix)f
+vmap <Leader>f <Plug>(easymotion-prefix)f
+nmap <Leader>F <Plug>(easymotion-prefix)F
+vmap <Leader>F <Plug>(easymotion-prefix)F
+nmap <Leader>j <Plug>(easymotion-prefix)j
+vmap <Leader>j <Plug>(easymotion-prefix)j
+nmap <Leader>J <Plug>(easymotion-prefix)J
+vmap <Leader>J <Plug>(easymotion-prefix)J
 
 " some abbreviations
 cabbrev actual source ~/.vimrc
