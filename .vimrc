@@ -210,6 +210,11 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
+" gitgutter setup
+" whitespace changes are not showed
+let g:gitgutter_diff_args = '-w'
+let g:gitgutter_realtime  = 0
+
 " Status line
 set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
