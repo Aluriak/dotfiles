@@ -109,7 +109,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " github issues
                 "NeoBundle 'jaxbot/github-issues.vim'
         " windows for manipulate commit and modified files
-                "NeoBundle 'int3/vim-extradite'
+                NeoBundle 'int3/vim-extradite'
         " EPUB edition
                 "NeoBundle 'etnadji/vim-epub'
         " random tip for learn new things about vim
