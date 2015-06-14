@@ -91,6 +91,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'tpope/vim-speeddating'
         " better buffer closing management
                 NeoBundle 'moll/vim-bbye'
+        " improve make session management
+                NeoBundle 'tpope/vim-obsession'
 " fluff
         " coloured and efficient HUI
                 NeoBundle 'bling/vim-airline'
@@ -192,6 +194,7 @@ set nofoldenable " no weird and unefficient folding
 
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
+" not that these behavior is improved by tpope/vim-obsession
 set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
 
 " NERDTree setup (+ nerdtree tabs setup)
