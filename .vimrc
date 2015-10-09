@@ -68,6 +68,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'tpope/vim-abolish'
         " . repeat whole maps
                 NeoBundle 'tpope/vim-repeat'
+        " save and reuse named macros
+                NeoBundle 'chamindra/marvim'
         " necessary for efficiency Unite, with options for automatize compilation
                 NeoBundle 'Shougo/vimproc.vim', {
                         \ 'build' : {
@@ -199,32 +201,18 @@ set nofoldenable " no weird and unefficient folding
 " not that these behavior is improved by tpope/vim-obsession
 set sessionoptions=blank,folds,sesdir,help,tabpages,winpos,winsize
 
-" NERDTree setup (+ nerdtree tabs setup)
+" setup: NERDTree (+ nerdtree tabs)
 nmap <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:nerdtree_tabs_smart_startup_focus=1
 let g:nerdtree_tabs_open_on_new_tab=0
 let g:nerdtree_tabs_focus_on_files=1
 
-" close buffers with leader+q
-nnoremap <leader>q :Bdelete<CR>
+" setup: abolish
+cabbrev :S :Subvert
+nmap lr <Plug>Coerce
 
-" tabular setup
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-
-" gitgutter setup
-" whitespace changes are not showed
-let g:gitgutter_diff_args = '-w'
-let g:gitgutter_realtime  = 0
-
-" Status line
-"set statusline=%{fugitive#statusline()}\ %{ObsessionStatus('[Obsession]','[Session]')}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set laststatus=2
-
-" airline setup
+" setup: airline & solarized
 let g:airline_powerline_fonts = 1
 set noshowmode
 "to fix the font and lot of strange characters and colors
@@ -233,7 +221,7 @@ let g:airline_theme='wombat'
 set t_Co=256
 "set fillchars+=stl:\ ,stlnc:\
 
-" solarized setup
+" setup: solarized
 colorscheme solarized
 set background=dark
 let g:solarized_termcolors=256
@@ -243,71 +231,29 @@ let g:solarized_italic    =1
 " high or low or normal values
 let g:solarized_contrast  ="high"
 let g:solarized_visibility="normal"
-
-"color of sign column
+" color of sign column
 highlight SignColumn ctermbg=None ctermfg=white
 highlight BookmarkSign ctermbg=None ctermfg=white
 
-" Abolish
-cabbrev :S :Subvert
-nmap lr <Plug>Coerce
+" setup: gitgutter
+" whitespace changes are not showed
+let g:gitgutter_diff_args = '-w'
+let g:gitgutter_realtime  = 0
 
-" vimfiler module definitions
-let g:vimfiler_as_default_explorer = 1
+" setup: marvim
+let g:marvim_store = '/home/lucas/.vim/bundle/marvim/personnal/'
+let g:marvim_find_key = '<Leader>m'
+let g:marvim_store_key = '<Leader><S-m>'
+"let g:marvim_register = 'c'    " change used register from 'q' to 'c'
 
-" switch setup
-nnoremap <Leader>é :Switch<cr>
-let b:switch_custom_definitions = [
-      \   {
-      \     '\<[a-zA-Z_0-9]\+\s*,\s*[a-zA-Z_0-9]\+\>': {
-      \       '\([a-zA-Z_0-9]\+\)\(\s*\),\(\s*\)\([a-zA-Z_0-9]\+\)': '\4\2,\3\1'
-      \     },
-      \   }
-      \ ]
-
-" For multiple cursors :
+" setup: multiple cursors :
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Unite
-nnoremap <C-f> :Unite file_rec/async<cr>
-nmap <Leader>/ :Unite grep:.<cr>
-
-" Syntastic setup
-nmap <Leader>s :SyntasticCheck<cr>
-nmap <Leader>S :SyntasticReset<cr>
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_make_checkers = ['gnumake']
-let g:syntastic_gitcommit_checkers = ['language_check']
-let g:syntastic_svn_checkers = ['language_check']
-let g:syntastic_python_checkers = ['pyflakes_with_warnings']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cursor_column = 0
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_mode_map = { "mode": "passive" }
-let g:syntastic__checkers = ['pylint']
-let g:syntastic_auto_jump = 4 " only jump to errors
-"let g:syntastic_error_symbol = "✗"
-"let g:syntastic_warning_symbol = "⚠"
-" error in source code highlighted in blue
-highlight SyntasticError        ctermbg=blue ctermfg=None
-highlight SyntasticWarning      ctermbg=blue ctermfg=None
-" sign in sign column are in red and yellow
-highlight SyntasticErrorSign    cterm=bold ctermbg=None ctermfg=red
-highlight SyntasticWarningSign  cterm=bold ctermbg=None ctermfg=yellow
-" current line in error buffer is highlighted in blue
-highlight Search                ctermbg=blue ctermfg=None
-
-
-" Snippets
+" setup: snippets
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -319,13 +265,74 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
                         \ "\<Plug>(neosnippet_expand_or_jump)"
                         \: "\<TAB>"
 " For snippet_complete marker.
-if has('conceal')
-        set conceallevel=2 concealcursor=i
-endif
 
-" bépo transcription
+" setup: status line
+set statusline=%{fugitive#statusline()}\ %{ObsessionStatus('[Obsession]','[Session]')}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set laststatus=2
+
+" setup: syntastic
+nmap <Leader>s :SyntasticCheck<cr>
+nmap <Leader>S :SyntasticReset<cr>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_gitcommit_checkers = ['language_check']
+let g:syntastic_svn_checkers = ['language_check']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cursor_column = 0
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_mode_map = { "mode": "passive" }
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_auto_jump = 3 " only jump to errors
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
+" error in source code highlighted in blue
+highlight SyntasticError        ctermbg=blue ctermfg=None
+highlight SyntasticWarning      ctermbg=blue ctermfg=None
+" sign in sign column are in red and yellow
+highlight SyntasticErrorSign    cterm=bold ctermbg=None ctermfg=red
+highlight SyntasticWarningSign  cterm=bold ctermbg=None ctermfg=yellow
+" current line in error buffer is highlighted in blue
+highlight Search                ctermbg=blue ctermfg=None
+
+" setup: switch
+nnoremap <Leader>é :Switch<cr>
+let b:switch_custom_definitions = [
+      \   {
+      \     '\<[a-zA-Z_0-9]\+\s*,\s*[a-zA-Z_0-9]\+\>': {
+      \       '\([a-zA-Z_0-9]\+\)\(\s*\),\(\s*\)\([a-zA-Z_0-9]\+\)': '\4\2,\3\1'
+      \     },
+      \   }
+      \ ]
+
+" setup: tabular
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+
+" setup: unite
+nnoremap <C-f> :Unite file_rec/async<cr>
+nmap <Leader>/ :Unite grep:.<cr>
+
+" setup: vimfiler module definitions
+let g:vimfiler_as_default_explorer = 1
+
+" setup: bépo transcription
 if !empty(system("setxkbmap -print | grep bepo"))
         source ~/.vimrc.bepo
+endif
+
+" setup: conceal, ability to hide some text under certain conditions
+if has('conceal')
+        " transform some text in unique letter
+        set conceallevel=1
+        " no conceal in normal and command line editing
+        set concealcursor=nc
 endif
 
 " déplacement haut-bas
@@ -369,10 +376,7 @@ silent! call mkdir(vimtmp, "p", 0700)
 let &backupdir=vimtmp
 let &directory=vimtmp
 
-" Delete ~/.vim/.netrwhist file after generation
-au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
-
-" NEOCOMPLCACHE settings
+" setup: neocomplcache settings
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -460,10 +464,6 @@ endif
 let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Delete ~/.vim/.netrwhist file after generation
 au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
