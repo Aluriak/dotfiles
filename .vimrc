@@ -195,7 +195,7 @@ set nofoldenable " no weird and unefficient folding
 " session manager have the default comportement, except that is not save the
 " local and global mappings/options.
 " not that these behavior is improved by tpope/vim-obsession
-set sessionoptions=blank,buffers,sesdir,winpos,folds,help,tabpages,winsize
+set sessionoptions=blank,folds,sesdir,help,tabpages,winpos,winsize
 
 " NERDTree setup (+ nerdtree tabs setup)
 nmap <Leader>n <plug>NERDTreeTabsToggle<CR>
@@ -219,7 +219,7 @@ let g:gitgutter_diff_args = '-w'
 let g:gitgutter_realtime  = 0
 
 " Status line
-set statusline=%{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+"set statusline=%{fugitive#statusline()}\ %{ObsessionStatus('[Obsession]','[Session]')}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 
 " airline setup
