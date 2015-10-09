@@ -327,14 +327,6 @@ if !empty(system("setxkbmap -print | grep bepo"))
         source ~/.vimrc.bepo
 endif
 
-" setup: conceal, ability to hide some text under certain conditions
-if has('conceal')
-        " transform some text in unique letter
-        set conceallevel=1
-        " no conceal in normal and command line editing
-        set concealcursor=nc
-endif
-
 " déplacement haut-bas
 noremap <S-s> 50k
 noremap <S-t> 50j
