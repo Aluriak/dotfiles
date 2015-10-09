@@ -84,13 +84,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'Shougo/vimshell.vim'
         " improve the * find and search
                 NeoBundle 'bronson/vim-visual-star-search'
-        " file search (some modules needs it)
-                NeoBundle 'Shougo/unite.vim'
-                " alternatives:
-                " this one needs the_silver_searcher package installed
-                "NeoBundle 'ervandew/ag'
-        " powerful file explorator (need unite)
-                NeoBundle 'Shougo/vimfiler.vim'
+        " simple and efficient search of files in project
+                NeoBundle 'kien/ctrlp.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
         " improve make session management
@@ -234,6 +229,12 @@ let g:solarized_visibility="normal"
 " color of sign column
 highlight SignColumn ctermbg=None ctermfg=white
 highlight BookmarkSign ctermbg=None ctermfg=white
+
+" setup: ctrlp
+let g:ctrlp_map = '<leader>p'
+" search in the whole project directory
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " setup: gitgutter
 " whitespace changes are not showed
