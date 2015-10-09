@@ -24,7 +24,7 @@ noremap s k
 " {CR} = « haut / bas de l'écran »
 noremap C H
 noremap R L
-" {†ĳ} = « joindre / aide » " TS already used for quick movements 
+" {†ĳ} = « joindre / aide » " TS already used for quick movements
 "  (on bepo: altgr + j and altgr + h)
 noremap ĳ J
 noremap † K
@@ -46,7 +46,7 @@ noremap H R
 " {K} = « Substitue »          (k = caractère, K = ligne)
 noremap k s
 noremap K S
- 
+
 " Désambiguation de {g}
 " —————————————————————
 " ligne écran précédente / suivante (à l'intérieur d'une phrase)
