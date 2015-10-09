@@ -37,8 +37,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'AndrewRadev/switch.vim'
         " quick opening/manipulation of header + source files
                 NeoBundle 'fanchangyong/a.vim'
-        " powerful file explorator (need unite)
-                NeoBundle 'Shougo/vimfiler.vim'
         " commenter des portions de code à la volée
                 NeoBundle 'aluriak/nerdcommenter'
         " lines of same indentation as text objects
@@ -80,17 +78,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                         \     'unix' : 'gmake',
                         \    },
                         \ }
-        " powerful finder of whatever you want
-                NeoBundle 'Shougo/unite.vim'
-                NeoBundle 'bronson/vim-visual-star-search'
-                " this one needs the_silver_searcher package installed
-                NeoBundle 'ervandew/ag'
-        " Terminal in vim (need Unite)
+        " Terminal in vim (need vimproc)
                 NeoBundle 'Shougo/vimshell.vim'
+        " improve the * find and search
+                NeoBundle 'bronson/vim-visual-star-search'
+        " file search (some modules needs it)
+                NeoBundle 'Shougo/unite.vim'
+                " alternatives:
+                " this one needs the_silver_searcher package installed
+                "NeoBundle 'ervandew/ag'
+        " powerful file explorator (need unite)
+                NeoBundle 'Shougo/vimfiler.vim'
         " dates management
                 NeoBundle 'tpope/vim-speeddating'
-        " better buffer closing management
-                NeoBundle 'moll/vim-bbye'
         " improve make session management
                 NeoBundle 'tpope/vim-obsession'
 " fluff
@@ -121,6 +121,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'derekwyatt/vim-scala'
                 "NeoBundle 'ktvoelker/sbt-vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
+        " better buffer closing management
+                "NeoBundle 'moll/vim-bbye'
 " usable
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
