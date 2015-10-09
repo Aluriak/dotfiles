@@ -1,5 +1,6 @@
 [alias]
         a  = add
+        ad = add
         ap = add -p
         st = status
         ci = commit
