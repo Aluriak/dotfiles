@@ -194,7 +194,10 @@ set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
 set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
-set cursorline
+set cursorline          " Line where cursor is, is highlighted
+set lazyredraw          " redraw only when we need to.
+
+
 "set cursorcolumn
 highlight CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=None
 set nofoldenable " no weird and unefficient folding
