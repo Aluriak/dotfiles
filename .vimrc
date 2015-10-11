@@ -246,6 +246,9 @@ let g:ctrlp_map = '<leader>p'
 " search in the whole project directory
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let ctrlp_switch_buffer=0  " new buffer when open a file
+" use the silver searcher (ag)
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " setup: gitgutter
 " whitespace changes are not showed
