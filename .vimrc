@@ -181,6 +181,9 @@ let g:indentLine_char = '┆'
 let g:indentLine_color_term = 000
 let g:indentLine_faster = 1
 
+" map escape to çç:
+noremap! çç <ESC>
+
 " Details
 set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
