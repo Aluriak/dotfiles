@@ -257,6 +257,7 @@ let g:marvim_store = '/home/lucas/.vim/bundle/marvim/personnal/'
 let g:marvim_find_key = '<Leader>m'
 let g:marvim_store_key = '<Leader><S-m>'
 "let g:marvim_register = 'c'    " change used register from 'q' to 'c'
+let marvim_prefix = 0           " disable default syntax based prefix
 
 " setup: multiple cursors :
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
