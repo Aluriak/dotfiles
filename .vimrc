@@ -181,6 +181,11 @@ let g:indentLine_char = '┆'
 let g:indentLine_color_term = 000
 let g:indentLine_faster = 1
 
+" line focus: zz for center active line, zb for put it at the bottom
+" and zt for put it at the top.
+" this remapping is necessary because of the bépo remapping.
+noremap zt zt
+
 " map escape to çç:
 noremap! çç <ESC>
 
