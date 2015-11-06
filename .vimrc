@@ -465,7 +465,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup vimrc_autocmds
         autocmd!
         "highlight characters past column 120
-        autocmd FileType python highlight Excess guibg=Green ctermbg=Blue
+        autocmd FileType python highlight Excess guibg=Green ctermbg=LightYellow
         autocmd FileType python match Excess /\%81v.*/
 augroup END
 
