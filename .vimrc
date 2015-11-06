@@ -164,6 +164,10 @@ vmap <Leader>J <Plug>(easymotion-prefix)J
 cabbrev actual source ~/.vimrc
 cabbrev tq tabclose
 
+" conceal setup (no conceal at all, especially in latex)
+set conceallevel=0
+let g:tex_conceal= ''
+
 " cool and smart indentation
 set shiftwidth=4        "indentation = N cases
 set smarttab            "chevrons équivalent à la touche tab
