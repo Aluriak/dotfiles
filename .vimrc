@@ -193,6 +193,9 @@ noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
 
+" enable ragequit
+cnoreabbrev Q q
+
 " Details
 set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
