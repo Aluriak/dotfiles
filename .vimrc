@@ -467,9 +467,8 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup vimrc_autocmds
         autocmd!
-        "highlight characters past column 120
-        autocmd FileType python highlight Excess guibg=Green ctermbg=LightYellow
-        autocmd FileType python match Excess /\%81v.*/
+        " draw a vertical line at 80 characters
+        autocmd FileType python set colorcolumn=81
 augroup END
 
 " Enable heavy omni completion.
