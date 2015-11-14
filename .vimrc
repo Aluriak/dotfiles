@@ -506,3 +506,11 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\
 
 " Delete ~/.vim/.netrwhist file after generation
 au VimLeave * if filereadable("~/.vim/.netrwhist") | call delete("~/.vim/.netrwhist") | endif
+
+" List all commands in a new buffer. Inspired by
+"  http://stackoverflow.com/a/15756785/3077939
+"  http://stackoverflow.com/a/2573758/3077939
+function! Listmaps()
+    :tabnew
+    :redir => m | :silent verbose map | redir END | put=m
+endfunction
