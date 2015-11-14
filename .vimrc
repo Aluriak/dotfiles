@@ -30,6 +30,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " python
                 NeoBundle 'hynek/vim-python-pep8-indent'
                 NeoBundle 'vim-scripts/python_match.vim'
+        " latex
+                NeoBundle 'lervag/vimtex'
 " features
         " liste des fonctions/variables
                 NeoBundle 'taglist.vim'
@@ -344,6 +346,33 @@ nmap <Leader>/ :Unite grep:.<cr>
 
 " setup: vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
+
+" setup: vimtex
+let g:vimtex_mappings_enabled = 0
+let g:vimtex_latexmk_background = 1
+let g:vimtex_quickfix_autojump = 1
+let g:vimtex_view_general_viewer = 'evince'
+let g:vimtex_latexmk_continuous = 1
+let g:vimtex_syntax_minted = [
+      \ { 'lang' : 'c', },
+      \ { 'lang' : 'cpp', },
+      \ { 'lang' : 'python', },
+      \]
+map <leader>ll <plug>(vimtex-compile-toggle)
+map <leader>ls <plug>(vimtex-view)
+map <leader>la <plug>(vimtex-%)
+map <leader>lu <plug>(vimtex-create-cmd)
+map <leader>li <plug>(vimtex-close-env)
+map <leader>le <plug>(vimtex-errors)
+map <leader>lw <plug>(vimtex-change-env)
+map <leader>lc :VimtexWordCount<cr>
+" text objects (Environment, delimiter, Paragraph ; exclusive (a) and inclusive (i))
+map <leader>lea <plug>(vimtex-ae)
+map <leader>lei <plug>(vimtex-ie)
+map <leader>lda <plug>(vimtex-ad)
+map <leader>ldi <plug>(vimtex-id)
+map <leader>lpa <plug>(vimtex-ap)
+map <leader>lpi <plug>(vimtex-ip)
 
 " setup: bépo transcription
 if !empty(system("setxkbmap -print | grep bepo"))
