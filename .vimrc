@@ -340,10 +340,6 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
-" setup: unite
-nnoremap <C-f> :Unite file_rec/async<cr>
-nmap <Leader>/ :Unite grep:.<cr>
-
 " setup: vimfiler module definitions
 let g:vimfiler_as_default_explorer = 1
 
