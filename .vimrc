@@ -252,12 +252,12 @@ highlight BookmarkSign ctermbg=None ctermfg=white
 
 " setup: ctrlp
 let g:ctrlp_map = '<leader>p'
-" search in the whole project directory
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'ra'   " search in the whole project directory
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let ctrlp_switch_buffer=0  " new buffer when open a file
+let g:ctrlp_switch_buffer = 'Et'   " if file is already open in a tab, jump to it.
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
 
 " setup: gitgutter
 " whitespace changes are not showed
