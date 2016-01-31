@@ -195,16 +195,17 @@ let g:indentLine_char = '┆'
 let g:indentLine_color_term = 000
 let g:indentLine_faster = 1
 
+" setup: shortcuts
 " line focus: zz for center active line, zb for put it at the bottom
 " and zt for put it at the top.
 " this remapping is necessary because of the bépo remapping.
 noremap zt zt
-
 " map escape to çç:
 noremap! çç <ESC>
-
 " enable ragequit
 cnoreabbrev Q q
+" paste on next line at the right level of indentation, then pass in insert mode.
+nmap <Leader>o o?<ESC>PAççxa
 
 " Details
 set nomodeline          " security about modelines
@@ -311,8 +312,12 @@ set statusline=%{fugitive#statusline()}\ %{ObsessionStatus('[Obsession]','[Sessi
 set laststatus=2
 
 " setup: syntastic
-nmap <Leader>s :SyntasticCheck<cr>
-nmap <Leader>S :SyntasticReset<cr>
+nmap <Leader>ss :SyntasticCheck<cr>
+nmap <Leader>st :SyntasticToggleMode<cr>
+nmap <Leader>sc :lprevious<cr>
+nmap <Leader>sr :lnext<cr>
+nmap <Leader>se :Errors<cr>
+nmap <Leader>sq :SyntasticReset<cr>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -328,16 +333,15 @@ let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { "mode": "passive" }
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_auto_jump = 3 " only jump to errors
-"let g:syntastic_error_symbol = "✗"
-"let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 " error in source code highlighted in blue
-highlight SyntasticError        ctermbg=blue ctermfg=None
-highlight SyntasticWarning      ctermbg=blue ctermfg=None
+highlight SyntasticError        ctermbg=None ctermfg=None
+highlight SyntasticWarning      ctermbg=None ctermfg=None
 " sign in sign column are in red and yellow
 highlight SyntasticErrorSign    cterm=bold ctermbg=None ctermfg=red
 highlight SyntasticWarningSign  cterm=bold ctermbg=None ctermfg=yellow
-" current line in error buffer is highlighted in blue
-highlight Search                ctermbg=blue ctermfg=None
 
 " setup: switch
 nnoremap <Leader>é :Switch<cr>
