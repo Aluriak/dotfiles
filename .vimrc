@@ -271,9 +271,10 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_working_path_mode = 'ra'   " search in the whole project directory
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_switch_buffer = 'Et'   " if file is already open in a tab, jump to it.
+let g:ctrlp_use_caching = 1
+let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
 
 " setup: gitgutter
 " whitespace changes are not showed
