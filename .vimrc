@@ -124,9 +124,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 "NeoBundle 'mdreves/vim-scaladoc'
         " better buffer closing management
                 "NeoBundle 'moll/vim-bbye'
+        " stacking of the yanked data: UNUSABLE: overwrite remapping of ['c', 'C', 'd', 'D', 's', 'S', 'x', 'X', 'y', 'Y']
+                "NeoBundle 'maxbrunsfeld/vim-yankstack'
+        " colorscheme, reminds Don't Starve
+                "NeoBundle 'AlessandroYorba/Alduin'
 " usable
         " colaborativ vim
                 "NeoBundle 'FredKSchott/CoVim'
+        " coding style uniformization between multiple IDE
+                "NeoBundle 'editorconfig/editorconfig-vim'
 
 
 call neobundle#end()
@@ -238,9 +244,14 @@ let g:airline_theme='wombat'
 set t_Co=256
 "set fillchars+=stl:\ ,stlnc:\
 
-" setup: solarized
-colorscheme solarized
+" setup: general colorscheme
 set background=dark
+" color of sign column
+highlight SignColumn ctermbg=None ctermfg=white
+highlight BookmarkSign ctermbg=None ctermfg=white
+
+" setup: solarized  (colorscheme)
+colorscheme solarized
 let g:solarized_termcolors=256
 let g:solarized_bold      =1
 let g:solarized_underline =1
@@ -248,9 +259,11 @@ let g:solarized_italic    =1
 " high or low or normal values
 let g:solarized_contrast  ="high"
 let g:solarized_visibility="normal"
-" color of sign column
-highlight SignColumn ctermbg=None ctermfg=white
-highlight BookmarkSign ctermbg=None ctermfg=white
+
+" setup: alduin  (colorscheme)
+" replaces the Dark Red to Soft Red
+"let g:alduin_Shout_Windhelm = 1
+"colorscheme alduin
 
 " setup: ctrlp
 let g:ctrlp_map = '<leader>p'
@@ -371,6 +384,11 @@ map <leader>lda <plug>(vimtex-ad)
 map <leader>ldi <plug>(vimtex-id)
 map <leader>lpa <plug>(vimtex-ap)
 map <leader>lpi <plug>(vimtex-ip)
+
+" setup: vim-yankstack
+"map <leader>y <Plug>yankstack_substitute_older_paste
+"map <leader>Y <Plug>yankstack_substitute_newer_paste
+
 
 " setup: bépo transcription
 if !empty(system("setxkbmap -print | grep bepo"))
