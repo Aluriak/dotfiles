@@ -53,6 +53,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'tpope/vim-fugitive'
                 NeoBundle 'tpope/vim-git'
                 NeoBundle 'airblade/vim-gitgutter'
+                NeoBundle 'junegunn/gv.vim'
         " multiple cursor edition
                 NeoBundle 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell, unite)
