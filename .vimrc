@@ -27,6 +27,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
                 NeoBundle 'aluriak/asp.vim'
         " Ada support
                 NeoBundle 'ada.vim'
+        " Haskell syntax support
+                NeoBundle 'vim-scripts/haskell.vim'
         " python
                 NeoBundle 'hynek/vim-python-pep8-indent'
                 NeoBundle 'vim-scripts/python_match.vim'
