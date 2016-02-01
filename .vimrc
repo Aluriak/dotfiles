@@ -35,66 +35,59 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         " latex
                 NeoBundle 'lervag/vimtex'
 " features
-        " liste des fonctions/variables
-                NeoBundle 'taglist.vim'
-        " replacements by cycles
-                NeoBundle 'AndrewRadev/switch.vim'
+        " subvertion with {} and coercition
+                NeoBundle 'tpope/vim-abolish'
         " quick opening/manipulation of header + source files
                 NeoBundle 'fanchangyong/a.vim'
-        " commenter des portions de code à la volée
+        " quick line commenting
                 NeoBundle 'aluriak/nerdcommenter'
-        " lines of same indentation as text objects
-                NeoBundle 'michaeljsmith/vim-indent-object'
-        " alignment of line
-                NeoBundle 'orbisvicis/tabular'
+        " simple and efficient search of files in project
+                NeoBundle 'kien/ctrlp.vim'
         " quick motions with f, t and others
                 NeoBundle 'Lokaltog/vim-easymotion'
+        " indented lines as text objects
+                NeoBundle 'michaeljsmith/vim-indent-object'
         " git support: commit in vim + gitconfig indent and syntax
                 NeoBundle 'tpope/vim-fugitive'
                 NeoBundle 'tpope/vim-git'
                 NeoBundle 'airblade/vim-gitgutter'
                 NeoBundle 'junegunn/gv.vim'
+        " save and reuse named macros
+                NeoBundle 'chamindra/marvim'
         " multiple cursor edition
                 NeoBundle 'terryma/vim-multiple-cursors'
-        " complementation (synergies: vimshell, unite)
+        " complementation (synergies: vimshell)
                 NeoBundle 'Shougo/neocomplcache.vim'
-        " syntax checker
-                NeoBundle 'scrooloose/syntastic'
-                NeoBundle 'myint/syntastic-extras'
-        " vim bookmarks
-                NeoBundle 'kshenoy/vim-signature'
-        " tabs and file tree
-                NeoBundle 'scrooloose/nerdtree'
-                NeoBundle 'jistr/vim-nerdtree-tabs'
         " snippets (synergies: neocomplcache)
                 NeoBundle 'Shougo/neosnippet'
                 NeoBundle 'Shougo/neosnippet-snippets'
-        " subvertion with {} and coercition
-                NeoBundle 'tpope/vim-abolish'
+        " tabs and file tree
+                NeoBundle 'scrooloose/nerdtree'
+                NeoBundle 'jistr/vim-nerdtree-tabs'
+        " improve make session management
+                NeoBundle 'tpope/vim-obsession'
         " . repeat whole maps
                 NeoBundle 'tpope/vim-repeat'
-        " save and reuse named macros
-                NeoBundle 'chamindra/marvim'
+        " bookmarks (signatures)
+                NeoBundle 'kshenoy/vim-signature'
+        " dates management
+                NeoBundle 'tpope/vim-speeddating'
+        " replacements by cycles
+                NeoBundle 'AndrewRadev/switch.vim'
+        " syntax checker
+                NeoBundle 'scrooloose/syntastic'
+                NeoBundle 'myint/syntastic-extras'
+        " alignment of line
+                NeoBundle 'orbisvicis/tabular'
+        " liste des fonctions/variables
+                NeoBundle 'taglist.vim'
         " necessary for efficiency Unite, with options for automatize compilation
-                NeoBundle 'Shougo/vimproc.vim', {
-                        \ 'build' : {
-                        \     'windows' : 'tools\\update-dll-mingw',
-                        \     'cygwin' : 'make -f make_cygwin.mak',
-                        \     'mac' : 'make -f make_mac.mak',
-                        \     'linux' : 'make',
-                        \     'unix' : 'gmake',
-                        \    },
-                        \ }
+                NeoBundle 'Shougo/vimproc.vim', {'build' : {'linux' : 'make'}}
         " Terminal in vim (need vimproc)
                 NeoBundle 'Shougo/vimshell.vim'
         " improve the * find and search
                 NeoBundle 'bronson/vim-visual-star-search'
-        " simple and efficient search of files in project
-                NeoBundle 'kien/ctrlp.vim'
-        " dates management
-                NeoBundle 'tpope/vim-speeddating'
-        " improve make session management
-                NeoBundle 'tpope/vim-obsession'
+
 " fluff
         " coloured and efficient HUI
                 NeoBundle 'bling/vim-airline'
