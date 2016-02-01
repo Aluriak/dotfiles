@@ -1,193 +1,153 @@
-if has('vim_starting')
-    if &compatible
-        set nocompatible               " Be iMproved
-    endif
-
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-
-
-" MY BUNDLES HERE :
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
+" Plugins management with junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
 
 " Languages forge
         " prolog support
-                NeoBundle 'mndrix/prolog.vim'
+                Plug 'mndrix/prolog.vim'
         " ASP support
-                NeoBundle 'aluriak/asp.vim'
+                Plug 'aluriak/asp.vim'
         " Ada support
-                NeoBundle 'ada.vim'
+                Plug 'ada.vim', { 'for': 'ada' }
         " Haskell syntax support
-                NeoBundle 'vim-scripts/haskell.vim'
+                Plug 'vim-scripts/haskell.vim'
         " python
-                NeoBundle 'hynek/vim-python-pep8-indent'
-                NeoBundle 'vim-scripts/python_match.vim'
+                Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+                Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
         " latex
-                NeoBundle 'lervag/vimtex'
+                Plug 'lervag/vimtex', { 'for': 'tex' }
 " features
         " subvertion with {} and coercition
-                NeoBundle 'tpope/vim-abolish'
+                Plug 'aluriak/vim-abolish'
         " quick opening/manipulation of header + source files
-                NeoBundle 'fanchangyong/a.vim'
+                Plug 'fanchangyong/a.vim'
         " quick line commenting
-                NeoBundle 'aluriak/nerdcommenter'
+                Plug 'aluriak/nerdcommenter'
         " simple and efficient search of files in project
-                NeoBundle 'kien/ctrlp.vim'
+                Plug 'kien/ctrlp.vim'
         " quick motions with f, t and others
-                NeoBundle 'Lokaltog/vim-easymotion'
+                Plug 'Lokaltog/vim-easymotion'
         " indented lines as text objects
-                NeoBundle 'michaeljsmith/vim-indent-object'
-        " git support: commit in vim + gitconfig indent and syntax
-                NeoBundle 'tpope/vim-fugitive'
-                NeoBundle 'tpope/vim-git'
-                NeoBundle 'airblade/vim-gitgutter'
-                NeoBundle 'junegunn/gv.vim'
+                Plug 'michaeljsmith/vim-indent-object'
+        " git support: commit in vim + gitconfig indent and syntax + commit browser
+                Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
+                Plug 'airblade/vim-gitgutter'
+                Plug 'int3/vim-extradite', { 'on':  'Extradite' }
         " save and reuse named macros
-                NeoBundle 'chamindra/marvim'
+                Plug 'chamindra/marvim'
         " multiple cursor edition
-                NeoBundle 'terryma/vim-multiple-cursors'
+                Plug 'terryma/vim-multiple-cursors'
         " complementation (synergies: vimshell)
-                NeoBundle 'Shougo/neocomplcache.vim'
+                Plug 'Shougo/neocomplcache.vim'
         " snippets (synergies: neocomplcache)
-                NeoBundle 'Shougo/neosnippet'
-                NeoBundle 'Shougo/neosnippet-snippets'
+                Plug 'Shougo/neosnippet'
+                Plug 'Shougo/neosnippet-snippets'
         " tabs and file tree
-                NeoBundle 'scrooloose/nerdtree'
-                NeoBundle 'jistr/vim-nerdtree-tabs'
+                Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+                Plug 'jistr/vim-nerdtree-tabs'
+        " improved search
+                Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
         " improve make session management
-                NeoBundle 'tpope/vim-obsession'
+                Plug 'tpope/vim-obsession'
+        " preview the registers
+                Plug 'junegunn/vim-peekaboo'
+        " rainbow parenthesis
+                Plug 'junegunn/rainbow_parentheses.vim'
         " . repeat whole maps
-                NeoBundle 'tpope/vim-repeat'
+                Plug 'tpope/vim-repeat'
         " bookmarks (signatures)
-                NeoBundle 'kshenoy/vim-signature'
-        " dates management
-                NeoBundle 'tpope/vim-speeddating'
+                Plug 'kshenoy/vim-signature'
         " replacements by cycles
-                NeoBundle 'AndrewRadev/switch.vim'
+                Plug 'AndrewRadev/switch.vim'
         " syntax checker
-                NeoBundle 'scrooloose/syntastic'
-                NeoBundle 'myint/syntastic-extras'
+                Plug 'scrooloose/syntastic'
+                Plug 'myint/syntastic-extras'
         " alignment of line
-                NeoBundle 'orbisvicis/tabular'
+                Plug 'orbisvicis/tabular'
         " liste des fonctions/variables
-                NeoBundle 'taglist.vim'
-        " necessary for efficiency Unite, with options for automatize compilation
-                NeoBundle 'Shougo/vimproc.vim', {'build' : {'linux' : 'make'}}
-        " Terminal in vim (need vimproc)
-                NeoBundle 'Shougo/vimshell.vim'
+                "Plug 'taglist.vim'
+                Plug 'majutsushi/tagbar'
+        " Terminal in vim
+                Plug 'Shougo/vimproc.vim', { 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
-                NeoBundle 'bronson/vim-visual-star-search'
+                Plug 'bronson/vim-visual-star-search'
 
 " fluff
-        " coloured and efficient HUI
-                NeoBundle 'bling/vim-airline'
+        " coloured and efficient HUI + themes
+                Plug 'vim-airline/vim-airline'
+                Plug 'vim-airline/vim-airline-themes'
         " colorscheme
-                NeoBundle 'blueyed/vim-colors-solarized'
+                Plug 'blueyed/vim-colors-solarized'
         " tabulation mark
-                NeoBundle 'Yggdroot/indentLine'
+                Plug 'Yggdroot/indentLine'
         " automatic line numbering
-                NeoBundle 'voanhduy1512/vim-numbertoggle'
+                Plug 'voanhduy1512/vim-numbertoggle'
 " other
         " Tetris game
-                "NeoBundle 'vim-scripts/TeTrIs.vim'
+                "Plug 'vim-scripts/TeTrIs.vim'
         " Rogue game
-                "NeoBundle 'katono/rogue.vim'
+                "Plug 'katono/rogue.vim'
 " à tester
         " github issues
-                "NeoBundle 'jaxbot/github-issues.vim'
-        " windows for manipulate commit and modified files
-                NeoBundle 'int3/vim-extradite'
+                "Plug 'jaxbot/github-issues.vim'
         " EPUB edition
-                "NeoBundle 'etnadji/vim-epub'
+                "Plug 'etnadji/vim-epub'
         " random tip for learn new things about vim
-                "Neobundle 'mhinz/vim-randomtag'
+                Plug 'mhinz/vim-randomtag'
+        " csv file commands and visual helps
+                "Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " unused
         " scala support  (yes, a day i will code in scala)
-                "NeoBundle 'derekwyatt/vim-scala'
-                "NeoBundle 'ktvoelker/sbt-vim'
-                "NeoBundle 'mdreves/vim-scaladoc'
+                "Plug 'derekwyatt/vim-scala'
+                "Plug 'ktvoelker/sbt-vim'
+                "Plug 'mdreves/vim-scaladoc'
         " better buffer closing management
-                "NeoBundle 'moll/vim-bbye'
+                "Plug 'moll/vim-bbye'
         " stacking of the yanked data: UNUSABLE: overwrite remapping of ['c', 'C', 'd', 'D', 's', 'S', 'x', 'X', 'y', 'Y']
-                "NeoBundle 'maxbrunsfeld/vim-yankstack'
+                "Plug 'maxbrunsfeld/vim-yankstack'
         " colorscheme, reminds Don't Starve
-                "NeoBundle 'AlessandroYorba/Alduin'
+                "Plug 'AlessandroYorba/Alduin'
 " usable
         " colaborativ vim
-                "NeoBundle 'FredKSchott/CoVim'
+                "Plug 'FredKSchott/CoVim'
         " coding style uniformization between multiple IDE
-                "NeoBundle 'editorconfig/editorconfig-vim'
+                "Plug 'editorconfig/editorconfig-vim'
 
 
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleClean
-NeoBundleCheck
+" ends plugin settings
+call plug#end()
 
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""
 " neobundle initialization terminated
 " vimrc begin here
+"""""""""""""""""""""""""""""""""""""""""""""
 
 
 
 
-"""""""""
-" VIMRC "
-"""""""""
-" important remapping
+" setup: leader
 let mapleader = "\<space>"
 
-" easy motion setup
-nmap <Leader>f <Plug>(easymotion-prefix)f
-vmap <Leader>f <Plug>(easymotion-prefix)f
-nmap <Leader>F <Plug>(easymotion-prefix)F
-vmap <Leader>F <Plug>(easymotion-prefix)F
-nmap <Leader>j <Plug>(easymotion-prefix)j
-vmap <Leader>j <Plug>(easymotion-prefix)j
-nmap <Leader>J <Plug>(easymotion-prefix)J
-vmap <Leader>J <Plug>(easymotion-prefix)J
-
-" some abbreviations
+" setup: abbreviations
 cabbrev actual source ~/.vimrc
 cabbrev tq tabclose
 
-" conceal setup (no conceal at all, especially in latex)
+" setup: conceal (no conceal at all, especially in latex)
 set conceallevel=0
 let g:tex_conceal= ''
 
-" cool and smart indentation
+" setup: indentation
 set shiftwidth=4        "indentation = N cases
 set smarttab            "chevrons équivalent à la touche tab
 set nu                  "affichage des numéros de ligne
 set autoindent          "indentation gardée après saut de ligne
 set expandtab           "pas de tab, uniquement des espaces
 
-" Mark efficiently tabs and trailing spaces
+" setup: list characters
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-
-" indentline setup
-"let g:indentLine_char = '︙'
-let g:indentLine_char = '┆'
-let g:indentLine_color_term = 000
-let g:indentLine_faster = 1
 
 " setup: shortcuts
 " line focus: zz for center active line, zb for put it at the bottom
@@ -201,14 +161,31 @@ cnoreabbrev Q q
 " paste on next line at the right level of indentation, then pass in insert mode.
 nmap <Leader>o o?<ESC>PAççxa
 
-" Details
+" setup: options on behavior
 set nomodeline          " security about modelines
 set cm=blowfish         " Encryption : use of Blofish algorithm
 set pastetoggle=<F10>   " Use <F10> to toggle between 'paste' and 'nopaste'
 set wildmenu            " Better command-line completion
 set cursorline          " Line where cursor is, is highlighted
 set lazyredraw          " redraw only when we need to.
+set scrolloff=1         " let always one line after & before the cursor
 
+
+" setup: easy motion
+nmap <Leader>f <Plug>(easymotion-prefix)f
+vmap <Leader>f <Plug>(easymotion-prefix)f
+nmap <Leader>F <Plug>(easymotion-prefix)F
+vmap <Leader>F <Plug>(easymotion-prefix)F
+nmap <Leader>j <Plug>(easymotion-prefix)j
+vmap <Leader>j <Plug>(easymotion-prefix)j
+nmap <Leader>J <Plug>(easymotion-prefix)J
+vmap <Leader>J <Plug>(easymotion-prefix)J
+
+" setup: indentline
+"let g:indentLine_char = '︙'
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 000
+let g:indentLine_faster = 1
 
 "set cursorcolumn
 highlight CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=None
@@ -232,6 +209,7 @@ nmap lr <Plug>Coerce
 
 " setup: airline & solarized
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1  " good-looking tabs
 set noshowmode
 "to fix the font and lot of strange characters and colors
 set encoding=utf-8
@@ -276,7 +254,7 @@ let g:gitgutter_diff_args = '-w'
 let g:gitgutter_realtime  = 0
 
 " setup: marvim
-let g:marvim_store = '/home/lucas/.vim/bundle/marvim/personnal/'
+let g:marvim_store = '/home/lucas/.vim/plugins_data/marvim/'
 let g:marvim_find_key = '<Leader>m'
 let g:marvim_store_key = '<Leader><S-m>'
 "let g:marvim_register = 'c'    " change used register from 'q' to 'c'
@@ -288,6 +266,14 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" setup: rainbow_parentheses
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+" List of colors that you do not want. ANSI code or #RRGGBB
+"let g:rainbow#blacklist = [233, 234]
+" activate it. For deactivate, add a '!' to the command.
+au VimEnter * RainbowParentheses
 
 " setup: snippets
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -354,8 +340,8 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
-" setup: vimfiler module definitions
-let g:vimfiler_as_default_explorer = 1
+" setup: tagbar
+" nothing to do
 
 " setup: vimtex
 let g:vimtex_mappings_enabled = 0
@@ -363,6 +349,7 @@ let g:vimtex_latexmk_background = 1
 let g:vimtex_quickfix_autojump = 1
 let g:vimtex_view_general_viewer = 'evince'
 let g:vimtex_latexmk_continuous = 1
+let g:vimtex_fold_enabled = 0
 let g:vimtex_syntax_minted = [
       \ { 'lang' : 'c', },
       \ { 'lang' : 'cpp', },
@@ -401,9 +388,8 @@ noremap <S-up> 50k
 noremap <S-down> 50j
 
 " Fx assigns
-noremap <F1> :TlistToggle<cr>
-noremap <F2> :VimFilerBuffer<cr>
-noremap <F3> :NERDTreeTabsToggle<cr>
+noremap <F2> :TagbarToggle<cr>
+noremap <F3> :NERDTreeToggle<cr>
 noremap <F4> :VimShellTab<cr>
 noremap <F6> :Gstatus<cr>
 noremap <F7> :Gcommit<cr>
