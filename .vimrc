@@ -153,6 +153,7 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
+noremap! ç<ESC> <ESC>
 " enable ragequit
 cnoreabbrev Q q
 " paste on next line at the right level of indentation, then pass in insert mode.
