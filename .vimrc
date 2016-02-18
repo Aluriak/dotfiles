@@ -207,7 +207,6 @@ nmap lr <Plug>Coerce
 
 " setup: airline & solarized
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1  " good-looking tabs
 set noshowmode
 "to fix the font and lot of strange characters and colors
 set encoding=utf-8
@@ -237,8 +236,9 @@ let g:solarized_visibility="normal"
 "colorscheme alduin
 
 " setup: ctrlp
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_working_path_mode = 'ra'   " search in the whole project directory
+let g:ctrlp_map = '<Nop>'
+nmap <leader>p :CtrlPMixed<cr>
+let g:ctrlp_working_path_mode = 'a'   " search in the whole project directory
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_switch_buffer = 'Et'   " if file is already open in a tab, jump to it.
 let g:ctrlp_use_caching = 1
