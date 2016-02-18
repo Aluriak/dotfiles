@@ -136,6 +136,7 @@ let g:tex_conceal= ''
 
 " setup: indentation
 set shiftwidth=4        "indentation = N cases
+set softtabstop=4       "number of space to move back one indent level
 set smarttab            "chevrons équivalent à la touche tab
 set nu                  "affichage des numéros de ligne
 set autoindent          "indentation gardée après saut de ligne
