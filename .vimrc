@@ -50,8 +50,6 @@ call plug#begin('~/.vim/plugged')
                 Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
         " improve make session management
                 Plug 'tpope/vim-obsession'
-        " preview the registers
-                Plug 'junegunn/vim-peekaboo'
         " rainbow parenthesis
                 Plug 'junegunn/rainbow_parentheses.vim'
         " . repeat whole maps
@@ -98,16 +96,12 @@ call plug#begin('~/.vim/plugged')
         " csv file commands and visual helps
                 "Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " unused
-        " scala support  (yes, a day i will code in scala)
-                "Plug 'derekwyatt/vim-scala'
-                "Plug 'ktvoelker/sbt-vim'
-                "Plug 'mdreves/vim-scaladoc'
-        " better buffer closing management
-                "Plug 'moll/vim-bbye'
-        " stacking of the yanked data: UNUSABLE: overwrite remapping of ['c', 'C', 'd', 'D', 's', 'S', 'x', 'X', 'y', 'Y']
-                "Plug 'maxbrunsfeld/vim-yankstack'
         " colorscheme, reminds Don't Starve
                 "Plug 'AlessandroYorba/Alduin'
+        " stacking of the yanked data: UNUSABLE: overwrite remapping of ['c', 'C', 'd', 'D', 's', 'S', 'x', 'X', 'y', 'Y']
+                "Plug 'maxbrunsfeld/vim-yankstack'
+        " preview the registers: UNUSABLE: completely interfer with bepo remapping
+                "Plug 'junegunn/vim-peekaboo'
 " usable
         " colaborativ vim
                 "Plug 'FredKSchott/CoVim'
