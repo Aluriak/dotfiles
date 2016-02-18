@@ -15,6 +15,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
+        " sparql
+                Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
 " features
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
