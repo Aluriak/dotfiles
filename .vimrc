@@ -96,6 +96,8 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'etnadji/vim-epub'
         " random tip for learn new things about vim
                 Plug 'mhinz/vim-randomtag'
+        " arduino support - compile wihtout needing to open the arduino IDE
+                "Plug 'tclem/vim-arduino'
         " csv file commands and visual helps
                 "Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 " unused
@@ -258,9 +260,9 @@ let g:gitgutter_realtime  = 0
 let g:vim_json_syntax_conceal = 0
 
 " setup: marvim
-let g:marvim_store = '/home/lucas/.vim/plugins_data/marvim/'
-let g:marvim_find_key = '<Leader>m'
-let g:marvim_store_key = '<Leader><S-m>'
+let g:marvim_store = $HOME.'/.vim/plugins_data/marvim/'
+let g:marvim_find_key = '<leader>m'
+let g:marvim_store_key = '<leader><S-m>'
 "let g:marvim_register = 'c'    " change used register from 'q' to 'c'
 let marvim_prefix = 0           " disable default syntax based prefix
 
