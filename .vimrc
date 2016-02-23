@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
+                Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql
@@ -264,6 +265,11 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" setup: python-syntax
+let python_self_cls_highlight = 1
+let python_no_operator_highlight = 0
+let python_no_parameter_highlight = 0
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 16
