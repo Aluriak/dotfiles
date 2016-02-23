@@ -18,6 +18,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql
                 Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+        " JSON
+                Plug 'elzr/vim-json', { 'for': 'json' }
 " features
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
@@ -251,6 +253,9 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " whitespace changes are not showed
 let g:gitgutter_diff_args = '-w'
 let g:gitgutter_realtime  = 0
+
+" setup: json support
+let g:vim_json_syntax_conceal = 0
 
 " setup: marvim
 let g:marvim_store = '/home/lucas/.vim/plugins_data/marvim/'
