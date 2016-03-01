@@ -49,8 +49,6 @@ call plug#begin('~/.vim/plugged')
         " tabs and file tree
                 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
                 Plug 'jistr/vim-nerdtree-tabs'
-        " improved search
-                Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
         " improve make session management
                 Plug 'tpope/vim-obsession'
         " rainbow parenthesis
@@ -107,6 +105,8 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'maxbrunsfeld/vim-yankstack'
         " preview the registers: UNUSABLE: completely interfer with bepo remapping
                 "Plug 'junegunn/vim-peekaboo'
+        " improved search: UNUSABLE: completely interfer with bepo remapping
+                "Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 " usable
         " colaborativ vim
                 "Plug 'FredKSchott/CoVim'
