@@ -36,7 +36,7 @@ call plug#begin('~/.vim/plugged')
         " git support: commit in vim + gitconfig indent and syntax + commit browser
                 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
                 Plug 'airblade/vim-gitgutter'
-                Plug 'int3/vim-extradite', { 'on':  'Extradite' }
+                Plug 'int3/vim-extradite'
         " save and reuse named macros
                 Plug 'chamindra/marvim'
         " multiple cursor edition
@@ -402,6 +402,7 @@ noremap <S-down> 50j
 noremap <F2> :TagbarToggle<cr>
 noremap <F3> :NERDTreeToggle<cr>
 noremap <F4> :VimShellTab<cr>
+noremap <F5> :Extradite!<cr>
 noremap <F6> :Gstatus<cr>
 noremap <F7> :Gcommit<cr>
 noremap <F9> :VimShellInteractive make<cr>
