@@ -172,6 +172,7 @@ set wildmenu            " Better command-line completion
 set cursorline          " Line where cursor is, is highlighted
 set lazyredraw          " redraw only when we need to.
 set scrolloff=1         " let always one line after & before the cursor
+set diffopt+=vertical   " diff vertically if screen is large enough
 
 
 " setup: easy motion
