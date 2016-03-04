@@ -252,6 +252,9 @@ let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
+" setup: extradite
+let g:extradite_diff_split='belowright vertical split'
+
 " setup: gitgutter
 " whitespace changes are not showed
 let g:gitgutter_diff_args = '-w'
