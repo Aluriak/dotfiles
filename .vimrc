@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
         " quick line commenting
                 Plug 'aluriak/nerdcommenter'
         " simple and efficient search of files in project
-                Plug 'kien/ctrlp.vim'
+                Plug 'ctrlpvim/ctrlp.vim'
         " quick motions with f, t and others
                 Plug 'Lokaltog/vim-easymotion'
         " indented lines as text objects
@@ -242,11 +242,14 @@ let g:solarized_visibility="normal"
 "colorscheme alduin
 
 " setup: ctrlp
-let g:ctrlp_map = '<Nop>'
-nmap <leader>p :CtrlPMixed<cr>
+let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'a'   " search in the whole project directory
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_switch_buffer = 'Et'   " if file is already open in a tab, jump to it.
+" if file is already open in a tab, jump to it:
+let g:ctrlp_switch_buffer = 'ET'
+" new tab page opened after current tab page
+let g:ctrlp_tabpage_position = 'ac'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
 " use the silver searcher (ag)
