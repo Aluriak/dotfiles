@@ -14,7 +14,8 @@
     cim = commit -m
     cam = commit -Am
     cia = commit --amend
-    chp = cherry-pick
+
+    cp = cherry-pick
 
     cl = clone
 
@@ -36,6 +37,8 @@
 
     rb = rebase
     ri = rebase -i
+    rbc = rebase --continue
+    rbs = rebase --skip
 
     ss = stash
     sa = stash apply
