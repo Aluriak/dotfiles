@@ -43,9 +43,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'terryma/vim-multiple-cursors'
         " complementation
                 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-        " snippets (synergies: neocomplcache)
-                Plug 'Shougo/neosnippet'
-                Plug 'Shougo/neosnippet-snippets'
+        " snippets (synergies: YouCompleteMe)
+                Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
         " tabs and file tree
                 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
                 Plug 'jistr/vim-nerdtree-tabs'
@@ -308,17 +307,10 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 au VimEnter * RainbowParentheses
 
 " setup: snippets
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)"
-                        \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-                        \ "\<Plug>(neosnippet_expand_or_jump)"
-                        \: "\<TAB>"
-" For snippet_complete marker.
+let g:UltiSnipsExpandTrigger = '<C-k>'
+let g:UltiSnipsJumpForwardTrigger = '<C-k>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-e>'
+let g:UltiSnipsEditSplit = "vertical"
 
 " setup: status line
 set statusline=%{fugitive#statusline()}\ %{ObsessionStatus('[Obsession]','[Session]')}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
