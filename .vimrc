@@ -71,6 +71,9 @@ call plug#begin('~/.vim/plugged')
                 Plug 'Shougo/vimproc.vim', { 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
                 Plug 'bronson/vim-visual-star-search'
+        " vim as note taker (:Note and :SearchNote), needing vim-misc by
+        "  design and auto_mkdir for automatically create new subdirs
+                Plug 'dyng/auto_mkdir' | Plug 'xolox/vim-misc' | Plug 'nicocrm/vim-notes'
 
 " fluff
         " coloured and efficient HUI + themes
@@ -279,6 +282,17 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" setup: vim-notes
+let g:notes_smart_quotes = 0
+let g:notes_conceal_code = 0
+let g:notes_conceal_italic = 0
+let g:notes_conceal_bold = 0
+let g:notes_conceal_url = 0
+let g:notes_list_bullets = ['•', '▸', '▪', '◦', '▹', '▫']
+let g:notes_title_sync = 'rename_file'
+let g:notes_suffix = '.vnote'
+let g:notes_directories = ['~/.vim/plugins_data/notes']
 
 " setup: python-syntax
 let python_self_cls_highlight = 1
