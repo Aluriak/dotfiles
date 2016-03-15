@@ -292,7 +292,7 @@ let g:notes_conceal_url = 0
 let g:notes_list_bullets = ['•', '▸', '▪', '◦', '▹', '▫']
 let g:notes_title_sync = 'rename_file'
 let g:notes_suffix = '.vnote'
-let g:notes_directories = ['~/.vim/plugins_data/notes']
+let g:notes_directories = ['~/notes']
 
 " setup: python-syntax
 let python_self_cls_highlight = 1
