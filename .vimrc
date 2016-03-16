@@ -42,7 +42,7 @@ call plug#begin('~/.vim/plugged')
         " multiple cursor edition
                 Plug 'terryma/vim-multiple-cursors'
         " complementation
-                Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+                Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
         " snippets (synergies: YouCompleteMe)
                 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
         " tabs and file tree
