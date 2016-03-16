@@ -283,7 +283,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " setup: vim-notes
-let g:notes_smart_quotes = 0
+let g:notes_smart_quotes = 1
 let g:notes_conceal_code = 0
 let g:notes_conceal_italic = 0
 let g:notes_conceal_bold = 0
