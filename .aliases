@@ -8,7 +8,7 @@ alias f='exiftool'
 alias g='git'
 alias h='htop'
 alias i='vim'
-alias j='jump'
+alias j='j'
 alias k='espeak'
 alias l='ls -CF --color'
 alias m='make'
@@ -56,13 +56,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Aliases jump
-alias ja='jump --add'
-alias jd='jump --del'
-alias jp='jump --help'
-alias jl='jump --list'
-alias jp='jump --path'
-
 # Aliases listing
 alias ls='ls --color=auto'
 alias sl='ls'
@@ -76,7 +69,8 @@ alias lra='ls -AR'
 alias lh='ls -larth'
 
 # Aliases moves
-alias 'sd'='pwd | xclip -sel clip'
+alias 'dp'='pwd | xclip'
+alias 'pd'='cd $(xclip -o) && clear && ls'
 alias 'cls'='clear && ls'
 alias 'cd.'='cd ..'
 alias 'cd..'='cd ../..'
@@ -84,6 +78,15 @@ alias 'cd...'='cd ../../..'
 alias 'cd....'='cd ../../../..'
 alias 'cd.....'='cd ../../../../..'
 alias 'cd......'='cd ../../../../../..'
+
+# Aliases soft
+alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
+alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
+alias mpl='mplayer'
+alias mps='mpsyt'
+alias weechat='weechat-curses'
+alias woman='eg'
+alias yt='mpsyt'
 
 # Aliases ssh
 alias sshag='eval $(ssh-agent) && ssh-add'
