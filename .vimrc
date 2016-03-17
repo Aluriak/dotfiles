@@ -401,12 +401,14 @@ map <leader>lpi <plug>(vimtex-ip)
 "map <leader>Y <Plug>yankstack_substitute_newer_paste
 
 " setup: youcompleteme
-let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 let g:ycm_goto_buffer_command = 'new-or-existing-tab'
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " setup: bépo transcription
