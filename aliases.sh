@@ -1,6 +1,6 @@
 # Aliases uniletter
 alias a='vim'
-alias b='vim'
+alias b='bell'  # see functions.sh
 alias c='j'  # see autojump
 alias d='date'
 alias e='vim'
@@ -12,7 +12,7 @@ alias j='j'  # see autojump
 alias k='espeak'
 alias l='ls -CF --color'
 alias m='make'
-alias n='notify-send'
+alias n='notify-after'  # see functions.sh
 alias o='vim'
 alias p='python3'
 alias q='vim'
@@ -29,10 +29,6 @@ alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
 # Aliases autojump
-function extend_autojump() {
-    j $1
-    clear && ls --color
-}
 alias j='extend_autojump'
 
 # Aliases env
