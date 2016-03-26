@@ -1,3 +1,6 @@
+# setup: env
+source $(dirname $0)/exports.sh
+
 # setup: autojump
 source /etc/profile.d/autojump.sh
 
