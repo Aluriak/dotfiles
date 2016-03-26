@@ -98,7 +98,7 @@ alias ssha='sshag'
 
 # Aliases vim
 alias vi='vim'
-alias vp='vimpro'
+alias vp='vim -p'
 alias vs='vim -S Session.vim'
 alias vims='vim -S'
 alias Vim='vim -O'
