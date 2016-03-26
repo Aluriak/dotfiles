@@ -8,6 +8,3 @@ fi
 
 # EDITOR
 export EDITOR=vim
-
-# TERM
-TERM=sakura
