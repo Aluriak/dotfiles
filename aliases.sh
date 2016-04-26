@@ -9,13 +9,13 @@ alias g='git'
 alias h='htop'
 alias i='mkdir -p'
 alias j='j'  # see autojump
-alias k='watch lsblk'
+alias k='lsblk'
 alias l='ls -CF --color'
 alias m='make'
 alias n='notify-after'  # see functions.sh
 alias o='vim'
 alias p='python3'
-alias q='vim'
+alias q='exit'
 alias r='vim'
 alias s='git status'
 alias t='vim'
@@ -32,6 +32,7 @@ alias é='vim -c ":VimShell"'
 alias j='extend_autojump'
 
 # Aliases env
+alias wk='watch -n 1 lsblk'
 alias ':q'='exit'
 alias ':qa'='exit'
 alias ':Q'='exit'
