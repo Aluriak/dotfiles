@@ -299,11 +299,9 @@ let python_no_operator_highlight = 0
 let python_no_parameter_highlight = 0
 
 " setup: rainbow_parentheses
-let g:rainbow#max_level = 16
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-" List of colors that you do not want. ANSI code or #RRGGBB
-"let g:rainbow#blacklist = [233, 234]
-" activate it. For deactivate, add a '!' to the command.
+let g:rainbow#max_level = 32
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>'], ['«', '»'], ['"', '"']]
+" plugin activation (for toggle, add a '!' to the command):
 au VimEnter * RainbowParentheses
 
 " setup: snippets

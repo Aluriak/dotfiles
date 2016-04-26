@@ -98,6 +98,7 @@ alias sshad='sshag'
 alias ssha='sshag'
 
 # Aliases vim
+alias vd='vimdiff'
 alias vi='vim'
 alias vp='vim -p'
 alias vs='vim -S Session.vim'
