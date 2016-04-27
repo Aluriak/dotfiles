@@ -300,7 +300,7 @@ let python_no_parameter_highlight = 0
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 32
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>'], ['«', '»'], ['"', '"']]
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>'], ['«', '»']]
 " plugin activation (for toggle, add a '!' to the command):
 au VimEnter * RainbowParentheses
 
