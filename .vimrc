@@ -247,6 +247,7 @@ let g:solarized_visibility="normal"
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'a'   " search in the whole project directory
+let g:ctrlp_by_filename = 1    " search by filename instead of full path
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " if file is already open in a tab, jump to it:
 let g:ctrlp_switch_buffer = 'ET'
@@ -254,6 +255,8 @@ let g:ctrlp_switch_buffer = 'ET'
 let g:ctrlp_tabpage_position = 'ac'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_open_new_file = 'v'
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
