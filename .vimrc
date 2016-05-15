@@ -20,6 +20,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
+        " OpenCL
+                Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
 " features
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
