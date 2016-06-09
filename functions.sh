@@ -47,6 +47,9 @@ function open() {
     openers[docx]="libreoffice"
     openers[mkv]="mplayer"
     openers[avi]="mplayer"
+    openers[mp3]="mplayer"
+    openers[flac]="mplayer"
+    openers[wav]="mplayer"
     # archives
     openers[bz]=$VIEWTAR
     openers[bz2]=$VIEWTAR
@@ -67,6 +70,9 @@ function open() {
     declare -A alt_openers
     alt_openers[mkv]="vlc"
     alt_openers[avi]="vlc"
+    alt_openers[mp3]="vlc"
+    alt_openers[wav]="vlc"
+    alt_openers[flac]="vlc"
     UNTAR="tar xvf"
     alt_openers[bz]=$UNTAR
     alt_openers[bz2]=$UNTAR
