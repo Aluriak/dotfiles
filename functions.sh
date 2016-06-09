@@ -43,12 +43,18 @@ function open() {
     declare -A openers
     VIEWTAR="tar ftv"
     openers[pdf]="evince"
+    openers[doc]="libreoffice"
+    openers[docx]="libreoffice"
+    openers[mkv]="mplayer"
+    openers[avi]="mplayer"
+    # archives
     openers[bz]=$VIEWTAR
     openers[bz2]=$VIEWTAR
     openers[gz]=$VIEWTAR
     openers[gz2]=$VIEWTAR
     openers[lzma]=$VIEWTAR
     openers[tgz]=$VIEWTAR
+    openers[zip]="unzip -l"
     # images
     IMAGE_VIEWER="feh"
     openers[png]=$IMAGE_VIEWER
@@ -59,6 +65,8 @@ function open() {
     # Alternatives openers, used when USE_ALT is true
     USE_ALT=false
     declare -A alt_openers
+    alt_openers[mkv]="vlc"
+    alt_openers[avi]="vlc"
     UNTAR="tar xvf"
     alt_openers[bz]=$UNTAR
     alt_openers[bz2]=$UNTAR
@@ -66,6 +74,7 @@ function open() {
     alt_openers[gz2]=$UNTAR
     alt_openers[lzma]=$UNTAR
     alt_openers[tgz]=$UNTAR
+    alt_openers[zip]="unzip"
 
     # In all other cases, use the default openers
     DEFAULT_OPENER="vim"
