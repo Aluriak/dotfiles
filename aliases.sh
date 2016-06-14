@@ -73,6 +73,10 @@ alias lr='ls -R'
 alias lra='ls -AR'
 alias lh='ls -larth'
 
+# Aliases functions
+alias os='open -s'
+alias opens='open -s'
+
 # Aliases moves
 alias 'dp'='pwd | xclip'
 alias 'pd'='cd $(xclip -o) && clear && ls'
