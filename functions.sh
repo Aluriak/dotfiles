@@ -19,6 +19,13 @@ function extend_autojump() {
 }
 
 
+# run given command, exit just after
+function bg() {
+    $@
+    exit
+}
+
+
 # notify-send after given command
 function notify-after() {
     $@
