@@ -45,6 +45,7 @@ alias 'cls'='clear ; ls'
 alias 'cl'='cls'
 alias 'clr'='cls'
 alias 'cln'='cls'
+alias 'df'='df -h'
 
 # Aliases git
 alias gbr='git branch'
