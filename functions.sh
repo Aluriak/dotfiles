@@ -96,10 +96,12 @@ function open() {
     # spaces between, before and after are necessary.
     ASYNC=" evince feh "
 
-
-    for filepath in "$@"
+    for nonesapedfilepath in "$@"
     do
+        # get escaped version of given filename
+        filepath=$(print -r -- ${(q)nonesapedfilepath})
         echo "filepath: $filepath"
+
         # switch alternative use on -a or -s switch
         if [[ $filepath = "-s" ]] ;
         then
@@ -112,8 +114,11 @@ function open() {
             continue
         fi
 
+        # get file extension
         filename=$(basename "$filepath")
         extension="${filename##*.}"
+        # remove surrounding spaces
+        extension=$(echo $extension | tr -d [:space:])
 
         # pick the (alternative) opener
         if [ $USE_ALT = true ] ;
@@ -123,7 +128,7 @@ function open() {
             opener="${openers[$extension]}"
         fi
 
-        if [[ $opener && (-f $filepath || -d $filepath)]] ;
+        if [[ $opener ]] ;
         then
             command="$opener $filepath"
             if [[ $ASYNC == *" $opener "* ]] ;
