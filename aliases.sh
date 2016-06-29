@@ -72,6 +72,8 @@ alias la='ls -a'
 alias lr='ls -R'
 alias lra='ls -AR'
 alias lh='ls -larth'
+alias lg='ls | grep'
+alias llg='ll | grep'
 
 # Aliases functions
 alias os='open -s'
