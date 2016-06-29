@@ -3,7 +3,11 @@
 
 # launch autojump, then clear and list newly entered directory
 function extend_autojump() {
-    \j $1
+    \j $@
+    clear && ls
+}
+function extend_autojump_subdir() {
+    \jc $@
     clear && ls
 }
 
@@ -20,7 +24,6 @@ function notify-after() {
     $@
     notify-send "job finished ! " -t 2
 }
-alias notaf='notify-after'
 
 
 # urgent flag on the window

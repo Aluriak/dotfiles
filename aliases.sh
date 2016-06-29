@@ -1,14 +1,14 @@
 # Aliases uniletter
 alias a='vim'
 alias b='bell'  # see functions.sh
-alias c='j'  # see autojump
+alias c='extend_autojump_subdir'  # see functions.sh
 alias d='date'
 alias e='vim'
 alias f='exiftool'
 alias g='git'
 alias h='htop'
 alias i='mkdir -p'
-alias j='j'  # see autojump
+alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
 alias l='ls -CF --color'
 alias m='make'
@@ -29,7 +29,6 @@ alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
 # Aliases autojump
-alias j='extend_autojump'
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
@@ -76,6 +75,8 @@ alias lg='ls | grep'
 alias llg='ll | grep'
 
 # Aliases functions
+alias notaf='notify-after'
+alias na='notify-after'
 alias os='open -s'
 alias opens='open -s'
 
