@@ -99,7 +99,8 @@ alias weechat='weechat-curses'
 alias woman='eg'
 alias yt='mpsyt'
 
-# Aliases ssh (see functions)
+# Aliases ssh
+alias sshag='eval $(ssh-agent) && ssh-add'
 alias sshad='sshag'
 alias ssha='sshag'
 
