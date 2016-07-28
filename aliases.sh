@@ -75,6 +75,7 @@ alias lg='ls | grep'
 alias llg='ll | grep'
 
 # Aliases functions
+alias ba='bell-after'
 alias notaf='notify-after'
 alias na='notify-after'
 alias os='open -s'

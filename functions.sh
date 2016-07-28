@@ -27,7 +27,14 @@ function notify-after() {
 
 
 # urgent flag on the window
-alias bell='echo -e "\a"'
+function bell() {
+    echo -en "\a"
+}
+# urgent flag after given command
+function bell-after() {
+    $@
+    bell
+}
 
 
 # Comes from the ranger documentation.
