@@ -30,6 +30,23 @@ function notify-after() {
 alias bell='echo -e "\a"'
 
 
+# Comes from the ranger documentation.
+# This is a bash function for .bashrc to automatically
+# change the directory to the last visited one
+# after ranger quits.
+# To undo the effect of this function,
+# you can type "cd -" to return to the original directory.
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+
 # open file without opener specification
 function open() {
     # Automatically open given input file with the proper program
