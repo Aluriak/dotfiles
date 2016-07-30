@@ -37,6 +37,23 @@ function bell-after() {
 }
 
 
+# print files containing the regex
+#   sonar <regex> [dir] [supplementary grep options]
+# ex: sonar IMAGE .
+#     sonar def src/ -w
+#     sonar def . wl
+# see http://stackoverflow.com/a/16957078
+function sonar() {
+    grep -rnI $3 --color $2 -e $1
+    # r: recursive
+    # n: line number
+    # I: ignore binary files
+    # Others (usage as third parameter):
+    # w: full word match only
+    # l: filename only
+}
+
+
 # Comes from the ranger documentation.
 # This is a bash function for .bashrc to automatically
 # change the directory to the last visited one
