@@ -44,7 +44,7 @@ function bell-after() {
 #     sonar def . wl
 # see http://stackoverflow.com/a/16957078
 function sonar() {
-    grep -rnI $3 --color $2 -e $1
+    grep -rnI $3 --color $2 -e "$1"
     # r: recursive
     # n: line number
     # I: ignore binary files
