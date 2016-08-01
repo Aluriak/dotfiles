@@ -80,6 +80,7 @@ alias notaf='notify-after'
 alias na='notify-after'
 alias os='open -s'
 alias opens='open -s'
+alias uuid='ls -l /dev/disk/by-uuid'
 
 # Aliases moves
 alias 'dp'='pwd | xclip'
