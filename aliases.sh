@@ -95,6 +95,8 @@ alias 'cd......'='cd ../../../../../..'
 
 # Aliases soft
 alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
+alias feh='feh -. -d --draw-tinted'
+alias fhe='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
 alias mpl='mplayer'
 alias mps='mpsyt'
