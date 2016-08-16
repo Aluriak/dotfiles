@@ -88,10 +88,10 @@ function open() {
     # spaces between, before and after are necessary.
     ASYNC=" evince feh "
 
-    for nonesapedfilepath in "$@"
+    for nonescapedfilepath in "$@"
     do
         # get escaped version of given filename
-        filepath=$(print -r -- ${(q)nonesapedfilepath})
+        filepath=$(print -r -- ${(q)nonescapedfilepath})
         echo "filepath: $filepath"
 
         # switch alternative use on -a or -s switch
