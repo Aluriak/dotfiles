@@ -27,7 +27,48 @@ function notify-after() {
 
 
 # urgent flag on the window
-alias bell='echo -e "\a"'
+function bell() {
+    echo -en "\a"
+}
+# urgent flag after given command
+function bell-after() {
+    $@
+    bell
+}
+
+
+# print files containing the regex
+#   sonar <regex> [dir] [supplementary grep options]
+# ex: sonar IMAGE .
+#     sonar def src/ -w
+#     sonar def . wl
+# see http://stackoverflow.com/a/16957078
+function sonar() {
+    grep -rnI $3 --color $2 -e "$1"
+    # r: recursive
+    # n: line number
+    # I: ignore binary files
+    # Others (usage as third parameter):
+    # w: full word match only
+    # l: filename only
+}
+
+
+# Comes from the ranger documentation.
+# This is a bash function for .bashrc to automatically
+# change the directory to the last visited one
+# after ranger quits.
+# To undo the effect of this function,
+# you can type "cd -" to return to the original directory.
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
 
 
 # open file without opener specification

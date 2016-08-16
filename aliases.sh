@@ -16,7 +16,7 @@ alias n='notify-after'  # see functions.sh
 alias o='open'
 alias p='python3'
 alias q='exit'
-alias r='vim'
+alias r='ranger-cd'  # see functions.sh
 alias s='git status'
 alias t='vim'
 alias u='vim'
@@ -75,10 +75,12 @@ alias lg='ls | grep'
 alias llg='ll | grep'
 
 # Aliases functions
+alias ba='bell-after'
 alias notaf='notify-after'
 alias na='notify-after'
 alias os='open -s'
 alias opens='open -s'
+alias uuid='ls -l /dev/disk/by-uuid'
 
 # Aliases moves
 alias 'dp'='pwd | xclip'
@@ -93,9 +95,14 @@ alias 'cd......'='cd ../../../../../..'
 
 # Aliases soft
 alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
+alias feh='feh -. -d --draw-tinted'
+alias fhe='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
 alias mpl='mplayer'
 alias mps='mpsyt'
+alias rd='ranger-cd'  # see functions.sh
+alias rg='ranger-cd'
+alias rgr='ranger-cd'
 alias weechat='weechat-curses'
 alias woman='eg'
 alias yt='mpsyt'
