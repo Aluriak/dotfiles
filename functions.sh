@@ -91,7 +91,7 @@ function open() {
     for nonescapedfilepath in "$@"
     do
         # get escaped version of given filename
-        filepath=$(print -r -- ${(q)nonescapedfilepath})
+        filepath=$(print -r -- "${(q)nonescapedfilepath}")
         echo "filepath: $filepath"
 
         # switch alternative use on -a or -s switch
@@ -110,7 +110,7 @@ function open() {
         filename=$(basename "$filepath")
         extension="${filename##*.}"
         # remove surrounding spaces
-        extension=$(echo $extension | tr -d [:space:])
+        extension=$(echo "$extension" | tr -d "[:space:]")
 
         # pick the (alternative) opener
         if [ $USE_ALT = true ] ;
@@ -130,7 +130,7 @@ function open() {
         else
             command="$DEFAULT_OPENER $filepath"
         fi
-        echo $command
-        echo $command | sh
+        echo "$command"
+        echo "$command" | sh
     done
 }
