@@ -10,7 +10,7 @@ alias h='htop'
 alias i='mkdir -p'
 alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
-alias l='ls -CF --color'
+alias l='verbosels -CF --color'  # see functions.sh
 alias m='make'
 alias n='notify-after'  # see functions.sh
 alias o='open'
@@ -32,7 +32,7 @@ alias é='vim -c ":VimShell"'
 
 
 # Aliases listing
-alias ls='ls --color=auto'  # see functions.sh
+alias ls='verbosels --color=auto'  # see functions.sh
 alias sl='ls'
 alias LS='ls'
 alias SL='ls'
