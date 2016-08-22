@@ -45,6 +45,13 @@ function bell-after() {
 }
 
 
+# create a directory, and go in it
+function mkdor() {
+    mkdir $@
+    cd $1
+}
+
+
 # print files containing the regex
 #   sonar <regex> [dir] [supplementary grep options]
 # ex: sonar IMAGE .
