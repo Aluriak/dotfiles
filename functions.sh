@@ -183,3 +183,81 @@ function open() {
         echo "$command" | sh
     done
 }
+
+
+
+
+
+# Wrapper around ls command, printing dedicated messages
+#  if directory is empty/full of hidden files.
+#  Parse parameters in order to call verbosels_onefile correctly.
+#  Code review: http://codereview.stackexchange.com/a/139237/115420
+function verbosels() {
+    # extract options and filepaths
+    ls_options=()  # empty array
+    ls_filepaths=()  # empty array
+    for parameter in "$@"; do
+        # it's an option if it's start with a dash
+        if [[ "$parameter" == -* ]]; then
+            #echo "OPTION: |$parameter|"
+            ls_options+=($parameter)
+        else  # it's a path: call ls on it
+            # get escaped version of given filename
+            filepath=$(print -r -- "${(q)parameter}")
+            ls_filepaths+=($filepath)
+            #echo "FILEPATH: |$filepath|"
+        fi
+    done
+    # working directory if no directory given
+    if [ ${#ls_filepaths[@]} = 0 ]
+    then
+        ls_filepaths+=(".")
+    fi
+    first=1  # false after the first iteration
+    # call verbosels_onefile for each filepath
+    for filepath in $ls_filepaths; do
+        # print space only between ls calls
+        if [ ! "$first" ]; then
+            echo  # line jump
+        else
+            first=  # empty
+        fi
+        #echo "CMD: |verbosels_onefile ${^ls_options} $filepath|"
+        _verbosels_onefile $filepath ${^ls_options}
+    done
+}
+
+
+# Perform an ls call on only one directory/file, that must be in first parameter.
+# The other parameters remain untouched.
+# The ls call take into account any aliases on ls.
+# This function is called by the higher level verbosels function.
+function _verbosels_onefile() {
+    if [ -d "$1" ]; then
+        # contains files (hidden included)
+        if [ -n "$(command ls -A "$1")" ]; then
+            if [ -n "$(command ls "$1")" ]; then
+                # keep OSX compatibility by putting options first
+                # ${@:2}: access to all param but the first
+                command ls "${@:2}" "$1"
+            else
+                # the directory is not empty, and contains only hidden files:
+                # print message only if the ls command returns nothing
+                # NOTE: run the ls command twice. Could be costly.
+                if [ -n "$(command ls "$@")" ]; then
+                    command ls "$@"
+                else
+                    echo "$1 contains only hidden files" 1>&2
+                fi
+            fi
+        else
+            echo "$1 is empty" 1>&2
+        fi
+    elif [ -e "$1" ]; then  # is a file, not a directory
+        # keep OSX compatibility by putting options first
+        # ${@:2}: access to all param but the first
+        command ls "${@:2}" "$1"
+    else
+        echo "$1 doesn't exists" 1>&2
+    fi
+}
