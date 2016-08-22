@@ -56,7 +56,7 @@ function mkdor() {
 function boilr_use_shortcut() {
     ~/bin/boilr template use $1 . ${@:2}
 }
-# Aliase for 'boilr template save $1 .'
+# Aliase for 'boilr template save . $1'
 function boilr_save_shortcut() {
     ~/bin/boilr template save . $@
 }
