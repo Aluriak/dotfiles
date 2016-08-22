@@ -94,6 +94,11 @@ alias 'cd.....'='cd ../../../../..'
 alias 'cd......'='cd ../../../../../..'
 
 # Aliases soft
+alias boilr='~/bin/boilr'  # see https://github.com/tmrts/boilr
+alias boirl='~/bin/boilr'
+alias blr='~/bin/boilr'
+alias brl='~/bin/boilr'
+alias bt='~/bin/boilr template'
 alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
 alias feh='feh -. -d --draw-tinted'
 alias fhe='feh'
