@@ -10,7 +10,7 @@ alias h='htop'
 alias i='mkdir -p'
 alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
-alias l='ls -CF --color'
+alias l='verbosels -CF --color'  # see functions.sh
 alias m='make'
 alias n='notify-after'  # see functions.sh
 alias o='open'
@@ -29,6 +29,21 @@ alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
 # Aliases autojump
+
+
+# Aliases listing
+alias ls='verbosels --color=auto'  # see functions.sh
+alias sl='ls'
+alias LS='ls'
+alias SL='ls'
+alias lss='ls'
+alias ll='ls -ahlF'
+alias la='ls -a'
+alias lr='ls -R'
+alias lra='ls -AR'
+alias lh='ls -larth'
+alias lg='ls_grep'  # see functions.sh
+alias llg='ll_grep'  # see functions.sh
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
@@ -59,20 +74,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# Aliases listing
-alias ls='ls --color=auto'
-alias sl='ls'
-alias LS='ls'
-alias SL='ls'
-alias lss='ls'
-alias ll='ls -ahlF'
-alias la='ls -a'
-alias lr='ls -R'
-alias lra='ls -AR'
-alias lh='ls -larth'
-alias lg='ls | grep'
-alias llg='ll | grep'
 
 # Aliases functions
 alias ba='bell-after'
