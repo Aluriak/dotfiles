@@ -100,6 +100,8 @@ function open() {
     openers[pdf]="evince"
     openers[doc]="libreoffice"
     openers[docx]="libreoffice"
+    openers[xls]="libreoffice"
+    openers[xlsx]="libreoffice"
     openers[mkv]="mplayer"
     openers[avi]="mplayer"
     openers[mp3]="mplayer"
