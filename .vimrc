@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql
                 Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+                Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
