@@ -204,7 +204,11 @@ set nofoldenable " no weird and unefficient folding
 " not that these behavior is improved by tpope/vim-obsession
 set sessionoptions=blank,folds,sesdir,help,tabpages,winpos,winsize
 
-" setup: NERDTree (+ nerdtree tabs)
+" setup: nerdcommenter
+let g:NERDSpaceDelims = 1  " add space after left token
+let g:NERDCustomDelimiters = {'python': { 'left': '#', 'leftAlt': '# ' }}
+
+" setup: nerdtree (+ nerdtree tabs)
 nmap <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:nerdtree_tabs_smart_startup_focus=1
