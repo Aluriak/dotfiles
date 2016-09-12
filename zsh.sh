@@ -2,7 +2,7 @@
 
 # zsh hook function, called when the working directory change.
 function chpwd() {
-    ls
+    verbosels --color .
 }
 
 # zsh hook function, called after the command.

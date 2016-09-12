@@ -52,6 +52,16 @@ function mkdor() {
 }
 
 
+# Aliase for 'boilr template use $1 .'
+function boilr_use_shortcut() {
+    ~/bin/boilr template use $1 . ${@:2}
+}
+# Aliase for 'boilr template save . $1'
+function boilr_save_shortcut() {
+    ~/bin/boilr template save . $@
+}
+
+
 # print files containing the regex
 #   sonar <regex> [dir] [supplementary grep options]
 # ex: sonar IMAGE .
