@@ -23,10 +23,10 @@ function bg() {
 
 # automatic ls pipe grep command
 function ls_grep() {
-    ls $1 | grep "${@:2}"
+    ls -R --color $1 | grep "${@:2}"
 }
 function ll_grep() {
-    ls -l $1 | grep "${@:2}"
+    ls -l -R --color $1 | grep "${@:2}"
 }
 
 # notify-send after given command
