@@ -8,3 +8,6 @@ fi
 
 # EDITOR
 export EDITOR=vim
+
+# DOTFILES
+export DOTFILES_DIR=$(dirname $0)
