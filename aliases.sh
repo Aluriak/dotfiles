@@ -131,6 +131,7 @@ alias vs='vim -S Session.vim'
 alias vims='vim -S'
 alias Vim='vim -O'
 alias V='Vim'
+alias vu='vim -c PlugUpgrade -c PlugUpdate -c qa'
 alias vv='vim -u ~/.vimrc.simple'
 
 # Aliases virtualenv
