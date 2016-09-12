@@ -45,6 +45,10 @@ alias lh='ls -larth'
 alias lg='ls_grep'  # see functions.sh
 alias llg='ll_grep'  # see functions.sh
 
+# Aliases system
+alias dodo='shutdown now -P'
+alias sieste='shutdown now -r'
+
 # Aliases env
 alias wk='watch -n 1 lsblk'
 alias ':q'='exit'
