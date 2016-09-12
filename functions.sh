@@ -4,11 +4,13 @@
 # launch autojump, then clear and list newly entered directory
 function extend_autojump() {
     \j $@
-    clear && ls
+    command clear
+    ls
 }
 function extend_autojump_subdir() {
     \jc $@
-    clear && ls
+    command clear
+    ls
 }
 
 
