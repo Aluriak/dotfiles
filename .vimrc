@@ -29,7 +29,7 @@ call plug#begin('~/.vim/plugged')
         " quick opening/manipulation of header + source files
                 Plug 'fanchangyong/a.vim'
         " quick line commenting
-                Plug 'aluriak/nerdcommenter'
+                Plug 'scrooloose/nerdcommenter'
         " simple and efficient search of files in project
                 Plug 'ctrlpvim/ctrlp.vim'
         " quick motions with f, t and others
