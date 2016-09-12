@@ -254,31 +254,18 @@ function verbosels() {
 # The ls call take into account any aliases on ls.
 # This function is called by the higher level verbosels function.
 function _verbosels_onefile() {
-    if [ -d "$1" ]; then
-        # contains files (hidden included)
-        if [ -n "$(command ls -A "$1")" ]; then
-            if [ -n "$(command ls "$1")" ]; then
-                # keep OSX compatibility by putting options first
-                # ${@:2}: access to all param but the first
-                command ls "${@:2}" "$1"
-            else
-                # the directory is not empty, and contains only hidden files:
-                # print message only if the ls command returns nothing
-                # NOTE: run the ls command twice. Could be costly.
-                if [ -n "$(command ls "$@")" ]; then
-                    command ls "$@"
-                else
-                    echo "$1 contains only hidden files" 1>&2
-                fi
-            fi
-        else
-            echo "$1 is empty" 1>&2
-        fi
-    elif [ -e "$1" ]; then  # is a file, not a directory
+    state=$("$DOTFILES_DIR/scripts/verbosels.py" "$1")
+    if [ $state == 1 ]; then  # existing files
         # keep OSX compatibility by putting options first
         # ${@:2}: access to all param but the first
         command ls "${@:2}" "$1"
-    else
-        echo "$1 doesn't exists" 1>&2
+    elif [[ $state == 2 ]]; then  # hidden only
+        echo "$1 contains only hidden files" 1>&2
+    elif [[ $state == 3 ]]; then  # empty
+        echo "$1 is empty" 1>&2
+    elif [[ $state == 4 ]]; then  # it's a file
+        command ls "${@:2}" "$1"
+    elif [[ $state == 5 ]]; then  # path don't exists
+        command ls "${@:2}" "$1"
     fi
 }
