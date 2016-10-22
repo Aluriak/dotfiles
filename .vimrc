@@ -16,9 +16,11 @@ call plug#begin('~/.vim/plugged')
                 Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
-        " sparql
+        " sparql, rdf
                 Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+                " Use the second when the PR will be merged: https://github.com/niklasl/vim-rdf/pull/3
                 Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
+                "Plug 'niklasl/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
