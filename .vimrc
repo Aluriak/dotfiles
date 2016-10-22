@@ -273,11 +273,12 @@ let g:ctrlp_switch_buffer = 'ET'
 " new tab page opened after current tab page
 let g:ctrlp_tabpage_position = 'ac'
 let g:ctrlp_use_caching = 1
-let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp/'
+let g:ctrlp_cache_dir = $HOME.'/.vim/plugins_data/ctrlp'
 let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_open_new_file = 'v'
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_path_nolim = 1
 " use the silver searcher (ag)
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s -f -U -l --nocolor -g ""'
 
 " setup: deedee
 let g:DeedeeSize = 6
@@ -285,7 +286,7 @@ let g:DeedeeMode = 'a'
 let g:DeedeeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 " setup: extradite
-let g:extradite_diff_split='belowright vertical split'
+let g:extradite_diff_split = 'belowright vertical split'
 
 " setup: gitgutter
 " whitespace changes are not showed
