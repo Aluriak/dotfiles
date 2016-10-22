@@ -25,6 +25,9 @@ call plug#begin('~/.vim/plugged')
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
                 Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+        " Markdown
+                Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
+
 " features
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
@@ -280,6 +283,19 @@ let g:gitgutter_realtime  = 0
 " setup: json support
 let g:vim_json_syntax_conceal = 0
 
+" setup: markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+" and here the most important feature:
+let g:vim_markdown_conceal = 0
+" use ```<leftname> to set highlighting of the block to <rightname>
+" (works from scratch when <leftname> == <rightname>)
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'bash=sh', 'python=py']
+let g:vim_markdown_math = 1
+noremap <Plug>Markdown_OpenUrlUnderCursor gx
+
+
 " setup: marvim
 let g:marvim_store = $HOME.'/.vim/plugins_data/marvim/'
 let g:marvim_find_key = '<leader>m'
@@ -452,7 +468,7 @@ nnoremap <leader>a a?<Esc>r
 filetype plugin indent on       "Indentation selon extension de fichier (nécessaire pour vundle)
 syntax on                       "affichage des couleurs
 au BufNewFile,BufRead *.pde setf arduino
-au BufNewFile,BufRead *.mkd setf mkd
+au BufNewFile,BufRead *.mkd setf markdown
 au BufNewFile,BufRead *.adb setf ada
 au BufNewFile,BufRead *.ads setf ada
 au BufNewFile,BufRead *.py  setf python
