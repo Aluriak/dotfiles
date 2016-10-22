@@ -90,7 +90,7 @@ call plug#begin('~/.vim/plugged')
                 Plug 'vim-airline/vim-airline-themes'
         " colorscheme
                 Plug 'blueyed/vim-colors-solarized'
-        " tabulation mark
+        " tabulation mark     WARNING: use conceal
                 Plug 'Yggdroot/indentLine'
         " automatic line numbering
                 Plug 'voanhduy1512/vim-numbertoggle'
@@ -149,6 +149,7 @@ cabbrev tq tabclose
 
 " setup: conceal (no conceal at all, especially in latex)
 set conceallevel=0
+set concealcursor=""
 let g:tex_conceal= ''
 
 " setup: indentation
@@ -202,6 +203,10 @@ vmap <Leader>J <Plug>(easymotion-prefix)J
 let g:indentLine_char = '┆'
 let g:indentLine_color_term = 000
 let g:indentLine_faster = 1
+" conceal is needed by indent line, but markdown files use conceal.
+" So, indent in markdown files
+autocmd FileType markdown let g:indentLine_concealcursor = ''
+autocmd FileType markdown let g:indentLine_conceallevel = 0
 
 "set cursorcolumn
 highlight CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=None
