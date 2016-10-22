@@ -29,6 +29,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
 
 " features
+        " random tag generator
+                Plug 'aluriak/vim-deedee'
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
         " quick opening/manipulation of header + source files
@@ -271,6 +273,11 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_open_new_file = 'v'
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" setup: deedee
+let g:DeedeeSize = 6
+let g:DeedeeMode = 'a'
+let g:DeedeeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 " setup: extradite
 let g:extradite_diff_split='belowright vertical split'
