@@ -284,6 +284,7 @@ let g:ctrlp_user_command = 'ag %s -f -U -l --nocolor -g ""'
 let g:DeedeeSize = 6
 let g:DeedeeMode = 'a'
 let g:DeedeeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+noremap <Leader>t :Deedee<cr>
 
 " setup: extradite
 let g:extradite_diff_split = 'belowright vertical split'
