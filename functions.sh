@@ -64,6 +64,15 @@ function boilr_save_shortcut() {
 }
 
 
+# kill all processes to which command match a given pattern
+# usage:
+#     tkt "python __main__.py"
+# see http://unix.stackexchange.com/a/50573/185486
+function tkt() {
+    for pid in $(ps -ef | grep "$1" | awk '{print $2}'); do kill -9 $pid; done
+}
+
+
 # print files containing the regex
 #   sonar <regex> [dir] [supplementary grep options]
 # ex: sonar IMAGE .
