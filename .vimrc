@@ -452,7 +452,9 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " setup: bépo transcription
-if !empty(system("setxkbmap -print | grep bepo"))
+if !empty(system("setxkbmap -print | grep bepoz"))
+        source ~/.vimrc.bepoz
+elseif !empty(system("setxkbmap -print | grep bepo"))
         source ~/.vimrc.bepo
 endif
 
