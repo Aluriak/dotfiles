@@ -71,13 +71,19 @@ function boilr_save_shortcut() {
 #     sonar def . wl
 # see http://stackoverflow.com/a/16957078
 function sonar() {
-    grep -rnI $3 --color $2 -e "$1"
+    grep -rnI ${@:3} --color $2 -e "$1"
     # r: recursive
     # n: line number
     # I: ignore binary files
     # Others (usage as third parameter):
     # w: full word match only
     # l: filename only
+}
+function sonar_file() {
+    sonar $1 $2 -l ${@:3}
+}
+function sonar_except() {
+    sonar $1 $2 --exclude="$3" ${@:4}
 }
 
 
