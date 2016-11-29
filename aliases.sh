@@ -30,6 +30,16 @@ alias é='vim -c ":VimShell"'
 
 # Aliases autojump
 
+# Aliases git
+alias ga='git add'
+alias gap='git ap'
+alias gcl='git cl'
+alias gif='git cif'
+alias gia='git cia'
+alias gpl='git pl'
+alias gps='git ps'
+alias gst='git status'
+alias st='git status'
 
 # Aliases listing
 alias ls='verbosels --color=auto'  # see functions.sh
