@@ -1,6 +1,12 @@
 # functions repository
 
 
+function expanded_watch() {
+    args="\"${@:1}\""
+    watch zsh -i -c "$args"
+}
+
+
 # launch autojump, then clear and list newly entered directory
 function extend_autojump() {
     \j $@

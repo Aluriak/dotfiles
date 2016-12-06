@@ -21,7 +21,7 @@ alias s='git status'
 alias t='vim'
 alias u='vim'
 alias v='vim'
-alias w='watch'
+alias w='expanded_watch '  # see functions.sh + trailing space to allows aliases
 alias x='pdflatex'
 alias y='vim'
 alias z='vim'
@@ -90,9 +90,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Aliases functions
-alias ba='bell-after'
-alias notaf='notify-after'
-alias na='notify-after'
+alias ba='bell-after '  # trailing space allow next word to use aliases
+alias notaf='notify-after '
+alias na='notify-after '
 alias os='open -s'
 alias opens='open -s'
 alias uuid='ls -l /dev/disk/by-uuid'
