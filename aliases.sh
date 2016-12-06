@@ -58,6 +58,7 @@ alias llg='ll_grep'  # see functions.sh
 # Aliases system
 alias dodo='shutdown now -P'
 alias sieste='shutdown now -r'
+alias ni='nice -n 19 ionice -c3'  # see http://sebsauvage.net/links/?PfISxw
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
