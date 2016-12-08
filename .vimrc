@@ -334,6 +334,7 @@ let g:notes_list_bullets = ['•', '▸', '▪', '◦', '▹', '▫']
 let g:notes_title_sync = 'rename_file'
 let g:notes_suffix = '.vnote'
 let g:notes_directories = ['~/notes']
+let g:notes_tagsindex = '~/notes/tags'
 
 " setup: python-syntax
 let python_self_cls_highlight = 1
