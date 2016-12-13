@@ -167,13 +167,15 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " setup: shortcuts
 " line focus: zz for center active line, zb for put it at the bottom
 " and zt for put it at the top.
-" this remapping is necessary because of the bépo remapping.
+" this remapping is necessary because of the bepo remapping.
 noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
 noremap! ç<ESC> <ESC>
 " enable ragequit
 cnoreabbrev Q q
+" quick opening of tabs
+cnoreabbrev Tn tabnew
 " paste on next line at the right level of indentation, then pass in insert mode.
 nmap <Leader>o o?<ESC>PAççxa
 
@@ -324,7 +326,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" setup: vim-notes
+" setup: notes
 let g:notes_smart_quotes = 1
 let g:notes_conceal_code = 0
 let g:notes_conceal_italic = 0
