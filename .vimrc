@@ -117,6 +117,8 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'maxbrunsfeld/vim-yankstack'
         " preview the registers: UNUSABLE: completely interfer with bepo remapping
                 "Plug 'junegunn/vim-peekaboo'
+        " surround text: UNUSABLE: interfer with bepo remapping
+                "Plug 'tpope/vim-surround'
         " improved search: UNUSABLE: completely interfer with bepo remapping
                 "Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 " usable
@@ -138,6 +140,18 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""
 
 
+
+
+" setup: bépo transcription
+if !empty(system("setxkbmap -print | grep bepoz"))
+    source ~/.vimrc.bepoz
+    let g:keymap = "bepoz"
+elseif !empty(system("setxkbmap -print | grep bepo"))
+    source ~/.vimrc.bepo
+    let g:keymap = "bepo"
+else
+    let g:keymap = "default"
+endif
 
 
 " setup: leader
@@ -176,6 +190,7 @@ noremap! ç<ESC> <ESC>
 cnoreabbrev Q q
 " quick opening of tabs
 cnoreabbrev Tn tabnew
+cnoreabbrev TN tabnew
 " paste on next line at the right level of indentation, then pass in insert mode.
 nmap <Leader>o o?<ESC>PAççxa
 
@@ -453,13 +468,6 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-
-" setup: bépo transcription
-if !empty(system("setxkbmap -print | grep bepoz"))
-        source ~/.vimrc.bepoz
-elseif !empty(system("setxkbmap -print | grep bepo"))
-        source ~/.vimrc.bepo
-endif
 
 " déplacement haut-bas
 noremap <S-s> 50k
