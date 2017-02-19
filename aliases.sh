@@ -21,7 +21,7 @@ alias s='git status'
 alias t='xclip -o | vipe | xclip -i'  # edit clipboard
 alias u='vim'
 alias v='vim'
-alias w='watch'
+alias w='expanded_watch '  # see functions.sh + trailing space to allows aliases
 alias x='pdflatex'
 alias y='vim'
 alias z='vim'
@@ -30,6 +30,16 @@ alias é='vim -c ":VimShell"'
 
 # Aliases autojump
 
+# Aliases git
+alias ga='git add'
+alias gap='git ap'
+alias gcl='git cl'
+alias gif='git cif'
+alias gia='git cia'
+alias gpl='git pl'
+alias gps='git ps'
+alias gst='git status'
+alias st='git status'
 
 # Aliases listing
 alias ls='verbosels --color=auto'  # see functions.sh
@@ -81,9 +91,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Aliases functions
-alias ba='bell-after'
-alias notaf='notify-after'
-alias na='notify-after'
+alias ba='bell-after '  # trailing space allow next word to use aliases
+alias notaf='notify-after '
+alias na='notify-after '
 alias os='open -s'
 alias opens='open -s'
 alias uuid='ls -l /dev/disk/by-uuid'
@@ -112,9 +122,15 @@ alias bu='boilr_use_shortcut'
 alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
 alias feh='feh -. -d --draw-tinted'
 alias fhe='feh'
+alias fe='feh'
+alias fh='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
+alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
+alias mt='make t'  # recipe name for tests
+alias p2='python2'
+alias p3='python3'
 alias rd='ranger-cd'  # see functions.sh
 alias rg='ranger-cd'
 alias rgr='ranger-cd'

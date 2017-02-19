@@ -117,6 +117,8 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'maxbrunsfeld/vim-yankstack'
         " preview the registers: UNUSABLE: completely interfer with bepo remapping
                 "Plug 'junegunn/vim-peekaboo'
+        " surround text: UNUSABLE: interfer with bepo remapping
+                "Plug 'tpope/vim-surround'
         " improved search: UNUSABLE: completely interfer with bepo remapping
                 "Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
 " usable
@@ -138,6 +140,18 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""
 
 
+
+
+" setup: bépo transcription
+if !empty(system("setxkbmap -print | grep bepoz"))
+    source ~/.vimrc.bepoz
+    let g:keymap = "bepoz"
+elseif !empty(system("setxkbmap -print | grep bepo"))
+    source ~/.vimrc.bepo
+    let g:keymap = "bepo"
+else
+    let g:keymap = "default"
+endif
 
 
 " setup: leader
@@ -167,13 +181,16 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " setup: shortcuts
 " line focus: zz for center active line, zb for put it at the bottom
 " and zt for put it at the top.
-" this remapping is necessary because of the bépo remapping.
+" this remapping is necessary because of the bepo remapping.
 noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
 noremap! ç<ESC> <ESC>
 " enable ragequit
 cnoreabbrev Q q
+" quick opening of tabs
+cnoreabbrev Tn tabnew
+cnoreabbrev TN tabnew
 " paste on next line at the right level of indentation, then pass in insert mode.
 nmap <Leader>o o?<ESC>PAççxa
 
@@ -324,7 +341,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" setup: vim-notes
+" setup: notes
 let g:notes_smart_quotes = 1
 let g:notes_conceal_code = 0
 let g:notes_conceal_italic = 0
@@ -334,6 +351,7 @@ let g:notes_list_bullets = ['•', '▸', '▪', '◦', '▹', '▫']
 let g:notes_title_sync = 'rename_file'
 let g:notes_suffix = '.vnote'
 let g:notes_directories = ['~/notes']
+let g:notes_tagsindex = '~/notes/tags'
 
 " setup: python-syntax
 let python_self_cls_highlight = 1
@@ -450,13 +468,6 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-
-" setup: bépo transcription
-if !empty(system("setxkbmap -print | grep bepoz"))
-        source ~/.vimrc.bepoz
-elseif !empty(system("setxkbmap -print | grep bepo"))
-        source ~/.vimrc.bepo
-endif
 
 " déplacement haut-bas
 noremap <S-s> 50k
