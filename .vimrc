@@ -4,10 +4,10 @@ call plug#begin('~/.vim/plugged')
 " Languages forge
         " prolog support
                 Plug 'mndrix/prolog.vim'
-        " ASP support
-                Plug 'aluriak/asp.vim'
         " Ada support
                 Plug 'ada.vim', { 'for': 'ada' }
+        " ASP support
+                Plug 'aluriak/asp.vim'
         " Haskell syntax support
                 Plug 'vim-scripts/haskell.vim'
         " python
@@ -347,6 +347,7 @@ let g:notes_conceal_code = 0
 let g:notes_conceal_italic = 0
 let g:notes_conceal_bold = 0
 let g:notes_conceal_url = 0
+let g:notes_smart_quotes = 0
 let g:notes_list_bullets = ['•', '▸', '▪', '◦', '▹', '▫']
 let g:notes_title_sync = 'rename_file'
 let g:notes_suffix = '.vnote'
@@ -427,6 +428,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 " nothing to do
 
 " setup: vimtex
+let g:vimtex_disable_version_warning = 1
 let g:vimtex_mappings_enabled = 0
 let g:vimtex_latexmk_background = 1
 let g:vimtex_quickfix_autojump = 1
