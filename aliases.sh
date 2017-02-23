@@ -131,6 +131,7 @@ alias mps='mpsyt'
 alias mt='make t'  # recipe name for tests
 alias p2='python2'
 alias p3='python3'
+alias prr='pip install -r requirements.txt'
 alias rd='ranger-cd'  # see functions.sh
 alias rg='ranger-cd'
 alias rgr='ranger-cd'
