@@ -1,6 +1,12 @@
 # functions repository
 
 
+function edit_clipboard() {
+    xclip -o -selection clipboard | vipe | xclip -i -selection clipboard
+    xclip -o -selection clipboard | xclip -i -selection primary
+    xclip -o -selection clipboard | xclip -i -selection secondary
+}
+
 function expanded_watch() {
     args="\"${@:1}\""
     watch zsh -i -c "$args"
