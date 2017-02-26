@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
                 Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
+                " More powerful, but does not support annotations :(
+                " Plug 'vim-python/python-syntax', { 'for': 'python' }
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
@@ -358,6 +360,22 @@ let g:notes_tagsindex = '~/notes/tags'
 let python_self_cls_highlight = 1
 let python_no_operator_highlight = 0
 let python_no_parameter_highlight = 0
+" setup: python-syntax by vim-python
+" let g:python_highlight_builtins = 1
+" let g:python_highlight_builtin_objs = 1
+" let g:python_highlight_builtin_funcs = 1
+" let g:python_highlight_exceptions = 1
+" let g:python_highlight_string_formatting = 1
+" let g:python_highlight_string_format = 1
+" let g:python_highlight_string_templates = 1
+" let g:python_highlight_indent_errors = 1
+" let g:python_highlight_space_errors = 1
+" let g:python_highlight_doctests = 1
+" let g:python_highlight_class_vars = 1
+" let g:python_highlight_operators = 1
+" let g:python_highlight_all = 1
+" let g:python_highlight_file_headers_as_comments = 1
+" let g:python_slow_sync = 1
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 32
