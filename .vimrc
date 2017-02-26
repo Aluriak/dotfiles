@@ -79,7 +79,7 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'taglist.vim'
                 Plug 'majutsushi/tagbar'
         " Terminal in vim
-                Plug 'Shougo/vimproc.vim', { 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
+                Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
                 Plug 'bronson/vim-visual-star-search'
         " vim as note taker (:Note and :SearchNote), needing vim-misc by
