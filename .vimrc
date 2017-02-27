@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
                 Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
+                " More powerful, but does not support annotations :(
+                " Plug 'vim-python/python-syntax', { 'for': 'python' }
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
@@ -77,7 +79,7 @@ call plug#begin('~/.vim/plugged')
                 "Plug 'taglist.vim'
                 Plug 'majutsushi/tagbar'
         " Terminal in vim
-                Plug 'Shougo/vimproc.vim', { 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
+                Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
                 Plug 'bronson/vim-visual-star-search'
         " vim as note taker (:Note and :SearchNote), needing vim-misc by
@@ -181,7 +183,7 @@ set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " setup: shortcuts
 " line focus: zz for center active line, zb for put it at the bottom
 " and zt for put it at the top.
-" this remapping is necessary because of the bepo remapping.
+" this remapping is necessary because of the bépo remapping.
 noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
@@ -284,8 +286,8 @@ let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'a'   " search in the whole project directory
 let g:ctrlp_by_filename = 1    " search by filename instead of full path
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-" if file is already open in a tab, jump to it:
+set wildignore+=*/tmp/*,*.so,*.o,*.pyc,*.swp,*.zip
+" if file is already open in a tab, jump to it:  " DOESN'T WORK: see below
 let g:ctrlp_switch_buffer = 'ET'
 " new tab page opened after current tab page
 let g:ctrlp_tabpage_position = 'ac'
@@ -296,6 +298,15 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_path_nolim = 1
 " use the silver searcher (ag)
 let g:ctrlp_user_command = 'ag %s -f -U -l --nocolor -g ""'
+" use this, while the previous ctrlp_switch_buffer option doesn't work:
+" on enter, will ask for a new tab. (instead of opening in-place)
+" with the option, ctrlp should first search for already opened buffer on
+" searched file, but for some reason, it doesn't happen.
+" ctrlp_tabpage_position works well, however \o/
+let g:ctrlp_prompt_mappings = {
+  \ 'AcceptSelection("e")': ['<c-t>', '<2-LeftMouse>'],
+  \ 'AcceptSelection("t")': ['<cr>'],
+  \ }
 
 " setup: deedee
 let g:DeedeeSize = 6
@@ -341,7 +352,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" setup: notes
+" setup: vim-notes
 let g:notes_smart_quotes = 1
 let g:notes_conceal_code = 0
 let g:notes_conceal_italic = 0
@@ -358,6 +369,22 @@ let g:notes_tagsindex = '~/notes/tags'
 let python_self_cls_highlight = 1
 let python_no_operator_highlight = 0
 let python_no_parameter_highlight = 0
+" setup: python-syntax by vim-python
+" let g:python_highlight_builtins = 1
+" let g:python_highlight_builtin_objs = 1
+" let g:python_highlight_builtin_funcs = 1
+" let g:python_highlight_exceptions = 1
+" let g:python_highlight_string_formatting = 1
+" let g:python_highlight_string_format = 1
+" let g:python_highlight_string_templates = 1
+" let g:python_highlight_indent_errors = 1
+" let g:python_highlight_space_errors = 1
+" let g:python_highlight_doctests = 1
+" let g:python_highlight_class_vars = 1
+" let g:python_highlight_operators = 1
+" let g:python_highlight_all = 1
+" let g:python_highlight_file_headers_as_comments = 1
+" let g:python_slow_sync = 1
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 32
