@@ -59,6 +59,7 @@ alias llg='ll | grep'
 alias dodo='shutdown now -P'
 alias sieste='shutdown now -r'
 alias ni='nice -n 19 ionice -c3'  # see http://sebsauvage.net/links/?PfISxw
+alias driver_status="hwinfo --gfx | grep 'Driver Status'"
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
