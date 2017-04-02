@@ -52,8 +52,8 @@ alias la='ls -a'
 alias lr='ls -R'
 alias lra='ls -AR'
 alias lh='ls -larth'
-alias lg='ls_grep'  # see functions.sh
-alias llg='ll_grep'  # see functions.sh
+alias lg='ls | grep'
+alias llg='ll | grep'
 
 # Aliases system
 alias dodo='shutdown now -P'
