@@ -26,3 +26,10 @@ commit: copy addall
 
 df:
 	vimdiff ~/.vimrc ./.vimrc
+
+
+################################################################################
+# INSTALLATIONS
+################################################################################
+install_antigen:
+	curl -L git.io/antigen > antigen.zsh
