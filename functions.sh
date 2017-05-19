@@ -26,6 +26,12 @@ function extend_autojump_subdir() {
 }
 
 
+# Add in Makefile a recipe running parameters
+function doom() {
+    echo "all:\n\t$@" >> Makefile
+}
+
+
 # run given command, exit just after
 function bg() {
     $@
