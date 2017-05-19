@@ -4,8 +4,8 @@ call plug#begin('~/.vim/plugged')
 " Languages forge
         " prolog support
                 Plug 'mndrix/prolog.vim'
-        " Ada support
-                Plug 'ada.vim', { 'for': 'ada' }
+        " Ada support  " Raise deprecated error
+                " Plug 'ada.vim', { 'for': 'ada' }
         " ASP support
                 Plug 'aluriak/asp.vim'
         " Haskell syntax support
