@@ -3,12 +3,15 @@
 ################################################################################
 # vim
 alias vt='vim note:thesis'
+alias vh='vim note:dictiaurus'
 
 # battery
 alias battery_all='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias battery='battery_all | grep percentage'
 alias battery_time='battery_all | grep "time to"'
 
+# soft
+alias cytoscape='bg ~/bin/cytoscape-2.8.3/cytoscape.sh'
 
 
 
