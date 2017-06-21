@@ -9,7 +9,7 @@ function edit_clipboard() {
 
 function expanded_watch() {
     args="\"${@:1}\""
-    watch zsh -i -c "$args"
+    watch zsh -c "$args"
 }
 
 
