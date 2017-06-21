@@ -85,6 +85,17 @@ function tkt() {
 }
 
 
+# cat lines of given file
+# from the X-th line to the Y-th line (inclusive)
+function kat() {
+    if [[ $(($3 - $2)) -lt 0 ]];
+    then
+        >&2 echo "Given starting line is higher than finishing line."
+    else
+        < "$1" tail -n +"$2" | head -n "$(($3 - $2))"
+    fi
+}
+
 # print files containing the regex
 #   sonar <regex> [dir] [supplementary grep options]
 # ex: sonar IMAGE .
