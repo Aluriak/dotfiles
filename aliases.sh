@@ -7,7 +7,7 @@ alias e='vim'
 alias f='exiftool'
 alias g='git'
 alias h='htop'
-alias i='mkdir -p'
+alias i='xclip -sel clip'
 alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
 alias l='verbosels -CF --color'  # see functions.sh
@@ -19,7 +19,7 @@ alias q='exit'
 alias r='ranger-cd'  # see functions.sh
 alias s='git status'
 alias t='edit_clipboard'  # see functions.sh
-alias u='vim'
+alias u='xclip -o'
 alias v='vim'
 alias w='expanded_watch '  # see functions.sh + trailing space to allows aliases
 alias x='pdflatex'
@@ -162,3 +162,7 @@ alias vv='vim -u ~/.vimrc.simple'
 # Aliases virtualenv
 alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
+
+# Aliases mouse
+alias imi='vipe | xclip -sel clip'
+alias imo='imi'
