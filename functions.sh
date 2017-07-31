@@ -190,7 +190,7 @@ function open() {
     alt_openers[zip]="unzip"
 
     # In all other cases, use the default openers
-    DEFAULT_OPENER="vim"
+    DEFAULT_OPENER="nvim"
 
     # Declare which openers should be launch asynchronously {openers: async}
     # spaces between, before and after are necessary.

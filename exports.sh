@@ -7,7 +7,7 @@ else
 fi
 
 # EDITOR
-export EDITOR=vim
+export EDITOR=nvim
 
 # DOTFILES
 export DOTFILES_DIR=$(dirname $0)
