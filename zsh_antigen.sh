@@ -24,24 +24,8 @@ antigen bundle fancy-ctrl-z
 # zsh syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-
-
-# THEME
-
-antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-BULLETTRAIN_PROMPT_ORDER=(
-    # status
-    # custom
-    context
-    dir
-    virtualenv
-    # git
-)
-BULLETTRAIN_PROMPT_CHAR="❯"
-BULLETTRAIN_CONTEXT_BG='blue'
-BULLETTRAIN_PROMPT_SEPARATE_LINE='false'
-BULLETTRAIN_VIRTUALENV_BG='green'
-BULLETTRAIN_VIRTUALENV_NAME=''
+# Theme
+source $(dirname $0)/zsh_theme.sh
 
 # APPLICATION
 antigen apply
