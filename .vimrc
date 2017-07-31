@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Languages forge
         " prolog support
-                Plug 'mndrix/prolog.vim'
+                Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
         " Ada support  " Raise deprecated error
                 " Plug 'ada.vim', { 'for': 'ada' }
         " ASP support
@@ -181,10 +181,6 @@ set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 " setup: shortcuts
-" line focus: zz for center active line, zb for put it at the bottom
-" and zt for put it at the top.
-" this remapping is necessary because of the bépo remapping.
-noremap zt zt
 " map escape to çç:
 noremap! çç <ESC>
 noremap! ç<ESC> <ESC>
