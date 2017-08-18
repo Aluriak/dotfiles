@@ -31,9 +31,10 @@ noremap † K
 " Corollaire : repli suivant / précédent
 noremap zs zj
 noremap zt zk
-" line focus: zz for center active line, zb for put it at the bottom
-" and zé for put it at the top.
+" line focus: zz to center active line, zb to put it at the bottom
+" and zé/zt to put it at the top.
 noremap zé zt
+noremap zt zt
 
 " {HJKL} <- [CTSR]
 " ————————————————

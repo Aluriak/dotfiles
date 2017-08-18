@@ -7,20 +7,20 @@ alias e='vim'
 alias f='exiftool'
 alias g='git'
 alias h='htop'
-alias i='mkdir -p'
+alias i='xclip -sel clip'
 alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
 alias l='verbosels -CF --color'  # see functions.sh
 alias m='make'
-alias n='notify-after'  # see functions.sh
+alias n='notify-after '  # see functions.sh
 alias o='open'
 alias p='python3'
 alias q='exit'
 alias r='ranger-cd'  # see functions.sh
 alias s='git status'
 alias t='edit_clipboard'  # see functions.sh
-alias u='vim'
-alias v='vim'
+alias u='xclip -o'
+alias v='nvim'
 alias w='expanded_watch '  # see functions.sh + trailing space to allows aliases
 alias x='pdflatex'
 alias y='vim'
@@ -60,6 +60,8 @@ alias dodo='shutdown now -P'
 alias sieste='shutdown now -r'
 alias ni='nice -n 19 ionice -c3'  # see http://sebsauvage.net/links/?PfISxw
 alias driver_status="hwinfo --gfx | grep 'Driver Status'"
+alias font_update="fc-cache -fv"
+alias errcho='>&2 echo'
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
@@ -124,12 +126,14 @@ alias clasp='/usr/lib/python3.5/site-packages/pyasp/bin/clasp'
 alias feh='feh -. -d --draw-tinted'
 alias fhe='feh'
 alias fe='feh'
+alias ff='firefox'
 alias fh='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
 alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
 alias mt='make t'  # recipe name for tests
+alias nv='nvim'
 alias p2='python2'
 alias p3='python3'
 alias prr='pip install -r requirements.txt'
@@ -146,17 +150,21 @@ alias sshad='sshag'
 alias ssha='sshag'
 
 # Aliases vim
-alias vd='vimdiff'
-alias vi='vim'
-alias vo='vim -O'
-alias vp='vim -p'
-alias vs='vim -S Session.vim'
-alias vims='vim -S'
-alias Vim='vim -O'
+alias vd='nvim -d'
+alias vi='nvim'
+alias vo='nvim -O'
+alias vp='nvim -p'
+alias vs='nvim -S Session.vim'
+alias vims='nvim -S'
+alias Vim='nvim -O'
 alias V='Vim'
-alias vu='vim -c PlugUpgrade -c PlugUpdate -c qa'
-alias vv='vim -u ~/.vimrc.simple'
+alias vu='nvim -c PlugUpgrade -c PlugUpdate -c qa'
+alias vv='nvim -u ~/.vimrc.simple'
 
 # Aliases virtualenv
 alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
+
+# Aliases mouse
+alias imi='vipe | xclip -sel clip'
+alias imo='imi'

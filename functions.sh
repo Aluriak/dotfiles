@@ -9,7 +9,7 @@ function edit_clipboard() {
 
 function expanded_watch() {
     args="\"${@:1}\""
-    watch zsh -i -c "$args"
+    watch zsh -c "$args"
 }
 
 
@@ -90,6 +90,17 @@ function tkt() {
     for pid in $(ps -ef | grep "$1" | awk '{print $2}'); do kill -9 $pid; done
 }
 
+
+# cat lines of given file
+# from the X-th line to the Y-th line (inclusive)
+function kat() {
+    if [[ $(($3 - $2)) -lt 0 ]];
+    then
+        >&2 echo "Given starting line is higher than finishing line."
+    else
+        < "$1" tail -n +"$2" | head -n "$(($3 - $2))"
+    fi
+}
 
 # print files containing the regex
 #   sonar <regex> [dir] [supplementary grep options]
@@ -185,7 +196,7 @@ function open() {
     alt_openers[zip]="unzip"
 
     # In all other cases, use the default openers
-    DEFAULT_OPENER="vim"
+    DEFAULT_OPENER="nvim"
 
     # Declare which openers should be launch asynchronously {openers: async}
     # spaces between, before and after are necessary.
