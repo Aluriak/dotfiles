@@ -12,3 +12,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 # install all packages
 nvim -c PlugUpdate
+
+
+
+# now create a private file and a specific file if necessary
+touch "$(hostname).sh" privates.sh
