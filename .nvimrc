@@ -367,7 +367,7 @@ endfunction"}}}
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-t>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
-let g:UltiSnipsSnippetsDir="~/.nvim/snippets/"
+let g:UltiSnipsSnippetsDir="~/.local/share/nvim/snippets/"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
