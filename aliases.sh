@@ -166,5 +166,6 @@ alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
 
 # Aliases mouse
-alias imi='vipe | xclip -sel clip'
-alias imo='imi'
+alias imi='cat /dev/null | vipe | xclip -sel clip'
+alias imo='xclip -o'
+alias ini='xclip -sel clip < '
