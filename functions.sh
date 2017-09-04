@@ -14,6 +14,13 @@ function clone_by_ssh() {
 }
 
 
+# ignore modifications of a file
+function git-ignore-changes() {
+    git update-index --assume-unchanged "${1}"
+    echo "ran: git update-index --assume-unchanged ${1}"
+}
+
+
 function edit_clipboard() {
     xclip -o -selection clipboard | vipe | xclip -i -selection clipboard
     xclip -o -selection clipboard | xclip -i -selection primary
