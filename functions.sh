@@ -1,6 +1,19 @@
 # functions repository
 
 
+
+# use git clone on given github repository from username aluriak
+#  then jump in it
+# usage:
+#   clone_by_ssh arpeggio
+function clone_by_ssh() {
+    git clone "git@github.com:aluriak/${1}.git"
+    cd "${1}"
+    clear
+    ls
+}
+
+
 function edit_clipboard() {
     xclip -o -selection clipboard | vipe | xclip -i -selection clipboard
     xclip -o -selection clipboard | xclip -i -selection primary

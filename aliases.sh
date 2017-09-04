@@ -28,9 +28,8 @@ alias z='vim'
 alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
-# Aliases autojump
-
 # Aliases git
+alias cg='clone_by_ssh'  # see functions
 alias ga='git add'
 alias gap='git ap'
 alias gcl='git cl'
