@@ -28,9 +28,8 @@ alias z='vim'
 alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
-# Aliases autojump
-
 # Aliases git
+alias cg='clone_by_ssh'  # see functions
 alias ga='git add'
 alias gap='git ap'
 alias gcl='git cl'
@@ -167,5 +166,6 @@ alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
 
 # Aliases mouse
-alias imi='vipe | xclip -sel clip'
-alias imo='imi'
+alias imi='cat /dev/null | vipe | xclip -sel clip'
+alias imo='xclip -o'
+alias ini='xclip -sel clip < '

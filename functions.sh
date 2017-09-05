@@ -25,6 +25,23 @@ function add-bom() {
                     ( mv "${file}" "${file}"~ && uconv -f utf-8 -t utf-8 --add-signature < "${file}~" > "${file}" ) || ( echo Error processing "$file" 1>&2 ; exit 1)
             fi
     done
+
+# use git clone on given github repository from username aluriak
+#  then jump in it
+# usage:
+#   clone_by_ssh arpeggio
+function clone_by_ssh() {
+    git clone "git@github.com:aluriak/${1}.git"
+    cd "${1}"
+    clear
+    ls
+}
+
+
+# ignore modifications of a file
+function git-ignore-changes() {
+    git update-index --assume-unchanged "${1}"
+    echo "ran: git update-index --assume-unchanged ${1}"
 }
 
 
