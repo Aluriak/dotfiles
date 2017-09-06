@@ -25,6 +25,7 @@ function add-bom() {
                     ( mv "${file}" "${file}"~ && uconv -f utf-8 -t utf-8 --add-signature < "${file}~" > "${file}" ) || ( echo Error processing "$file" 1>&2 ; exit 1)
             fi
     done
+}
 
 # use git clone on given github repository from username aluriak
 #  then jump in it
