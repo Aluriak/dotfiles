@@ -206,6 +206,7 @@ set cursorline          " Line where cursor is, is highlighted
 set lazyredraw          " redraw only when we need to.
 set scrolloff=1         " let always one line after & before the cursor
 set diffopt+=vertical   " diff vertically if screen is large enough
+set mouse=              " no mouse support
 
 
 " setup: easy motion
@@ -342,7 +343,7 @@ let g:marvim_store_key = '<leader><S-m>'
 "let g:marvim_register = 'c'    " change used register from 'q' to 'c'
 let marvim_prefix = 0           " disable default syntax based prefix
 
-" setup: multiple cursors :
+" setup: multiple cursors
 let g:multi_cursor_exit_from_insert_mode = 0 " don't quit with escape in insert mode
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'

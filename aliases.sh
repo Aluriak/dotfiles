@@ -28,9 +28,8 @@ alias z='vim'
 alias ç='source ~/.zshrc'
 alias é='vim -c ":VimShell"'
 
-# Aliases autojump
-
 # Aliases git
+alias cg='clone_by_ssh'  # see functions
 alias ga='git add'
 alias gap='git ap'
 alias gcl='git cl'
@@ -74,7 +73,7 @@ alias 'xit'='exit'
 alias 'actual'='source ~/.zshrc'
 alias ':w'='source ~/.zshrc'
 alias 'cls'='clear ; ls'
-alias 'cl'='cls'
+alias 'cl'='clisp'
 alias 'clr'='cls'
 alias 'cln'='cls'
 alias 'df'='df -h'
@@ -129,6 +128,7 @@ alias fe='feh'
 alias ff='firefox'
 alias fh='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
+alias lk='~/scripts/push_link/push_link.sh'
 alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
@@ -166,5 +166,6 @@ alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
 
 # Aliases mouse
-alias imi='vipe | xclip -sel clip'
-alias imo='imi'
+alias imi='cat /dev/null | vipe | xclip -sel clip'
+alias imo='xclip -o'
+alias ini='xclip -sel clip < '
