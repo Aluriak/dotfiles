@@ -1,5 +1,5 @@
 " Plugins management with junegunn/vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 
 " Languages forge
         " prolog support
@@ -374,7 +374,7 @@ endfunction"}}}
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-t>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
-let g:UltiSnipsSnippetsDir="~/.local/share/nvim/snippets/"
+let g:UltiSnipsSnippetsDir="~/.nvim/snippets/"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
