@@ -321,7 +321,11 @@ let g:extradite_diff_split = 'belowright vertical split'
 " setup: gitgutter
 " whitespace changes are not showed
 let g:gitgutter_diff_args = '-w'
+" performances first (only update when saving/opening file)
 let g:gitgutter_realtime  = 0
+let g:gitgutter_eager = 0
+" do not add keymaps yourself
+let g:gitgutter_map_keys = 0
 
 " setup: json support
 let g:vim_json_syntax_conceal = 0
