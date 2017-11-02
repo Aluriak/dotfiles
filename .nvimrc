@@ -3,13 +3,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Languages forge
         " prolog support
-                Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
+                " Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
         " Ada support  " Raise deprecated error
                 " Plug 'ada.vim', { 'for': 'ada' }
         " ASP support
                 Plug 'aluriak/asp.vim'
         " Haskell syntax support
-                Plug 'vim-scripts/haskell.vim'
+                " Plug 'vim-scripts/haskell.vim' { 'for': 'haskell' }
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
@@ -17,16 +17,16 @@ call plug#begin('~/.local/share/nvim/plugged')
                 " More powerful, but does not support annotations :(
                 " Plug 'vim-python/python-syntax', { 'for': 'python' }
         " latex
-                Plug 'lervag/vimtex', { 'for': 'tex' }
+                " Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
-                Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+                " Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
                 " Use the second when the PR will be merged: https://github.com/niklasl/vim-rdf/pull/3
-                Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
+                " Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
                 "Plug 'niklasl/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
-                Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+                " Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
         " Markdown
                 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
 
@@ -46,21 +46,24 @@ call plug#begin('~/.local/share/nvim/plugged')
         " indented lines as text objects
                 Plug 'michaeljsmith/vim-indent-object'
         " git support: commit in vim + gitconfig indent and syntax + commit browser
-                Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
-                Plug 'airblade/vim-gitgutter'
-                Plug 'int3/vim-extradite'
+                " Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
+                " Plug 'airblade/vim-gitgutter'
+                " Plug 'int3/vim-extradite'
         " save and reuse named macros
                 Plug 'chamindra/marvim'
         " multiple cursor edition
                 Plug 'terryma/vim-multiple-cursors'
         " completion
                 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-                Plug 'zchee/deoplete-jedi'
-                Plug 'zchee/deoplete-zsh'
-                Plug 'Shougo/neoinclude.vim'
-                Plug 'Shougo/echodoc.vim'
-                Plug 'Shougo/neopairs.vim'
+                Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+                " Plug 'zchee/deoplete-zsh', { 'for': ['sh', 'zsh'] }
                 " Plug 'zchee/deoplete-clang'   " to set properly (path to clang)
+        " ?
+                " Plug 'Shougo/neoinclude.vim'
+        " show function signature in command line
+                " Plug 'Shougo/echodoc.vim'
+        " add closing parenthesis
+                " Plug 'Shougo/neopairs.vim'
         " snippets
                 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
         " tabs and file tree
@@ -75,14 +78,14 @@ call plug#begin('~/.local/share/nvim/plugged')
         " bookmarks (signatures)
                 Plug 'kshenoy/vim-signature'
         " replacements by cycles
-                Plug 'AndrewRadev/switch.vim'
+                " Plug 'AndrewRadev/switch.vim'
         " alignment of line
                 Plug 'orbisvicis/tabular'
         " liste des fonctions/variables
                 "Plug 'taglist.vim'
                 Plug 'majutsushi/tagbar'
         " Terminal in vim
-                Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
+                " Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
                 Plug 'bronson/vim-visual-star-search'
         " vim as note taker (:Note and :SearchNote), needing vim-misc by
@@ -110,7 +113,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         " EPUB edition
                 "Plug 'etnadji/vim-epub'
         " random tip for learn new things about vim
-                Plug 'mhinz/vim-randomtag'
+                " Plug 'mhinz/vim-randomtag'
         " arduino support - compile wihtout needing to open the arduino IDE
                 "Plug 'tclem/vim-arduino'
         " csv file commands and visual helps
