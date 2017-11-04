@@ -359,6 +359,9 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " setup: deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+" close preview window after completion + get docstring in it
+autocmd CompleteDone * silent! pclose!
+let g:deoplete#sources#jedi#show_docstring = 1
 " Use tab to iter over completions (need ultisnip to not use tab)
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
