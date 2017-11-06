@@ -13,9 +13,11 @@ call plug#begin('~/.vim/plugged')
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
-                Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
+                Plug 'achimnol/python-syntax', { 'for': 'python' }
                 " More powerful, but does not support annotations :(
                 " Plug 'vim-python/python-syntax', { 'for': 'python' }
+                " Slooooooow
+                " Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
         " latex
                 " Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
@@ -395,11 +397,11 @@ let g:notes_suffix = '.vnote'
 let g:notes_directories = ['~/notes']
 let g:notes_tagsindex = '~/notes/tags'
 
-" setup: python-syntax
-let python_self_cls_highlight = 1
-let python_no_operator_highlight = 0
-let python_no_parameter_highlight = 0
-" setup: python-syntax by vim-python
+" setup: kh3phr3n/python-syntax
+" let python_self_cls_highlight = 1
+" let python_no_operator_highlight = 0
+" let python_no_parameter_highlight = 0
+" setup: vim-python/python-syntax
 " let g:python_highlight_builtins = 1
 " let g:python_highlight_builtin_objs = 1
 " let g:python_highlight_builtin_funcs = 1
@@ -414,7 +416,10 @@ let python_no_parameter_highlight = 0
 " let g:python_highlight_operators = 1
 " let g:python_highlight_all = 1
 " let g:python_highlight_file_headers_as_comments = 1
-" let g:python_slow_sync = 1
+" let g:python_slow_sync = 0
+" setup: achimnol/python-syntax
+let python_highlight_all = 1
+" let g:python_slow_sync = 0
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 32
