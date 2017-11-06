@@ -178,12 +178,12 @@ set concealcursor=""
 let g:tex_conceal= ''
 
 " setup: indentation
-set shiftwidth=4        "indentation = N cases
-set softtabstop=4       "number of space to move back one indent level
-set smarttab            "chevrons équivalent à la touche tab
-set nu                  "affichage des numéros de ligne
-set autoindent          "indentation gardée après saut de ligne
-set expandtab           "pas de tab, uniquement des espaces
+set expandtab           " no tab, just spaces
+set tabstop=4           " how many columns a tab counts for
+set shiftwidth=4        " how many columns text is indented with the reindent operations (<< and >>)
+set autoindent          " keep indentation after line break
+set smarttab            " << and >> are equivalent to tab key
+set nu                  " line number
 
 " setup: list characters
 set list
@@ -210,6 +210,7 @@ set lazyredraw          " redraw only when we need to.
 set scrolloff=1         " let always one line after & before the cursor
 set diffopt+=vertical   " diff vertically if screen is large enough
 set mouse=              " no mouse support
+set cedit=\<C-f>
 
 
 " setup: easy motion
