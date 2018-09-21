@@ -1,6 +1,16 @@
 # functions repository
 
 
+# create a virtualenv, source it, and populate it with requirements.txt if any.
+function creqenv() {
+    crenv
+    srenv
+    if [[ -e requirements.txt ]]
+    then
+        pip install -r requirements.txt
+    fi
+}
+
 # add utf8 BOM to given files
 function add-bom() {
     if [ $# -eq 0 ]
