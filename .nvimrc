@@ -361,6 +361,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " setup: deoplete.nvim
+let g:deoplete#sources#jedi#python_path = '/usr/bin/python3.6m'
 let g:deoplete#enable_at_startup = 1
 " close preview window after completion + get docstring in it
 autocmd CompleteDone * silent! pclose!
