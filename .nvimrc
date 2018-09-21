@@ -10,6 +10,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'aluriak/asp.vim'
         " Haskell syntax support
                 " Plug 'vim-scripts/haskell.vim' { 'for': 'haskell' }
+        " racket
+                Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
@@ -498,6 +500,8 @@ au BufNewFile,BufRead *.py  setf python
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
+au BufReadPost *.rkt,*.rktl set filetype=scheme
+au filetype racket set lisp
 
 " python files: draw a vertical line at 80 characters
 augroup vimrc_autocmds
