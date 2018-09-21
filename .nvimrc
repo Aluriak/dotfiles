@@ -497,6 +497,7 @@ au BufNewFile,BufRead *.mkd setf markdown
 au BufNewFile,BufRead *.adb setf ada
 au BufNewFile,BufRead *.ads setf ada
 au BufNewFile,BufRead *.py  setf python
+au BufNewFile,BufRead *.lp  setf prolog
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
