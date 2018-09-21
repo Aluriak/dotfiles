@@ -12,6 +12,8 @@ antigen use oh-my-zsh
 # git
 antigen bundle git
 
+antigen bundle pip
+
 # Explain how to install missing binary
 antigen bundle command-not-found
 
