@@ -176,7 +176,7 @@ function sonar_file() {
     sonar $1 $2 -l ${@:3}
 }
 function sonar_except() {
-    sonar $1 $2 --exclude="$3" ${@:4}
+    sonar $1 $2 --exclude-dir="$3" ${@:4}
 }
 
 
