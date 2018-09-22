@@ -1,3 +1,5 @@
+all:
+	# do nothing
 
 copy:
 	cp ~/.vimrc ./

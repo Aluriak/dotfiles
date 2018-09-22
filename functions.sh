@@ -1,6 +1,16 @@
 # functions repository
 
 
+# create a virtualenv, source it, and populate it with requirements.txt if any.
+function creqenv() {
+    crenv
+    srenv
+    if [[ -e requirements.txt ]]
+    then
+        pip install -r requirements.txt
+    fi
+}
+
 # add utf8 BOM to given files
 function add-bom() {
     if [ $# -eq 0 ]
@@ -166,7 +176,7 @@ function sonar_file() {
     sonar $1 $2 -l ${@:3}
 }
 function sonar_except() {
-    sonar $1 $2 --exclude="$3" ${@:4}
+    sonar $1 $2 --exclude-dir="$3" ${@:4}
 }
 
 

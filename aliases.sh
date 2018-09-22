@@ -128,6 +128,8 @@ alias fe='feh'
 alias ff='firefox'
 alias fh='feh'
 alias gringo='/usr/lib/python3.5/site-packages/pyasp/bin/gringo4'
+alias ir='pip install -r requirements.txt'
+alias iru='pip install -r requirements.txt -U'
 alias lk='~/scripts/push_link/push_link.sh'
 alias meh='feh'
 alias mpl='mplayer'
@@ -165,8 +167,12 @@ alias vv='nvim -u ~/.vimrc.simple'
 # Aliases virtualenv
 alias crenv='virtualenv venv -p /usr/bin/python3'
 alias srenv='source venv/bin/activate'
+alias psrenv='source ../venv/bin/activate'
 
 # Aliases mouse
 alias imi='cat /dev/null | vipe | xclip -sel clip'
 alias imo='xclip -o'
 alias ini='xclip -sel clip < '
+
+# Aliases make
+alias mn='make --dry-run'

@@ -1,32 +1,36 @@
 " Plugins management with junegunn/vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 
 " Languages forge
         " prolog support
-                Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
+                " Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
         " Ada support  " Raise deprecated error
                 " Plug 'ada.vim', { 'for': 'ada' }
         " ASP support
                 Plug 'aluriak/asp.vim'
         " Haskell syntax support
-                Plug 'vim-scripts/haskell.vim'
+                " Plug 'vim-scripts/haskell.vim' { 'for': 'haskell' }
+        " racket
+                Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
-                Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
+                Plug 'achimnol/python-syntax', { 'for': 'python' }
                 " More powerful, but does not support annotations :(
                 " Plug 'vim-python/python-syntax', { 'for': 'python' }
+                " Slooooooow
+                " Plug 'kh3phr3n/python-syntax', { 'for': 'python' }
         " latex
-                Plug 'lervag/vimtex', { 'for': 'tex' }
+                " Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
-                Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+                " Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
                 " Use the second when the PR will be merged: https://github.com/niklasl/vim-rdf/pull/3
-                Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
+                " Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
                 "Plug 'niklasl/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
-                Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+                " Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
         " Markdown
                 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
 
@@ -46,21 +50,24 @@ call plug#begin('~/.local/share/nvim/plugged')
         " indented lines as text objects
                 Plug 'michaeljsmith/vim-indent-object'
         " git support: commit in vim + gitconfig indent and syntax + commit browser
-                Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
-                Plug 'airblade/vim-gitgutter'
-                Plug 'int3/vim-extradite'
+                " Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
+                " Plug 'airblade/vim-gitgutter'
+                " Plug 'int3/vim-extradite'
         " save and reuse named macros
                 Plug 'chamindra/marvim'
         " multiple cursor edition
                 Plug 'terryma/vim-multiple-cursors'
         " completion
                 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-                Plug 'zchee/deoplete-jedi'
-                Plug 'zchee/deoplete-zsh'
-                Plug 'Shougo/neoinclude.vim'
-                Plug 'Shougo/echodoc.vim'
-                Plug 'Shougo/neopairs.vim'
+                Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+                " Plug 'zchee/deoplete-zsh', { 'for': ['sh', 'zsh'] }
                 " Plug 'zchee/deoplete-clang'   " to set properly (path to clang)
+        " ?
+                " Plug 'Shougo/neoinclude.vim'
+        " show function signature in command line
+                " Plug 'Shougo/echodoc.vim'
+        " add closing parenthesis
+                " Plug 'Shougo/neopairs.vim'
         " snippets
                 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
         " tabs and file tree
@@ -75,14 +82,14 @@ call plug#begin('~/.local/share/nvim/plugged')
         " bookmarks (signatures)
                 Plug 'kshenoy/vim-signature'
         " replacements by cycles
-                Plug 'AndrewRadev/switch.vim'
+                " Plug 'AndrewRadev/switch.vim'
         " alignment of line
                 Plug 'orbisvicis/tabular'
         " liste des fonctions/variables
                 "Plug 'taglist.vim'
                 Plug 'majutsushi/tagbar'
         " Terminal in vim
-                Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
+                " Plug 'Shougo/vimproc.vim', { 'on': 'VimShellTab', 'do': 'make' } | Plug 'Shougo/vimshell.vim', { 'on': 'VimShellTab' }
         " improve the * find and search
                 Plug 'bronson/vim-visual-star-search'
         " vim as note taker (:Note and :SearchNote), needing vim-misc by
@@ -110,7 +117,7 @@ call plug#begin('~/.local/share/nvim/plugged')
         " EPUB edition
                 "Plug 'etnadji/vim-epub'
         " random tip for learn new things about vim
-                Plug 'mhinz/vim-randomtag'
+                " Plug 'mhinz/vim-randomtag'
         " arduino support - compile wihtout needing to open the arduino IDE
                 "Plug 'tclem/vim-arduino'
         " csv file commands and visual helps
@@ -175,12 +182,12 @@ set concealcursor=""
 let g:tex_conceal= ''
 
 " setup: indentation
-set shiftwidth=4        "indentation = N cases
-set softtabstop=4       "number of space to move back one indent level
-set smarttab            "chevrons équivalent à la touche tab
-set nu                  "affichage des numéros de ligne
-set autoindent          "indentation gardée après saut de ligne
-set expandtab           "pas de tab, uniquement des espaces
+set expandtab           " no tab, just spaces
+set tabstop=4           " how many columns a tab counts for
+set shiftwidth=4        " how many columns text is indented with the reindent operations (<< and >>)
+set autoindent          " keep indentation after line break
+set smarttab            " << and >> are equivalent to tab key
+set nu                  " line number
 
 " setup: list characters
 set list
@@ -207,6 +214,7 @@ set lazyredraw          " redraw only when we need to.
 set scrolloff=1         " let always one line after & before the cursor
 set diffopt+=vertical   " diff vertically if screen is large enough
 set mouse=              " no mouse support
+set cedit=\<C-f>
 
 
 " setup: easy motion
@@ -318,7 +326,11 @@ let g:extradite_diff_split = 'belowright vertical split'
 " setup: gitgutter
 " whitespace changes are not showed
 let g:gitgutter_diff_args = '-w'
+" performances first (only update when saving/opening file)
 let g:gitgutter_realtime  = 0
+let g:gitgutter_eager = 0
+" do not add keymaps yourself
+let g:gitgutter_map_keys = 0
 
 " setup: json support
 let g:vim_json_syntax_conceal = 0
@@ -351,7 +363,11 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " setup: deoplete.nvim
+let g:deoplete#sources#jedi#python_path = '/usr/bin/python3.6m'
 let g:deoplete#enable_at_startup = 1
+" close preview window after completion + get docstring in it
+autocmd CompleteDone * silent! pclose!
+let g:deoplete#sources#jedi#show_docstring = 1
 " Use tab to iter over completions (need ultisnip to not use tab)
 inoremap <silent><expr> <TAB>
 \ pumvisible() ? "\<C-n>" :
@@ -367,7 +383,7 @@ endfunction"}}}
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-t>"
 let g:UltiSnipsJumpBackwardTrigger="<c-s>"
-let g:UltiSnipsSnippetsDir="~/.local/share/nvim/snippets/"
+let g:UltiSnipsSnippetsDir="~/.nvim/snippets/"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -384,11 +400,11 @@ let g:notes_suffix = '.vnote'
 let g:notes_directories = ['~/notes']
 let g:notes_tagsindex = '~/notes/tags'
 
-" setup: python-syntax
-let python_self_cls_highlight = 1
-let python_no_operator_highlight = 0
-let python_no_parameter_highlight = 0
-" setup: python-syntax by vim-python
+" setup: kh3phr3n/python-syntax
+" let python_self_cls_highlight = 1
+" let python_no_operator_highlight = 0
+" let python_no_parameter_highlight = 0
+" setup: vim-python/python-syntax
 " let g:python_highlight_builtins = 1
 " let g:python_highlight_builtin_objs = 1
 " let g:python_highlight_builtin_funcs = 1
@@ -403,7 +419,10 @@ let python_no_parameter_highlight = 0
 " let g:python_highlight_operators = 1
 " let g:python_highlight_all = 1
 " let g:python_highlight_file_headers_as_comments = 1
-" let g:python_slow_sync = 1
+" let g:python_slow_sync = 0
+" setup: achimnol/python-syntax
+let python_highlight_all = 1
+" let g:python_slow_sync = 0
 
 " setup: rainbow_parentheses
 let g:rainbow#max_level = 32
@@ -478,9 +497,12 @@ au BufNewFile,BufRead *.mkd setf markdown
 au BufNewFile,BufRead *.adb setf ada
 au BufNewFile,BufRead *.ads setf ada
 au BufNewFile,BufRead *.py  setf python
+au BufNewFile,BufRead *.lp  setf prolog
 au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
+au BufReadPost *.rkt,*.rktl set filetype=scheme
+au filetype racket set lisp
 
 " python files: draw a vertical line at 80 characters
 augroup vimrc_autocmds
