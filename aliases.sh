@@ -133,6 +133,7 @@ alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
 alias mt='make t'  # recipe name for tests
+alias ntop='sudo nethogs'
 alias nv='nvim'
 alias p2='python2'
 alias p3='python3'
