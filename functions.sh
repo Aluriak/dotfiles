@@ -180,6 +180,25 @@ function sonar_except() {
 }
 
 
+# Convert all *.srt files in directory in unicode with iconv.
+# If second argument is given, it is the input format for iconv. Default is ISO-8859-1.
+function subtitle-in-unicode {
+    # input format determination
+    inputformat=ISO-8859-1
+    if [ $# -eq 2 ]
+    then
+        inputformat=$2
+    fi
+    # handle all available srt files
+    for srt in *.srt
+    do
+        iconv  -f "${inputformat}" -t utf8 ${srt} -o "${srt}.u"
+        mv "${srt}" "${srt}.bak"
+        mv "${srt}.u" "${srt}"
+    done
+}
+
+
 # Comes from the ranger documentation.
 # This is a bash function for .bashrc to automatically
 # change the directory to the last visited one
