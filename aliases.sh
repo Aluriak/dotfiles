@@ -143,6 +143,7 @@ alias prr='pip install -r requirements.txt'
 alias rd='ranger-cd'  # see functions.sh
 alias rg='ranger-cd'
 alias rgr='ranger-cd'
+alias vk='vimoku'
 alias weechat='weechat-curses'
 alias woman='eg'
 alias yt='mpsyt'
