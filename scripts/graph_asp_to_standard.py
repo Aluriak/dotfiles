@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """Convert an asp file with edge/2 atoms
 into slf/cxt file, needed for instance by lattice miner or inclose
 algorithm implementation.
