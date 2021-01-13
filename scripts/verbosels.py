@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 """Print an integer in stdout, function to state of dir sent as first parameter.
 
 usage:
