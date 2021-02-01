@@ -1,3 +1,4 @@
+#!/bin/sh
 date "+%T
 %d/%m/%Y
 %A/%B"
