@@ -387,3 +387,46 @@ function _verbosels_onefile() {
         command ls "${@:2}" "$1"
     fi
 }
+
+
+# rotate an image with given angle, or 90 degrees
+function rotateimg() {
+    if [ $# -eq 2 ]
+    then
+        angle=$2
+    else
+        angle=90
+    fi
+    convert "$1" -rotate "$angle" .out.jpg
+    mv .out.jpg "$1"
+}
+
+# for each given file, set it as background image, and ask for its new name (empty to keep it).
+function rename-pics() {
+    for file in $@
+    do
+        filename=$(basename -- "$file")
+        extension=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')  # get file extension in lowercase
+        feh -d --image-bg black --bg-max "$file"  # as background
+        echo -n "new name: "
+        read newname
+        newfilename="$newname.$extension"
+        if [[ -z "$newname" ]]  # empty new name
+        then
+            echo "Empty target. Nothing to do."
+        elif [[ -f "$newfilename" ]]  # if new name already in use
+        then
+            echo "file $newfilename already exists. Nothing to do."
+        else  # the new name is valid
+            mv "$file" "$newfilename"
+            echo "$file -> $newfilename"
+        fi
+    done
+}
+
+
+# get given files in clipboard, then edit it
+function cpc() {
+    cat $@ | xclip -sel clip
+    edit_clipboard
+}
