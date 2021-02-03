@@ -6,6 +6,9 @@ if [[ $HOST == "hamilton.irisa.fr" ]];
 then
     HOST="hamilton"
     DOTCONF="fedora_noroot"
+elif [[ $HOST == "dijkstra" ]];
+then
+    DOTCONF="ubuntu"
 else  # munin or puceron
     DOTCONF="arch"
 fi
