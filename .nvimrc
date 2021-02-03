@@ -11,11 +11,13 @@ call plug#begin('~/.vim/plugged')
         " Haskell syntax support
                 " Plug 'vim-scripts/haskell.vim' { 'for': 'haskell' }
         " racket
-                Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
+                " Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
+        " syntax coloration and spaces packs over 100 languages
+                Plug 'sheerun/vim-polyglot'
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
-                Plug 'achimnol/python-syntax', { 'for': 'python' }
+                " Plug 'achimnol/python-syntax', { 'for': 'python' }
                 " More powerful, but does not support annotations :(
                 " Plug 'vim-python/python-syntax', { 'for': 'python' }
                 " Slooooooow
@@ -28,11 +30,11 @@ call plug#begin('~/.vim/plugged')
                 " Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
                 "Plug 'niklasl/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
-                Plug 'elzr/vim-json', { 'for': 'json' }
+                " Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
                 " Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
         " Markdown
-                Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
+                " Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
 
 " features
         " random tag generator
