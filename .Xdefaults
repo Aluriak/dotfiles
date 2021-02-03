@@ -1,0 +1,24 @@
+! On changes, run xrdb -merge ~/.Xdefaults
+
+
+*visualBell: False
+XTerm*faceName: Source Code Pro
+XTerm*faceSize: 11
+
+! from archlinux wiki:
+XTerm.vt100.bellIsUrgent: True
+XTerm.vt100.saveLines: 4096
+
+! Allow xterm to report the TERM variable correctly
+XTerm.termName: xterm-256color
+
+! Fix the backspace key
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+! handle system unicode
+XTerm.vt100.locale: true
+
+! Make 'Alt' key behave as on other terminal emulators
+XTerm.vt100.metaSendsEscape: true
+
