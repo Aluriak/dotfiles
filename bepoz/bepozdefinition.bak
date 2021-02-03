@@ -1,0 +1,47 @@
+
+
+// fr-dvorak-bepoz (variant of fr-dvorak-bepo-intl)
+partial alphanumeric_keys
+xkb_symbols "bepoz" {
+    include "fr(bepo)"
+
+    // redefine all first row : direct access to <>, and replacing of @/*=% to =+-/*%@
+    key <AE01> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [        quotedbl,            1,         emdash, doublelowquotemark    ] }; // " 1 — „
+    key <AE02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [            less,            2,  guillemotleft, leftdoublequotemark   ] }; // < 2 « “
+    key <AE03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [         greater,            3, guillemotright, rightdoublequotemark  ] }; // > 3 » ”
+    key <AE04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [       parenleft,            4,    bracketleft,      lessthanequal    ] }; // ( 4 [ ≤
+    key <AE05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [      parenright,            5,   bracketright,   greaterthanequal    ] }; // ) 5 ] ≥
+    key <AE06> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [           equal,            6,       notequal                        ] }; // = 6 ≠
+    key <AE07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [            plus,            7,      plusminus,        notsign        ] }; // + 7 ± ¬
+    key <AE08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [           minus,            8,          U2212,     onequarter        ] }; // - 8 − ¼
+    key <AE09> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [           slash,            9,       division,        onehalf        ] }; // / 9 ÷ ½
+    key <AE10> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [        asterisk,            0,       multiply,  threequarters        ] }; // * 0 × ¾
+    key <AE11> { [         percent,        grave,          U2030,        seconds                                                    ] }; // % ` ‰ ″
+    key <AE12> { [              at,       degree,    asciicircum,        minutes                                                    ] }; // @ ° ^ ′
+
+    // pipe à côté de l'esperluette
+    key <AD01> { [ b, B, dead_acute, dead_doubleacute ] }; // b B ˊ ˝
+    key <AD02> { [ eacute, Eacute, bar, brokenbar ] }; // é É | ¦
+
+    // dead accents : circonflexe and grave
+    key <AD06> { type[group1] = "FOUR_LEVEL", [ dead_circumflex, exclam , dead_grave , exclamdown ] }; // ^ ! ` ¡
+
+    // access to brackets and slashs by altgr+u and altgr+i and maj
+    key <AC02> { type[group1] = "FOUR_LEVEL", [ u , U , bracketleft , slash ] }; // u U [ /
+    key <AC03> { type[group1] = "FOUR_LEVEL", [ i , I , bracketright , backslash ] }; // i I ] \
+
+    // dead accents doubled under {W} et {Z}
+    key <AD11> { type[group1] = "FOUR_LEVEL", [ dead_grave , dead_caron , schwa , SCHWA ] }; // ` ˇ ə Ə
+    key <AD12> { type[group1] = "FOUR_LEVEL", [ dead_diaeresis , dead_abovedot , dead_breve , VoidSymbol ] }; // ¨ ˙ ˘
+
+    // W and Z under left end, with access to slashs by altgr+z and maj
+    key <AD05> { type[group1] = "FOUR_LEVEL", [ z , Z , dead_grave , dead_breve ] }; // z Z ` ˘
+    key <AB01> { type[group1] = "FOUR_LEVEL", [ w , W , backslash , slash ] }; // w W \ /
+
+    // R and N provides alpha and beta
+    key <AC09> { [               r,            R,     U03B1,           trademark ] }; // r R α ™
+    key <AC10> { [               n,            N,     U03B2,           dead_tilde] }; // n N β ~
+
+    // Space don't provides unbreakable space with maj (generally maj+space is mistakely typed after a capital or letters like : or ;)
+    key <SPCE> { [           space, space,     underscore,   nobreakspace ] }; // ␣ (espace insécable) _ (espace insécable fin)
+};
