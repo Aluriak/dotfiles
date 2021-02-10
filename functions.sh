@@ -70,7 +70,11 @@ function expanded_watch() {
 # easily open a kitty terminal to perform given actions
 function open-term {
     # open-term <dir> <title> <commands>
-    kitty -T $2 --detach -d "$1" -- zsh -i -c "${@:3} ; zsh -i"
+    args="${@:3} ; zsh -i"
+    # we need to first save the complete command in a variable,
+    #  else it won't be correctly expanded in the kitty command.
+    # echo $args
+    kitty -T $2 --detach --hold -d "$1" -- zsh -i -c $args
 }
 
 
