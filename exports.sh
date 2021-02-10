@@ -18,3 +18,6 @@ export LANG=fr_FR.UTF-8
 
 # DIRS
 export XDG_CONFIG_HOME=/home/lucas/.config
+
+# PATH
+export PATH="$PATH:/home/lucas/bin"
