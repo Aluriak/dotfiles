@@ -67,6 +67,12 @@ function expanded_watch() {
     watch zsh -c "$args"
 }
 
+# easily open a kitty terminal to perform given actions
+function open-term {
+    # open-term <dir> <title> <commands>
+    kitty -T $2 --detach -d "$1" -- zsh -i -c "${@:3} ; zsh -i"
+}
+
 
 # launch autojump, then clear and list newly entered directory
 function extend_autojump() {

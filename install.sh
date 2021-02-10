@@ -15,6 +15,7 @@ ln -s $path/.zshrc ~/
 ln -s $path/.vimrc.bepo ~/
 ln -s $path/.vimrc.bepoz ~/
 ln -s $path/.nvimrc ~/.config/nvim/init.vim
+ln -s $path/kitty.conf ~/.config/kitty/
 
 # install scripts
 mkdir -p ~/scripts
