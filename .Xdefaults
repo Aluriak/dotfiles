@@ -5,6 +5,10 @@
 XTerm*faceName: Source Code Pro
 XTerm*faceSize: 11
 
+XTerm*selectToClipboard: True
+XTerm*reverseWrap: True
+XTerm*keepClipboard: True
+
 ! from archlinux wiki:
 XTerm.vt100.bellIsUrgent: True
 XTerm.vt100.saveLines: 4096
