@@ -1,5 +1,5 @@
 # THEME
-antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+znap source caiogondim/bullet-train.zsh bullet-train
 
 # Bulletrain
 BULLETTRAIN_PROMPT_ORDER=(

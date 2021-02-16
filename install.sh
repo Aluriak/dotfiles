@@ -3,9 +3,10 @@
 path=$(pwd)
 
 
-if [ ! -e antigen.zsh ];
+if [ ! -e zsh/zsh-snap/zsh-snap/znap.zsh ];
 then
-	curl -L git.io/antigen > antigen.zsh
+    mkdir zsh/zsh-snap
+    git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git zsh/zsh-snap/zsh-snap
 fi
 
 

@@ -2,8 +2,8 @@
 source $(dirname $0)/host.sh
 
 # setup: zsh
-source $(dirname $0)/zsh_antigen.sh
-source $(dirname $0)/zsh.sh
+source $(dirname $0)/zsh/znap.zsh
+source $(dirname $0)/zsh/zsh.sh
 
 # setup: env
 source $(dirname $0)/exports.sh
