@@ -1,6 +1,6 @@
 
 
-path=$(pwd)
+hpath=$(pwd)
 
 
 if [ ! -e zsh/zsh-snap/zsh-snap/znap.zsh ];
@@ -11,19 +11,19 @@ fi
 
 
 # install dotfiles
-ln -s $path/.Xdefaults ~/
-ln -s $path/.zshrc ~/
-ln -s $path/.vimrc.bepo ~/
-ln -s $path/.vimrc.bepoz ~/
-ln -s $path/.nvimrc ~/.config/nvim/init.vim
-ln -s $path/kitty.conf ~/.config/kitty/
+ln -s $hpath/.Xdefaults ~/
+ln -s $hpath/.zshrc ~/
+ln -s $hpath/.vimrc.bepo ~/
+ln -s $hpath/.vimrc.bepoz ~/
+ln -s $hpath/.nvimrc ~/.config/nvim/init.vim
+ln -s $hpath/kitty.conf ~/.config/kitty/
 
 # install scripts
 mkdir -p ~/scripts
-for sc in $path/scripts/;
+for sc in $hpath/scripts/;
 do
     ln -s $sc ~/scripts/
 done
 
 # put git aliases
-cat $path.gitconfig >> ~/.gitconfig
+cat $hpath/.gitconfig >> ~/.gitconfig
