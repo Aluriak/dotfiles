@@ -9,3 +9,4 @@ else
     BAT=$(echo $NOW*100./$FULL | bc)
     echo $BAT"%"
 fi
+sleep 1.0
