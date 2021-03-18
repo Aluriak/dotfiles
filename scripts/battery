@@ -1,4 +1,11 @@
-FULL=$(cat /sys/class/power_supply/BAT0/energy_full)
-NOW=$(cat /sys/class/power_supply/BAT0/energy_now)
-BAT=$(echo $NOW*100./$FULL | bc)
-echo $BAT"%"
+#!/usr/bin/zsh
+if [[ "$HOST" = "dijkstra" ]];
+then
+    # ubuntu style
+    upower -i $(upower -e | grep 'BAT') | grep -E "state|to\ full|percentage"
+else
+    FULL=$(cat /sys/class/power_supply/BAT0/energy_full)
+    NOW=$(cat /sys/class/power_supply/BAT0/energy_now)
+    BAT=$(echo $NOW*100./$FULL | bc)
+    echo $BAT"%"
+fi
