@@ -9,7 +9,7 @@ source $(dirname $0)/zsh/zsh.sh
 source $(dirname $0)/exports.sh
 
 # setup: autojump
-source /etc/profile.d/autojump.sh
+source $(dirname $0)/autojump.sh
 
 # setup: functions and aliases
 source $(dirname $0)/functions.sh
