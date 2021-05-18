@@ -26,3 +26,24 @@ setopt nonomatch
 
 # allow prompt substitutions
 setopt prompt_subst
+
+
+# key bindings
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" overwrite-mode
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\ee[C" forward-word
+bindkey "\ee[D" backward-word
+#Ctrl-left/right
+bindkey '\e[1;5C' forward-word # ctrl right
+bindkey '\e[1;5D' backward-word # ctrl left o
+#alt-left/right
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word

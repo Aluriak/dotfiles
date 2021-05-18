@@ -1,0 +1,464 @@
+###########################################################################
+#                                preamble                                 #
+###########################################################################
+# use home as mod
+set $mod Mod4
+
+# fonts and font for window titles. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango: Source Code Pro 11
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# no border on new windows and floats
+new_window none
+new_float none
+
+# i3bar
+bar {
+    mode hide
+# status_command $HOME/.i3/conky-i3bar
+}
+
+
+
+###########################################################################
+#                           focus and layout                              #
+###########################################################################
+# change focus
+bindsym $mod+C focus left
+bindsym $mod+T focus down
+bindsym $mod+S focus up
+bindsym $mod+R focus right
+
+# move focused window
+bindsym $mod+Shift+C move left
+bindsym $mod+Shift+T move down
+bindsym $mod+Shift+S move up
+bindsym $mod+Shift+R move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+F fullscreen
+
+# change container layout (stacked, tabbed, default)
+#bindsym $mod+H layout stacking
+#bindsym $mod+F layout tabbed
+#bindsym $mod+ccedilla layout default
+bindsym $mod+l layout toggle all
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+# focus the child container
+bindcode $mod+d focus child
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+exclam move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+exclam scratchpad show
+
+# taille de bordure pour les nouvelles fenêtres
+new_window 1pixel
+
+# hide edge borders, horizontal and vertical
+hide_edge_borders both
+
+# dtags
+# bindsym $mod+w exec i3-dtags.sh
+bindsym $mod+w exec "i3-msg move workspace to output right"
+bindsym $mod+Shift+W exec i3-input -F 'rename workspace to %s' -P 'New name: '
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym C resize shrink width 100 px or 100 ppt
+        bindsym T resize grow height 100 px or 100 ppt
+        bindsym S resize shrink height 100 px or 100 ppt
+        bindsym R resize grow width 100 px or 100 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+z mode "resize"
+
+
+
+
+###########################################################################
+#                              workspaces                                 #
+###########################################################################
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# To switch back to the previously focused workspace
+workspace_auto_back_and_forth yes
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# relative workspace move
+bindsym $mod+Right workspace next
+bindsym $mod+Left  workspace prev
+
+
+
+
+###########################################################################
+#                               shortcuts                                 #
+###########################################################################
+# volume
+bindsym XF86AudioRaiseVolume exec       "amixer set Master 5%+"
+bindsym XF86AudioLowerVolume exec       "amixer set Master 5%-"
+bindsym XF86AudioMute exec              "amixer set Master toggle"
+
+# Terms
+#set $term xfce4-terminal
+set $term sakura
+bindsym $mod+Return exec $term
+bindsym $mod+space exec "$term -T 'quickterm'"
+
+# Web
+bindsym XF86HomePage exec "firefox"
+bindsym $mod+XF86HomePage exec "firefox"
+# bindsym $mod+XF86Mail exec "thunderbird"
+# bindsym XF86Mail exec "thunderbird"
+bindsym $mod+B exec "$term -T 'quickterm' -e ~/scripts/battery"
+
+# Utils
+bindsym $mod+U exec "thunar"
+bindsym $mod+? exec "leafpad"
+bindsym Print exec "scrot"
+bindsym Scroll_Lock exec "/home/lucas/scripts/switch-background.sh"
+bindsym $mod+X exec dmenu_run
+bindsym $mod+D exec "$term -T 'quickterm' -e ~/scripts/instantdate.sh"
+
+# Others
+bindsym XF86WakeUp exec "playonlinux --run SpaceEngine"
+
+# Go to latest urgent window
+bindsym $mod+g [urgent=latest] focus
+
+# edit clipboard
+# bindsym $mod+y  exec $term -x ""
+
+
+###########################################################################
+#                              window rules                               #
+###########################################################################
+# Kill focused window
+bindsym $mod+Shift+A kill
+
+# Global rules
+for_window [title="quickterm"] floating enable
+for_window [title="hiddenterm"] move scratchpad
+
+
+# numeric workspaces assignation.
+assign [title="^wk-1$"] 1
+assign [title="^wk-2$"] 2
+assign [title="^wk-3$"] 3
+assign [title="^wk-4$"] 4
+assign [title="^wk-5$"] 5
+assign [title="^wk-6$"] 6
+assign [title="^wk-7$"] 7
+assign [title="^wk-8$"] 8
+assign [title="^wk-9$"] 9
+assign [title="^wk-10$"] 10
+
+
+# For find class/title of a window: xprop
+# Workspace www (fa-firefox)
+set $wf1 
+bindsym $mod+F1 workspace $wf1
+bindsym $mod+Shift+F1 move container to workspace $wf1
+assign [class="^Navigator$"] $wf1
+assign [class="^Firefox$"] $wf1
+assign [class="^firefox$"] $wf1
+
+# Workspace mail (fa-envelope-o)
+set $wf2 
+bindsym $mod+F2 workspace $wf2
+bindsym $mod+Shift+F2 move container to workspace $wf2
+assign [class="Thunderbird"] $wf2
+
+# Workspace irc (fa-weechat)
+set $wf3 
+bindsym $mod+F3 workspace $wf3
+bindsym $mod+Shift+F3 move container to workspace $wf3
+assign [title="weechat"] $wf3
+assign [class="Pidgin"] $wf3
+
+# Workspace torrent (fa-exchange)
+set $wf4 
+bindsym $mod+F4 workspace $wf4
+bindsym $mod+Shift+F4 move container to workspace $wf4
+assign [title="^Transmission$"] $wf4
+
+# Workspace videos (fa-film)
+set $wf5 
+bindsym $mod+F5 workspace $wf5
+bindsym $mod+Shift+F5 move container to workspace $wf5
+assign [class="MPlayer"] $wf5
+assign [class="vlc"] $wf5
+assign [class="Vlc"] $wf5
+assign [class="recordmydesktop"] $wf5
+assign [class="recordMyDesktop"] $wf5
+
+# Workspace music (fa-volume-up, fa-music is better but doesn't appear: )
+set $wf6 
+bindsym $mod+F6 workspace $wf6
+bindsym $mod+Shift+F6 move container to workspace $wf6
+assign [title="music"] $wf6
+assign [class="mpv"] $wf6
+assign [title="*mpsyt*"] $wf6
+
+# Workspace draw (fa-file-image-o)
+set $wf7 
+bindsym $mod+F7 workspace $wf7
+bindsym $mod+Shift+F7 move container to workspace $wf7
+assign [class="Gimp"] $wf7
+assign [class="mypaint"] $wf7
+
+# Workspace reading (fa-book)
+set $wf8 
+bindsym $mod+F8 workspace $wf8
+bindsym $mod+Shift+F8 move container to workspace $wf8
+assign [title="calibre"] $wf8
+assign [class="writing"] $wf8
+
+# Workspace cytoscape (fa-object-ungroup)
+set $wf9 
+bindsym $mod+F9 workspace $wf9
+bindsym $mod+Shift+F9 move container to workspace $wf9
+assign [title="^[cC]ytoscape*"] $wf9
+
+# Workspace games (fa-steam)
+set $wf10 
+bindsym $mod+F10 workspace $wf10
+bindsym $mod+Shift+F10 move container to workspace $wf10
+assign [class="steam"] $wf10
+assign [class="Steam"] $wf10
+
+# apps rules
+for_window [title="floatncmpcpp"] floating enable
+for_window [title="quickterm"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class="Toplevel"] floating enable  # related to tkinter
+for_window [title="Steam - News*"] floating enable
+
+# Games in 10
+assign [title="Kerbal*"] 10
+assign [title="RimWorld"] 10
+assign [title="XCOM*"] 10
+assign [title="Civ5*"] 10
+
+  # SpaceEngine and its splash screen
+assign [title="SpaceEngine"] 10
+assign [title="Banner"] 10
+
+# screen assign
+#workspace www output HDMI-0
+#workspace irc output VGA-0
+#workspace mail output VGA-0
+
+# ncmpcpp
+#bindsym $mod+n exec "terminology -title floatncmpcpp -e ncmpcpp"
+#bindsym $mod+Control+space exec "(echo 'pause'; echo 'close') | nc 127.0.0.1 6600"
+#bindsym $mod+Control+n exec "(echo 'next'; echo 'close') | nc 127.0.0.1 6600"
+#bindsym $mod+Control+p exec "(echo 'previous'; echo 'close') | nc 127.0.0.1 6600"
+
+
+
+
+
+
+###########################################################################
+#                                   startup                               #
+###########################################################################
+exec "~/scripts/update-xterm.sh"
+exec setxkbmap fr bepoz
+# graphic
+exec redshift&  # blue light manager
+exec blueman-applet&  # bluetooth manager
+# background: never save before shutdown modifications
+# (because a directory have all files exlicited, so modify images in directory don't change feh configuration)
+exec "~/scripts/switch-background.sh"
+
+# things
+exec $term --class writing -e "/home/lucas/scripts/open-today-daylies.sh"
+exec $term -e "htop"
+assign [class="^starting_term$"] 2
+exec $term --class starting_term -d "/home/lucas/Documents/temps"
+exec firefox
+
+# services
+exec volwheel  # tray icon about sound
+exec nm-applet&  # network manager
+
+
+
+###########################################################################
+#                                  dev-proto                              #
+###########################################################################
+set $mode_startup (t)emps  (d)ev-proto
+mode "$mode_startup" {
+    bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
+    bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+    bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+ccedilla mode "$mode_startup"
+
+
+
+
+###########################################################################
+#                                   keyboard                              #
+###########################################################################
+set $mode_keyboard 1:(b)époz, 2:bép(o), 3:(a)zerty, 4:(q)werty
+mode "$mode_keyboard" {
+    bindsym b exec --no-startup-id setxkbmap fr bepoz, mode "default"
+    bindsym o exec --no-startup-id setxkbmap fr bepo, mode "default"
+    bindsym a exec --no-startup-id setxkbmap fr, mode "default"
+    bindsym q exec --no-startup-id setxkbmap us, mode "default"
+
+    # with Numbers
+    bindsym 1 exec --no-startup-id setxkbmap fr bepoz, mode "default"
+    bindsym 2 exec --no-startup-id setxkbmap fr bepo, mode "default"
+    bindsym 3 exec --no-startup-id setxkbmap fr, mode "default"
+    bindsym 4 exec --no-startup-id setxkbmap us, mode "default"
+
+    # with Fn
+    bindsym F1 exec --no-startup-id setxkbmap fr bepoz, mode "default"
+    bindsym F2 exec --no-startup-id setxkbmap fr bepo, mode "default"
+    bindsym F3 exec --no-startup-id setxkbmap fr, mode "default"
+    bindsym F4 exec --no-startup-id setxkbmap us, mode "default"
+
+    # similar key bindings
+    bindsym f exec --no-startup-id setxkbmap fr, mode "default"
+
+    # back to normal: Enter, Escape, Space
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+k mode "$mode_keyboard"
+# ensure that, qwerty or bepo, it is the same shortcut to get keyboard mode.
+bindsym $mod+m mode "$mode_keyboard"
+bindsym $mod+apostrophe mode "$mode_keyboard"
+bindsym $mod+Shift+XF86Calculator mode "$mode_keyboard"
+
+
+###########################################################################
+#                             screen management                           #
+###########################################################################
+# made specifically to dijkstra
+# screen layout mode
+set $mode_screen (t/left) L+HDMI  (s/up) L  (r/down) HDMI
+mode "$mode_screen" {
+    bindsym t exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
+    bindsym $mod+t exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
+    bindsym Left exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
+    bindsym Right exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
+
+    bindsym $mod+s exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
+    bindsym s exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
+    bindsym Up exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
+
+    bindsym $mod+r exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
+    bindsym r exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
+    bindsym Down exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
+
+    # back to normal: Enter, Escape, space
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+n mode "$mode_screen"
+
+
+
+###########################################################################
+#                             shut down / restart                         #
+###########################################################################
+# System mode setup
+set $mode_system (l)ock, (e)xit, (r)eboot, (s)hutdown
+set $locksession i3lock -d -p win -I 5
+#set $locksession i3lock -d -p win -I 5 -i ~/Images/Programmation/wallpaper/169298.png
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $locksession, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+
+    # similar key binding
+    bindsym p exec --no-startup-id $locksession, mode "default"
+
+    # back to normal: Enter, Escape, space
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+Escape mode "$mode_system"
+
+# reload the configuration file
+bindsym XF86Eject reload
+# lock session
+bindsym XF86Sleep $locksession
+# exit i3
+bindsym XF86PowerOff mode "$mode_system"
+
+
+
+bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
