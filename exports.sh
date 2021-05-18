@@ -21,3 +21,6 @@ export XDG_CONFIG_HOME=/home/lucas/.config
 
 # PATH
 export PATH="$PATH:/home/lucas/bin"
+
+# Python
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
