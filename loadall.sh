@@ -16,7 +16,7 @@ source $(dirname $0)/functions.sh
 source $(dirname $0)/aliases.sh
 
 # host dependent sources
-source $(dirname $0)/${HOST}.sh
+source $(dirname $0)/hosts/${HOST}.sh
 
 # non-public sources
 source $(dirname $0)/privates.sh
