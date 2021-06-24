@@ -10,6 +10,12 @@ function precmd() {
     bell
 }
 
+# source virtualenv when starting from virtualenv
+#  see: https://vi.stackexchange.com/a/7654
+if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
+  source "${VIRTUAL_ENV}/bin/activate"
+fi
+
 # allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
 setopt CORRECT
