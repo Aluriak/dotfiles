@@ -158,7 +158,7 @@ bindsym XF86AudioMute exec              "amixer set Master toggle"
 
 # Terms
 #set $term xfce4-terminal
-set $term sakura
+set $term kitty
 bindsym $mod+Return exec $term
 bindsym $mod+space exec "$term -T 'quickterm'"
 
