@@ -9,6 +9,9 @@ then
 elif [[ $HOST == "dijkstra" ]];
 then
     DOTCONF="ubuntu"
+elif [[ $HOST == "clodomir" ]];
+then
+    DOTCONF="arch"
 else  # munin or puceron
     DOTCONF="arch"
 fi
