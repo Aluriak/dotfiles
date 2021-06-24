@@ -1,4 +1,5 @@
+*.zwc
 Session.vim
+antigen.zsh
 privates.sh
 privates.sh.bak
-antigen.zsh
