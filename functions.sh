@@ -47,6 +47,12 @@ function clone_by_ssh() {
     clear
     ls
 }
+function clone_by_https() {
+    git clone "https://github.com/aluriak/${1}.git"
+    cd "${1}"
+    clear
+    ls
+}
 
 
 # ignore modifications of a file

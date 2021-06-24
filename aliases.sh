@@ -30,6 +30,7 @@ alias é='vim -c ":VimShell"'
 
 # Aliases git
 alias cg='clone_by_ssh'  # see functions
+alias ch='clone_by_https'  # see functions
 alias ga='git add'
 alias gap='git ap'
 alias gcl='git cl'
