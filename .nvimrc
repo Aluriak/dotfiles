@@ -218,6 +218,9 @@ set diffopt+=vertical   " diff vertically if screen is large enough
 set mouse=              " no mouse support
 set cedit=\<C-f>
 
+" setup: neovim access to python
+let g:python3_host_prog = '/usr/bin/python3'
+
 
 " setup: easy motion
 nmap <Leader>f <Plug>(easymotion-prefix)f
