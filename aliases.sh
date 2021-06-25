@@ -147,6 +147,7 @@ alias rgr='ranger-cd'
 alias vk='vimoku'
 alias weechat='weechat-curses'
 alias woman='eg'
+alias ydl='youtube-dl'
 alias yt='mpsyt'
 
 # Aliases ssh
