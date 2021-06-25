@@ -216,9 +216,9 @@ assign [title="^wk-10$"] 10
 set $wf1 
 bindsym $mod+F1 workspace $wf1
 bindsym $mod+Shift+F1 move container to workspace $wf1
-assign [class="^Navigator$"] $wf1
-assign [class="^Firefox$"] $wf1
-assign [class="^firefox$"] $wf1
+assign [class="Navigator"] $wf1
+assign [class="Firefox"] $wf1
+assign [class="firefof"] $wf1
 
 # Workspace mail (fa-envelope-o)
 set $wf2 
