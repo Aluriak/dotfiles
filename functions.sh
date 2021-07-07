@@ -1,6 +1,24 @@
 # functions repository
 
 
+# like `tree .` but coloring anything matching the given expr
+function gree() {
+    if [ $# -eq 1 ]
+    then
+        tree . | egrep "*$1*|$" --color=always | less -R
+    elif [ $# -eq 2 ]
+    then
+        tree . | egrep -v "^$2$" | egrep ".*$1.*|$" --color=always | less -R
+    elif [ $# -eq 3 ]
+    then
+        tree . | egrep "^$3$" | egrep ".*$1.*|$" --color=always | less -R
+    else
+        tree | less
+        echo "usage: $0 <pattern to colorize> <dir> <pattern to remove>"
+    fi
+}
+
+
 # create a virtualenv, source it, and populate it with requirements.txt if any.
 function creqenv() {
     crenv
@@ -15,7 +33,7 @@ function creqenv() {
 function add-bom() {
     if [ $# -eq 0 ]
     then
-            echo usage $0 files ...
+            echo usage: $0 files ...
             exit 1
     fi
 
