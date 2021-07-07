@@ -7,6 +7,9 @@ if [ ! -e zsh/zsh-snap/zsh-snap/znap.zsh ];
 then
     mkdir zsh/zsh-snap
     git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git zsh/zsh-snap/zsh-snap
+    cd zsh/zsh-snap/zsh-snap
+    source install.zsh
+    cd ../../../
 fi
 
 
