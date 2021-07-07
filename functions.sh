@@ -91,14 +91,38 @@ function expanded_watch() {
     watch zsh -c "$args"
 }
 
-# easily open a kitty terminal to perform given actions
+# easily open any terminal to perform given actions
+# run the commands, then zsh. This won't allow to set variables or aliases.
+# see open-kitty for a better working solution.
 function open-term {
     # open-term <dir> <title> <commands>
     args="${@:3} ; zsh -i"
     # we need to first save the complete command in a variable,
     #  else it won't be correctly expanded in the kitty command.
     # echo $args
-    kitty -T $2 --detach --hold -d "$1" -- zsh -i -c $args
+    if [[ -d "$1" ]]
+    then
+        kitty -T $2 --detach --hold -d "$1" -- zsh -i -c $args
+    else
+        echo "Invalid path: $1"
+    fi
+}
+
+# easily open a kitty terminal to perform given actions
+# uses the remote control feature of kitty to send commands to the remote
+function open-kitty {
+    # open-term <dir> <title> <command1> <command2> ... <commandn>
+    uid=$(shuf -i 1-99999999999 -n 1)
+    if [[ -d "$1" ]]
+    then
+        kitty -T $2 --detach -d "$1" --listen-on=unix:@mykitty-${uid}
+        for arg in ${@:2}
+        do
+            kitty @ --to=unix:@mykitty-${uid} send-text "${arg}\n"
+        done
+    else
+        echo "Invalid path: $1"
+    fi
 }
 
 
