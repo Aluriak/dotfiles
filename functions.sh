@@ -111,7 +111,7 @@ function open-term {
 # easily open a kitty terminal to perform given actions
 # uses the remote control feature of kitty to send commands to the remote
 function open-kitty {
-    # open-term <dir> <title> <command1> <command2> ... <commandn>
+    # open-kitty <dir> <title> <command1> <command2> ... <commandn>
     uid=$(shuf -i 1-99999999999 -n 1)
     if [[ -d "$1" ]]
     then
