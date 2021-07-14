@@ -18,6 +18,8 @@ new_float none
 bar {
     mode hide
 # status_command $HOME/.i3/conky-i3bar
+    # ensure trayicons are put on the primary output
+    tray_output primary
 }
 
 
@@ -78,10 +80,16 @@ new_window 1pixel
 # hide edge borders, horizontal and vertical
 hide_edge_borders both
 
-# dtags
-# bindsym $mod+w exec i3-dtags.sh
-bindsym $mod+w exec "i3-msg move workspace to output right"
-bindsym $mod+Shift+W exec i3-input -F 'rename workspace to %s' -P 'New name: '
+bindsym $mod+W exec "i3-msg move workspace to output right"
+# bindsym $mod+Shift+W exec i3-input -F 'rename workspace to %s' -P 'New name: '
+set $mode_openenv   (N)ormal  T
+mode "$mode_openenv" {
+    bindsym T exec ~/scripts/open-env-twitch.sh, mode "default"
+    bindsym N exec ~/.screenlayout/hdmi-only.sh, mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+ccedilla mode "$mode_openenv"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -157,13 +165,13 @@ bindsym XF86AudioLowerVolume exec       "amixer set Master 5%-"
 bindsym XF86AudioMute exec              "amixer set Master toggle"
 
 # Terms
-#set $term xfce4-terminal
 set $term kitty
 bindsym $mod+Return exec $term
-bindsym $mod+space exec "$term -T 'quickterm'"
+bindsym $mod+space exec "$term --title 'quickterm'"
 
 # Web
 bindsym XF86HomePage exec "firefox"
+bindsym XF86Mail exec "thunderbird"
 bindsym $mod+XF86HomePage exec "firefox"
 # bindsym $mod+XF86Mail exec "thunderbird"
 # bindsym XF86Mail exec "thunderbird"
@@ -175,7 +183,8 @@ bindsym $mod+? exec "leafpad"
 bindsym Print exec "scrot"
 bindsym Scroll_Lock exec "/home/lucas/scripts/switch-background.sh"
 bindsym $mod+X exec dmenu_run
-bindsym $mod+D exec "$term -T 'quickterm' -e ~/scripts/instantdate.sh"
+bindsym $mod+D exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
+bindsym $mod+O exec "$term --title 'quickterm' -e /usr/bin/htop"
 
 # Others
 bindsym XF86WakeUp exec "playonlinux --run SpaceEngine"
@@ -185,19 +194,7 @@ bindsym $mod+g [urgent=latest] focus
 
 # edit clipboard
 # bindsym $mod+y  exec $term -x ""
-
-
-###########################################################################
-#                              window rules                               #
-###########################################################################
-# Kill focused window
-bindsym $mod+Shift+A kill
-
-# Global rules
-for_window [title="quickterm"] floating enable
-for_window [title="hiddenterm"] move scratchpad
-
-
+#
 # numeric workspaces assignation.
 assign [title="^wk-1$"] 1
 assign [title="^wk-2$"] 2
@@ -211,14 +208,25 @@ assign [title="^wk-9$"] 9
 assign [title="^wk-10$"] 10
 
 
+###########################################################################
+#                              window rules                               #
+###########################################################################
+# Kill focused window
+bindsym $mod+Shift+A kill
+
+# Global rules
+for_window [title="quickterm"] floating enable
+for_window [title="hiddenterm"] move scratchpad
+
+
 # For find class/title of a window: xprop
 # Workspace www (fa-firefox)
 set $wf1 
 bindsym $mod+F1 workspace $wf1
 bindsym $mod+Shift+F1 move container to workspace $wf1
 assign [class="Navigator"] $wf1
+assign [class="firefox"] $wf1
 assign [class="Firefox"] $wf1
-assign [class="firefof"] $wf1
 
 # Workspace mail (fa-envelope-o)
 set $wf2 
@@ -271,11 +279,13 @@ bindsym $mod+Shift+F8 move container to workspace $wf8
 assign [title="calibre"] $wf8
 assign [class="writing"] $wf8
 
-# Workspace cytoscape (fa-object-ungroup)
-set $wf9 
+# Workspace twitch (fa-twitch)
+set $wf9 
 bindsym $mod+F9 workspace $wf9
 bindsym $mod+Shift+F9 move container to workspace $wf9
-assign [title="^[cC]ytoscape*"] $wf9
+workspace $wf9 output DVI-I-0
+assign [title="twitch"] $wf9
+assign [class="obs"] $wf9
 
 # Workspace games (fa-steam)
 set $wf10 
@@ -320,43 +330,25 @@ assign [title="Banner"] 10
 ###########################################################################
 #                                   startup                               #
 ###########################################################################
-exec "~/scripts/update-xterm.sh"
-exec setxkbmap fr bepoz
 # graphic
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
+exec ~/.screenlayout/hdmi-only.sh
+
 # background: never save before shutdown modifications
 # (because a directory have all files exlicited, so modify images in directory don't change feh configuration)
 exec "~/scripts/switch-background.sh"
 
 # things
-exec $term --class writing -e "/home/lucas/scripts/open-today-daylies.sh"
+exec $term --class writing -x "/usr/bin/nvim -S ~/.session.vim"
 exec $term -e "htop"
 assign [class="^starting_term$"] 2
-exec $term --class starting_term -d "/home/lucas/Documents/temps"
+exec "$term  --class starting_term --title 'quickterm'"
 exec firefox
 
 # services
 exec volwheel  # tray icon about sound
 exec nm-applet&  # network manager
-
-
-
-###########################################################################
-#                                  dev-proto                              #
-###########################################################################
-set $mode_startup (t)emps  (d)ev-proto
-mode "$mode_startup" {
-    bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
-    bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
-    bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym Space  mode "default"
-}
-bindsym $mod+ccedilla mode "$mode_startup"
-
 
 
 
@@ -396,33 +388,6 @@ bindsym $mod+m mode "$mode_keyboard"
 bindsym $mod+apostrophe mode "$mode_keyboard"
 bindsym $mod+Shift+XF86Calculator mode "$mode_keyboard"
 
-
-###########################################################################
-#                             screen management                           #
-###########################################################################
-# made specifically to dijkstra
-# screen layout mode
-set $mode_screen (t/left) L+HDMI  (s/up) L  (r/down) HDMI
-mode "$mode_screen" {
-    bindsym t exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
-    bindsym $mod+t exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
-    bindsym Left exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
-    bindsym Right exec --no-startup-id ~/.screenlayout/both.sh, mode "default"
-
-    bindsym $mod+s exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
-    bindsym s exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
-    bindsym Up exec --no-startup-id ~/.screenlayout/laptop-only.sh, mode "default"
-
-    bindsym $mod+r exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
-    bindsym r exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
-    bindsym Down exec --no-startup-id ~/.screenlayout/hdmi-only.sh, mode "default"
-
-    # back to normal: Enter, Escape, space
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym Space  mode "default"
-}
-bindsym $mod+n mode "$mode_screen"
 
 
 
