@@ -116,7 +116,8 @@ function open-kitty {
     if [[ -d "$1" ]]
     then
         kitty -T $2 --detach -d "$1" --listen-on=unix:@mykitty-${uid}
-        for arg in ${@:2}
+        sleep 1  # wait for kitty to be there before sending the commands
+        for arg in ${@:3}
         do
             kitty @ --to=unix:@mykitty-${uid} send-text "${arg}\n"
         done
