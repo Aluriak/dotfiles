@@ -325,25 +325,23 @@ exec setxkbmap fr bepoz
 # graphic
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
-# background: never save before shutdown modifications
-# (because a directory have all files exlicited, so modify images in directory don't change feh configuration)
-exec "~/scripts/switch-background.sh"
+exec ~/scripts/switch-background.sh
 
 # things
-exec $term --class writing -e "/home/lucas/scripts/open-today-daylies.sh"
+exec /home/lucas/scripts/open-env-proto.sh
 exec $term -e "htop"
 assign [class="^starting_term$"] 2
 exec $term --class starting_term -d "/home/lucas/Documents/temps"
 exec firefox
 
 # services
-exec volwheel  # tray icon about sound
+exec volumeicon&  # tray icon about sound
 exec nm-applet&  # network manager
 
 
 
 ###########################################################################
-#                                  dev-proto                              #
+#                                 open-env                                #
 ###########################################################################
 set $mode_startup (t)emps  (d)ev-proto
 mode "$mode_startup" {
