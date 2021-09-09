@@ -12,6 +12,7 @@
 
     ci = commit
     cif = commit --fixup
+    cifp = commit --fixup HEAD
     cim = commit -m
     cam = commit -Am
     cia = commit --amend
