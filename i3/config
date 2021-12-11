@@ -85,7 +85,7 @@ bindsym $mod+W exec "i3-msg move workspace to output right"
 set $mode_openenv   (N)ormal  T
 mode "$mode_openenv" {
     bindsym T exec ~/scripts/open-env-twitch.sh, mode "default"
-    bindsym N exec ~/.screenlayout/hdmi-only.sh, mode "default"
+    bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -173,15 +173,17 @@ bindsym $mod+space exec "$term --title 'quickterm'"
 bindsym XF86HomePage exec "firefox"
 bindsym XF86Mail exec "thunderbird"
 bindsym $mod+XF86HomePage exec "firefox"
-# bindsym $mod+XF86Mail exec "thunderbird"
-# bindsym XF86Mail exec "thunderbird"
-bindsym $mod+B exec "$term -T 'quickterm' -e ~/scripts/battery"
+bindsym $mod+XF86Mail exec "thunderbird"
+# bindsym $mod+B exec "transmission-gtk"
+# bindsym $mod+J exec "$term --title 'weechat' -e weechat-curses"
 
 # Utils
 bindsym $mod+U exec "thunar"
+bindsym XF86Calculator exec "$term --title 'quickterm' -e bc"
 bindsym $mod+? exec "leafpad"
 bindsym Print exec "scrot"
-bindsym Scroll_Lock exec "/home/lucas/scripts/switch-background.sh"
+bindsym Scroll_Lock exec ~/scripts/switch_wallpaper.sh  # «defil» key
+bindsym $mod+Scroll_Lock exec eval $(cat ~/.fehbg_unchanged_todel)  # «defil» key
 bindsym $mod+X exec dmenu_run
 bindsym $mod+D exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
 bindsym $mod+O exec "$term --title 'quickterm' -e /usr/bin/htop"
@@ -220,7 +222,7 @@ for_window [title="hiddenterm"] move scratchpad
 
 
 # For find class/title of a window: xprop
-# Workspace www (fa-firefox)
+# Workspace www (fa-browser-firefox)
 set $wf1 
 bindsym $mod+F1 workspace $wf1
 bindsym $mod+Shift+F1 move container to workspace $wf1
@@ -333,21 +335,18 @@ assign [title="Banner"] 10
 # graphic
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
-exec ~/.screenlayout/hdmi-only.sh
-
-# background: never save before shutdown modifications
-# (because a directory have all files exlicited, so modify images in directory don't change feh configuration)
-exec "~/scripts/switch-background.sh"
+exec ~/.screenlayout/both-hdmi-dvi.sh&
+exec ~/scripts/switch_wallpaper.sh&
 
 # things
 exec $term --class writing -x "/usr/bin/nvim -S ~/.session.vim"
 exec $term -e "htop"
 assign [class="^starting_term$"] 2
 exec "$term  --class starting_term --title 'quickterm'"
-exec firefox
+exec firefox&
 
 # services
-exec volwheel  # tray icon about sound
+exec volwheel&  # tray icon about sound
 exec nm-applet&  # network manager
 
 
