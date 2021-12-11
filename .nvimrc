@@ -290,6 +290,8 @@ let g:solarized_italic    =1
 " high or low or normal values
 let g:solarized_contrast  ="high"
 let g:solarized_visibility="normal"
+" set background again (needed since nvim last update)
+set background=dark
 
 
 " setup: ctrlp
