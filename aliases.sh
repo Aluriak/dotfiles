@@ -168,7 +168,7 @@ alias vu='nvim -c PlugUpgrade -c PlugUpdate -c qa'
 alias vv='nvim -u ~/.vimrc.simple'
 
 # Aliases virtualenv
-alias crenv='virtualenv venv -p /usr/bin/python3'
+alias crenv='crenv_func'  # see functions.sh
 alias srenv='source venv/bin/activate'
 alias psrenv='source ../venv/bin/activate'
 

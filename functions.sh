@@ -20,13 +20,11 @@ function gree() {
 
 
 # create a virtualenv, source it, and populate it with requirements.txt if any.
-function creqenv() {
-    crenv
+function crenv_func() {
+    virtualenv venv -p /usr/bin/python3
     srenv
-    if [[ -e requirements.txt ]]
-    then
-        pip install -r requirements.txt
-    fi
+    test -f requirements.txt && pip install -r requirements.txt
+    test -f setup.cfg && python -c "import configparser; c = configparser.ConfigParser(); c.read('setup.cfg'); print(c['options'].get('install_requires', ''), c['options'].get('setup_requires', ''))" | xargs pip install -U
 }
 
 # add utf8 BOM to given files
