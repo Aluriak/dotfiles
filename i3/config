@@ -346,8 +346,26 @@ exec "$term  --class starting_term --title 'quickterm'"
 exec firefox&
 
 # services
-exec volwheel&  # tray icon about sound
+exec volumeicon&  # tray icon about sound
 exec nm-applet&  # network manager
+
+
+
+###########################################################################
+#                                 open-env                                #
+###########################################################################
+set $mode_startup (t)emps  (d)ev-proto
+mode "$mode_startup" {
+    bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
+    bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+    bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+ccedilla mode "$mode_startup"
+
 
 
 
