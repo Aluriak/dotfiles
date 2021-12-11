@@ -27,6 +27,7 @@ class FileState(Enum):
     hidden = 'hidden'
     file = 'file'
     dir = 'dir'
+    other = 'other'
 
     @staticmethod
     def of(filename:str):
@@ -36,7 +37,8 @@ class FileState(Enum):
             return FileState.file
         if os.path.isdir(filename):
             return FileState.dir
-        raise ValueError('Filename {} is not a file nor a dir.'.format(filename))
+        return FileState.other
+        # raise ValueError('Filename {} is not a file nor a dir.'.format(filename))
 
 
 class DirState(Enum):
