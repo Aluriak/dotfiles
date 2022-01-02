@@ -82,14 +82,6 @@ hide_edge_borders both
 
 bindsym $mod+W exec "i3-msg move workspace to output right"
 # bindsym $mod+Shift+W exec i3-input -F 'rename workspace to %s' -P 'New name: '
-set $mode_openenv   (N)ormal  T
-mode "$mode_openenv" {
-    bindsym T exec ~/scripts/open-env-twitch.sh, mode "default"
-    bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+ccedilla mode "$mode_openenv"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -354,11 +346,13 @@ exec nm-applet&  # network manager
 ###########################################################################
 #                                 open-env                                #
 ###########################################################################
-set $mode_startup (t)emps  (d)ev-proto
+set $mode_startup (t)emps  (d)ev-proto (N)ormal  W
 mode "$mode_startup" {
     bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
     bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
     bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+    bindsym W exec ~/scripts/open-env-twitch.sh, mode "default"
+    bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
