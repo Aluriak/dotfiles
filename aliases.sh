@@ -135,7 +135,6 @@ alias lk='~/scripts/push_link/push_link.sh'
 alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
-alias mt='make t'  # recipe name for tests
 alias ntop='nethogs'
 alias nv='nvim'
 alias p2='python2'
@@ -179,6 +178,7 @@ alias ini='xclip -sel clip < '
 
 # Aliases make
 alias mn='make --dry-run'
+alias mt='make t'  # recipe name for tests
 
 # fix kitty over ssh problem
 #  see https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
