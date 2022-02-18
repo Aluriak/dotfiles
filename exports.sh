@@ -24,3 +24,13 @@ export PATH="$PATH:/home/lucas/bin"
 
 # Python
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+
+
+# KITTY
+# fix kitty over ssh problem by using xterm conf.
+#  see https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
+#      this solution isn't working well engouh, so:
+# ALT solution : just use xterm conf. It just works.
+#   see https://github.com/kovidgoyal/kitty/issues/713
+export TERM=xterm
