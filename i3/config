@@ -331,10 +331,10 @@ exec ~/.screenlayout/both-hdmi-dvi.sh&
 exec ~/scripts/switch_wallpaper.sh&
 
 # things
-exec $term --class writing -x "/usr/bin/nvim -S ~/.session.vim"
-exec $term -e "htop"
+exec $term --class writing -x "/usr/bin/nvim -S ~/.session.vim"&
+exec $term -e "htop"&
 assign [class="^starting_term$"] 2
-exec "$term  --class starting_term --title 'quickterm'"
+exec "$term  --class starting_term --title 'quickterm'"&
 exec firefox&
 
 # services
