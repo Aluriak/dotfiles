@@ -2,8 +2,10 @@
     a  = add
     ad = add
     ap = add -p
-    pa = add --patch
+    pa = reset -p
     ai = add -i
+
+    rp = reset -p
 
     b = branch
     br = branch
