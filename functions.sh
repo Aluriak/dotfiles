@@ -302,6 +302,7 @@ function open() {
     openers[lzma]=$VIEWTAR
     openers[tgz]=$VIEWTAR
     openers[zip]="unzip -l"
+    openers[7z]="7z l"
     # images
     IMAGE_VIEWER="feh"
     openers[png]=$IMAGE_VIEWER
@@ -325,6 +326,7 @@ function open() {
     alt_openers[lzma]=$UNTAR
     alt_openers[tgz]=$UNTAR
     alt_openers[zip]="unzip"
+    alt_openers[7z]="7z x"
 
     # In all other cases, use the default openers
     DEFAULT_OPENER="nvim"
