@@ -221,6 +221,7 @@ bindsym $mod+Shift+F1 move container to workspace $wf1
 assign [class="Navigator"] $wf1
 assign [class="firefox"] $wf1
 assign [class="Firefox"] $wf1
+assign [class="*Firefox*"] $wf1
 
 # Workspace mail (fa-envelope-o)
 set $wf2 
@@ -334,7 +335,7 @@ exec ~/scripts/switch_wallpaper.sh&
 exec $term --class writing -x "/usr/bin/nvim -S ~/.session.vim"&
 exec $term -e "htop"&
 assign [class="^starting_term$"] 2
-exec "$term  --class starting_term --title 'quickterm'"&
+exec "$term  --class starting_term --title 'quickterm'&"
 exec firefox&
 
 # services
