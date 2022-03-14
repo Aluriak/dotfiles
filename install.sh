@@ -29,7 +29,11 @@ do
     ln -fs $sc ~/scripts/
 done
 
-# put git aliases
-cat $hpath/.gitconfig >> ~/.gitconfig
+# put git aliases if not already present
+home=~/.gitconfig
+if [ -z $(grep "\[alias\]" "$home") ];
+then
+    cat $hpath/.gitconfig >> ~/.gitconfig
+fi
 
 echo "done!"
