@@ -176,6 +176,9 @@ alias imi='cat /dev/null | vipe | xclip -sel clip'
 alias imo='xclip -o'
 alias ini='xclip -sel clip < '
 
+# Aliases cal
+alias cal='cal --three'
+
 # Aliases make
 alias mn='make --dry-run'
 alias mt='make t'  # recipe name for tests
