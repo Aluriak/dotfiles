@@ -31,24 +31,13 @@ do
     ln -fs $sc ~/scripts/
 done
 
-# put git aliases if not already present
-touch $home
-if [ -z $(grep "\[alias\]" "~/.gitconfig") ];
-then
-    cat $hpath/.gitconfig >> ~/.gitconfig
-fi
+# detect system
+source $hpath/host.sh
+
+# various setups
+source setups/packages.sh
+source setups/bepoz.sh
+source setups/vim.sh
+source setups/git.sh
 
 echo "done!"
-
-# install of needed packages.
-if [[ $DOTCONF == "arch" ]];
-then
-    sudo pacman -Syu --noconfirm --needed vim zsh thunderbird firefox inkscape gimp steam-manjaro base-devel git kitty python-pip python-virtualenv cmake
-fi
-
-# installation of vim-plug
-#  see https://github.com/junegunn/vim-plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# installation of all plugins  (needs base-devel and cmake, so must be done after packages installation)
-vu
-

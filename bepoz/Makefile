@@ -1,4 +1,8 @@
 
+default:
+	./add-bepoz-if-needed.sh
+
+
 i: is_bepoz_installed
 is_bepoz_installed:
 	cat /usr/share/X11/xkb/symbols/fr | grep bepoz

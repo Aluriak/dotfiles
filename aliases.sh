@@ -10,6 +10,7 @@ alias h='htop'
 alias i='xclip -sel clip'
 alias j='extend_autojump'  # see functions.sh
 alias k='lsblk'
+alias kf='lsblk -f'
 alias l='verbosels -CF --color'  # see functions.sh
 alias m='make'
 alias n='notify-after '  # see functions.sh
