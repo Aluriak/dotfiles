@@ -1,9 +1,9 @@
 # Aliases uniletter
-alias a='vim'
+alias a="${EDITOR}"
 alias b='bell'  # see functions.sh
 alias c='extend_autojump_subdir'  # see functions.sh
 alias d='date'
-alias e='vim'
+alias e="${EDITOR}"
 alias f='exiftool'
 alias g='git'
 alias h='htop'
@@ -20,13 +20,13 @@ alias r='ranger-cd'  # see functions.sh
 alias s='git status'
 alias t='edit_clipboard'  # see functions.sh
 alias u='xclip -o'
-alias v='nvim'
+alias v="${EDITOR}"
 alias w='expanded_watch '  # see functions.sh + trailing space to allows aliases
 alias x='pdflatex'
-alias y='vim'
-alias z='vim'
+alias y="${EDITOR}"
+alias z="${EDITOR}"
 alias ç='source ~/.zshrc'
-alias é='vim -c ":VimShell"'
+alias é="${EDITOR} -c ":VimShell""
 
 # Aliases git
 alias cg='clone_by_ssh'  # see functions
@@ -136,14 +136,14 @@ alias meh='feh'
 alias mpl='mplayer'
 alias mps='mpsyt'
 alias ntop='nethogs'
-alias nv='nvim'
+alias nv="${EDITOR}"
 alias p2='python2'
 alias p3='python3'
 alias prr='pip install -r requirements.txt'
 alias rd='ranger-cd'  # see functions.sh
 alias rg='ranger-cd'
 alias rgr='ranger-cd'
-alias vk='vimoku'
+alias vk="vimoku"
 alias weechat='weechat-curses'
 alias woman='eg'
 alias ydl='youtube-dl'
@@ -155,16 +155,16 @@ alias sshad='sshag'
 alias ssha='sshag'
 
 # Aliases vim
-alias vd='nvim -d'
-alias vi='nvim'
-alias vo='nvim -O'
-alias vp='nvim -p'
-alias vs='nvim -S Session.vim'
-alias vims='nvim -S'
-alias Vim='nvim -O'
+alias vd="${EDITOR} -d"
+alias vi="${EDITOR}"
+alias vo="${EDITOR} -O"
+alias vp="${EDITOR} -p"
+alias vs="${EDITOR} -S Session.vim"
+alias vims="${EDITOR} -S "
+alias Vim="${EDITOR} -O"
 alias V='Vim'
-alias vu='nvim -c PlugUpgrade -c PlugUpdate -c qa'
-alias vv='nvim -u ~/.vimrc.simple'
+alias vu="${EDITOR} -c PlugUpgrade -c PlugUpdate -c qa"
+alias vv="${EDITOR} -u ~/.vimrc.simple"
 
 # Aliases virtualenv
 alias crenv='crenv_func'  # see functions.sh
