@@ -2,5 +2,25 @@
 if [[ $DOTCONF == "arch" ]];
 then
     echo "installing system package with pacman…"
-    sudo pacman -Syu --noconfirm --needed vim zsh thunderbird firefox inkscape gimp base-devel git kitty python-pip python-virtualenv cmake thunar scrot
+    sudo pacman -Syu --noconfirm --needed \
+        base-devel \
+        blueman \
+        cmake \
+        chromium \
+        evince \
+        firefox \
+        gimp \
+        git \
+        gparted \
+        inkscape \
+        kitty \
+        pip \
+        python \
+        python \
+        scrot \
+        thunar \
+        thunderbird \
+        vim \
+        virtualenv \
+        zsh
 fi
