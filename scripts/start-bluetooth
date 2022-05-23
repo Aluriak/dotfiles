@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bluetoothctl power on
+bluetoothctl connect E4:22:A5:30:67:BF
+blueman-manager
