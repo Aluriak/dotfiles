@@ -16,6 +16,7 @@ new_float none
 
 # i3bar
 bar {
+    status_command ~/scripts/keyboard.sh i3status
     mode hide
 # status_command $HOME/.i3/conky-i3bar
     # ensure trayicons are put on the primary output
@@ -75,7 +76,7 @@ bindsym $mod+Shift+exclam move scratchpad
 bindsym $mod+exclam scratchpad show
 
 # taille de bordure pour les nouvelles fenêtres
-new_window 1pixel
+#new_window 1pixel
 
 # hide edge borders, horizontal and vertical
 hide_edge_borders both
@@ -155,6 +156,8 @@ bindsym $mod+Left  workspace prev
 bindsym XF86AudioRaiseVolume exec       "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec       "amixer set Master 5%-"
 bindsym XF86AudioMute exec              "amixer set Master toggle"
+bindsym XF86AudioPause nop
+bindsym XF86AudioPlay nop
 
 # Terms
 set $term kitty
@@ -172,10 +175,12 @@ bindsym $mod+XF86Mail exec "thunderbird"
 # Utils
 bindsym $mod+U exec "thunar"
 bindsym XF86Calculator exec "$term --title 'quickterm' -e bc"
-bindsym $mod+? exec "leafpad"
 bindsym Print exec "scrot"
 bindsym Scroll_Lock exec ~/scripts/switch_wallpaper.sh  # «defil» key
 bindsym $mod+Scroll_Lock exec eval $(cat ~/.fehbg_unchanged_todel)  # «defil» key
+# bluetooth
+bindsym $mod+shift+question exec "~/scripts/start-bluetooth"
+
 bindsym $mod+X exec dmenu_run
 bindsym $mod+D exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
 bindsym $mod+O exec "$term --title 'quickterm' -e /usr/bin/htop"
@@ -200,6 +205,10 @@ assign [title="^wk-7$"] 7
 assign [title="^wk-8$"] 8
 assign [title="^wk-9$"] 9
 assign [title="^wk-10$"] 10
+
+# bluetooth manager on second screen
+assign [title="Bluetooth"] output DVI-I-0
+
 
 
 ###########################################################################
@@ -325,6 +334,10 @@ assign [title="Banner"] 10
 ###########################################################################
 #                                   startup                               #
 ###########################################################################
+
+# keyboard layout
+exec ~/scripts/keyboard.sh setup&
+
 # graphic
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
@@ -369,36 +382,39 @@ bindsym $mod+ccedilla mode "$mode_startup"
 ###########################################################################
 set $mode_keyboard 1:(b)époz, 2:bép(o), 3:(a)zerty, 4:(q)werty
 mode "$mode_keyboard" {
-    bindsym b exec --no-startup-id setxkbmap fr bepoz, mode "default"
-    bindsym o exec --no-startup-id setxkbmap fr bepo, mode "default"
-    bindsym a exec --no-startup-id setxkbmap fr, mode "default"
-    bindsym q exec --no-startup-id setxkbmap us, mode "default"
+
+    bindsym b exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
+    bindsym o exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
+    bindsym a exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
+    bindsym q exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
 
     # with Numbers
-    bindsym 1 exec --no-startup-id setxkbmap fr bepoz, mode "default"
-    bindsym 2 exec --no-startup-id setxkbmap fr bepo, mode "default"
-    bindsym 3 exec --no-startup-id setxkbmap fr, mode "default"
-    bindsym 4 exec --no-startup-id setxkbmap us, mode "default"
+    bindsym 1 exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
+    bindsym 2 exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
+    bindsym 3 exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
+    bindsym 4 exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
 
     # with Fn
-    bindsym F1 exec --no-startup-id setxkbmap fr bepoz, mode "default"
-    bindsym F2 exec --no-startup-id setxkbmap fr bepo, mode "default"
-    bindsym F3 exec --no-startup-id setxkbmap fr, mode "default"
-    bindsym F4 exec --no-startup-id setxkbmap us, mode "default"
+    bindsym F1 exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
+    bindsym F2 exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
+    bindsym F3 exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
+    bindsym F4 exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
 
     # similar key bindings
-    bindsym f exec --no-startup-id setxkbmap fr, mode "default"
+    bindsym f exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
 
     # back to normal: Enter, Escape, Space
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Space  mode "default"
 }
-bindsym $mod+k mode "$mode_keyboard"
+bindcode $mod+56 exec "~/scripts/keyboard.sh show", mode "$mode_keyboard"
 # ensure that, qwerty or bepo, it is the same shortcut to get keyboard mode.
-bindsym $mod+m mode "$mode_keyboard"
-bindsym $mod+apostrophe mode "$mode_keyboard"
-bindsym $mod+Shift+XF86Calculator mode "$mode_keyboard"
+bindsym $mod+m exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
+bindsym $mod+apostrophe exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
+bindsym $mod+Shift+XF86Calculator exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
+# press left and right shift together
+bindcode shift+62 exec "~/scripts/keyboard.sh switch"
 
 
 
