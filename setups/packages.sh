@@ -5,15 +5,19 @@ then
     sudo pacman -Syu --noconfirm --needed \
         base-devel \
         blueman \
-        cmake \
         chromium \
+        cmake \
         evince \
+        feh \
         firefox \
         gimp \
         git \
         gparted \
         inkscape \
         kitty \
+        manjaro-bluetooth \
+        moreutils \
+        mplayer \
         pip \
         python \
         python \
@@ -22,5 +26,7 @@ then
         thunderbird \
         vim \
         virtualenv \
+        vlc \
+        wine \
         zsh
 fi
