@@ -310,6 +310,7 @@ assign [title="Kerbal*"] 10
 assign [title="RimWorld"] 10
 assign [title="XCOM*"] 10
 assign [title="Civ5*"] 10
+assign [title="^Star*Wars*"] 10
 
   # SpaceEngine and its splash screen
 assign [title="SpaceEngine"] 10
