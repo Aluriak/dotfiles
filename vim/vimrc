@@ -3,13 +3,13 @@ call plug#begin('~/.vim/plugged')
 
 " Languages forge
         " prolog support
-                Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
+                " Plug 'mndrix/prolog.vim', { 'for': 'prolog' }
         " Ada support  " Raise deprecated error
                 " Plug 'ada.vim', { 'for': 'ada' }
         " ASP support
                 Plug 'aluriak/asp.vim'
         " Haskell syntax support
-                Plug 'vim-scripts/haskell.vim'
+                " Plug 'vim-scripts/haskell.vim'
         " python
                 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
                 Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
@@ -19,14 +19,14 @@ call plug#begin('~/.vim/plugged')
         " latex
                 Plug 'lervag/vimtex', { 'for': 'tex' }
         " sparql, rdf
-                Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
+                " Plug 'rvesse/vim-sparql', { 'for': 'sparql' }
                 " Use the second when the PR will be merged: https://github.com/niklasl/vim-rdf/pull/3
-                Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
+                " Plug 'aluriak/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
                 "Plug 'niklasl/vim-rdf', { 'for': ['turtle', 'n3', 'trig', 'jsonld'] }
         " JSON
                 Plug 'elzr/vim-json', { 'for': 'json' }
         " OpenCL
-                Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
+                " Plug 'petRUShka/vim-opencl', { 'for': 'opencl' }
         " Markdown
                 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown', { 'for': ['mkd', 'md'] }
 
@@ -47,8 +47,8 @@ call plug#begin('~/.vim/plugged')
                 Plug 'michaeljsmith/vim-indent-object'
         " git support: commit in vim + gitconfig indent and syntax + commit browser
                 Plug 'tpope/vim-fugitive' | Plug 'junegunn/gv.vim' | Plug 'tpope/vim-git'
-                Plug 'airblade/vim-gitgutter'
-                Plug 'int3/vim-extradite'
+                " Plug 'airblade/vim-gitgutter'
+                " Plug 'int3/vim-extradite'
         " save and reuse named macros
                 Plug 'chamindra/marvim'
         " multiple cursor edition
@@ -107,7 +107,7 @@ call plug#begin('~/.vim/plugged')
         " EPUB edition
                 "Plug 'etnadji/vim-epub'
         " random tip for learn new things about vim
-                Plug 'mhinz/vim-randomtag'
+                " Plug 'mhinz/vim-randomtag'
         " arduino support - compile wihtout needing to open the arduino IDE
                 "Plug 'tclem/vim-arduino'
         " csv file commands and visual helps
@@ -145,10 +145,10 @@ call plug#end()
 
 
 " setup: bépo transcription
-if !empty(system("setxkbmap -print | grep bepoz"))
+if system("xkblayout-state print '%v'") == "bepoz"
     source ~/.vimrc.bepoz
     let g:keymap = "bepoz"
-elseif !empty(system("setxkbmap -print | grep bepo"))
+elseif system("xkblayout-state print '%v'") == "bepo"
     source ~/.vimrc.bepo
     let g:keymap = "bepo"
 else
