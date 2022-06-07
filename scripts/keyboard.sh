@@ -68,13 +68,13 @@ else  # xkblayout-state is available
     }
     k_switch () {
         xkblayout-state set +1
-        ~/scripts/keyboard-show.sh
+        ~/scripts/keyboard.sh show
     }
     k_set() {
         set_keyboard () {
-            ./keyboard-setup.sh
+            ./keyboard.sh setup
             xkblayout-state set $1
-            ./keyboard-show.sh
+            ./keyboard.sh show
         }
         if [[ $1 == "bepoz" ]];
         then
