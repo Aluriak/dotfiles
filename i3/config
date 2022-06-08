@@ -384,25 +384,25 @@ bindsym $mod+ccedilla mode "$mode_startup"
 set $mode_keyboard 1:(b)époz, 2:bép(o), 3:(a)zerty, 4:(q)werty
 mode "$mode_keyboard" {
 
-    bindsym b exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
-    bindsym o exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
-    bindsym a exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
-    bindsym q exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
+    bindsym b exec --no-startup-id "~/scripts/keyboard.sh set bepoz", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym o exec --no-startup-id "~/scripts/keyboard.sh set bepo", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym a exec --no-startup-id "~/scripts/keyboard.sh set fr", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym q exec --no-startup-id "~/scripts/keyboard.sh set us", exec "~/scripts/keyboard.sh show", mode "default"
 
     # with Numbers
-    bindsym 1 exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
-    bindsym 2 exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
-    bindsym 3 exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
-    bindsym 4 exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
+    bindsym 1 exec --no-startup-id "~/scripts/keyboard.sh set bepoz", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym 2 exec --no-startup-id "~/scripts/keyboard.sh set bepo", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym 3 exec --no-startup-id "~/scripts/keyboard.sh set fr", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym 4 exec --no-startup-id "~/scripts/keyboard.sh set us", exec "~/scripts/keyboard.sh show", mode "default"
 
     # with Fn
-    bindsym F1 exec --no-startup-id ~/scripts/keyboard.sh set bepoz, mode "default"
-    bindsym F2 exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
-    bindsym F3 exec --no-startup-id ~/scripts/keyboard.sh set fr, mode "default"
-    bindsym F4 exec --no-startup-id ~/scripts/keyboard.sh set us, mode "default"
+    bindsym F1 exec --no-startup-id "~/scripts/keyboard.sh set bepoz", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym F2 exec --no-startup-id "~/scripts/keyboard.sh set bepo", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym F3 exec --no-startup-id "~/scripts/keyboard.sh set fr", exec "~/scripts/keyboard.sh show", mode "default"
+    bindsym F4 exec --no-startup-id "~/scripts/keyboard.sh set us", exec "~/scripts/keyboard.sh show", mode "default"
 
     # similar key bindings
-    bindsym f exec --no-startup-id ~/scripts/keyboard.sh set bepo, mode "default"
+    bindsym f exec --no-startup-id "~/scripts/keyboard.sh set bepo", exec "~/scripts/keyboard.sh show", mode "default"
 
     # back to normal: Enter, Escape, Space
     bindsym Return mode "default"
@@ -411,9 +411,9 @@ mode "$mode_keyboard" {
 }
 bindcode $mod+56 exec "~/scripts/keyboard.sh show", mode "$mode_keyboard"
 # ensure that, qwerty or bepo, it is the same shortcut to get keyboard mode.
-bindsym $mod+m exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
-bindsym $mod+apostrophe exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
-bindsym $mod+Shift+XF86Calculator exec ~/scripts/keyboard.sh show, mode "$mode_keyboard"
+bindsym $mod+m exec "~/scripts/keyboard.sh show", mode "$mode_keyboard"
+bindsym $mod+apostrophe exec "~/scripts/keyboard.sh show", mode "$mode_keyboard"
+bindsym $mod+Shift+XF86Calculator exec "~/scripts/keyboard.sh show", mode "$mode_keyboard"
 # press left and right shift together
 bindcode shift+62 exec "~/scripts/keyboard.sh switch"
 
