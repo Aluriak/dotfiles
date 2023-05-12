@@ -14,13 +14,8 @@ print:
 
 import os
 import sys
-import subprocess
 from enum import Enum
 from collections import namedtuple
-
-
-# used if python < 3.5
-DirEntry = namedtuple('DirEntry', 'is_file, is_dir, path, name')
 
 
 class FileState(Enum):
@@ -58,7 +53,7 @@ class DirState(Enum):
         have_hidden = False
         for entry in walk(dirname):
             state = FileState.of(entry)
-            if state in (FileState.file, FileState.dir):
+            if state in (FileState.file, FileState.dir, FileState.other):
                 return DirState.populated
             if state == FileState.hidden:
                 have_hidden = True

@@ -101,6 +101,7 @@ alias na='notify-after '
 alias os='open -s'
 alias opens='open -s'
 alias uuid='ls -l /dev/disk/by-uuid'
+alias se='~/scripts/set-env-current.py'
 
 # Aliases moves
 alias 'dp'='pwd | xclip'

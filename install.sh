@@ -25,11 +25,7 @@ ln -fs $hpath/kitty.conf ~/.config/kitty/
 ln -fs $hpath/i3/config ~/.i3/
 
 # install scripts
-mkdir -p ~/scripts
-for sc in $hpath/scripts/*;
-do
-    ln -fs $sc ~/scripts/
-done
+./install-scripts.sh
 
 # detect system
 source $hpath/host.sh

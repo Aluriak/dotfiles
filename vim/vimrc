@@ -163,6 +163,9 @@ let mapleader = "\<space>"
 cabbrev actual source ~/.vimrc
 cabbrev tq tabclose
 
+" setup: tabs (-p option)
+set tabpagemax=100
+
 " setup: conceal (no conceal at all, especially in latex)
 set conceallevel=0
 set concealcursor=""

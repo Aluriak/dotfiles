@@ -486,6 +486,21 @@ function rename-pics() {
 }
 
 
+function wr () {
+    # write with keyboard inputs the given parameters
+    sleep 2
+    # first way: iter over parameters (by omitting the *in* clause of for loop), run for each one
+    # inconvenient: does not put a space between the different parameters
+    # for arg; do
+        # xdotool type "$arg"
+    # done
+    # second way: make all parameter as a single value
+    # inconvenient: put a space between parameters
+    allargs=("$@")
+    xdotool type "$allargs"
+}
+
+
 # get given files in clipboard, then edit it
 function cpc() {
     cat $@ | xclip -sel clip
