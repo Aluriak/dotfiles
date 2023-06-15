@@ -103,8 +103,8 @@ then
 elif [[ $1 == "setup" ]];
 then
     # use bepo if bepoz is not installed
-    setxkbmap fr bepo
-    setxkbmap fr bepoz
+    k_set bepo
+    k_set bepoz
 
 
 elif [[ $1 == "switch" ]];

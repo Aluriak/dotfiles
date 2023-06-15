@@ -224,35 +224,40 @@ for_window [title="hiddenterm"] move scratchpad
 
 # For find class/title of a window: xprop
 # Workspace www (fa-browser-firefox)
-set $wf1 
+set $wf1 ""
 bindsym $mod+F1 workspace $wf1
 bindsym $mod+Shift+F1 move container to workspace $wf1
 assign [class="Navigator"] $wf1
 assign [class="firefox"] $wf1
 assign [class="Firefox"] $wf1
 assign [class="*Firefox*"] $wf1
+assign [title="*Firefox*"] $wf1
 
 # Workspace mail (fa-envelope-o)
-set $wf2 
+set $wf2 ""
 bindsym $mod+F2 workspace $wf2
 bindsym $mod+Shift+F2 move container to workspace $wf2
 assign [class="Thunderbird"] $wf2
+assign [class="thunderbird"] $wf2
+assign [class="Mail"] $wf2
+assign [class="mail"] $wf2
 
 # Workspace irc (fa-weechat)
-set $wf3 
+set $wf3 ""
 bindsym $mod+F3 workspace $wf3
 bindsym $mod+Shift+F3 move container to workspace $wf3
 assign [title="weechat"] $wf3
 assign [class="Pidgin"] $wf3
+assign [class="Signal"] $wf3
 
 # Workspace torrent (fa-exchange)
-set $wf4 
+set $wf4 ""
 bindsym $mod+F4 workspace $wf4
 bindsym $mod+Shift+F4 move container to workspace $wf4
 assign [title="^Transmission$"] $wf4
 
 # Workspace videos (fa-film)
-set $wf5 
+set $wf5 ""
 bindsym $mod+F5 workspace $wf5
 bindsym $mod+Shift+F5 move container to workspace $wf5
 assign [class="MPlayer"] $wf5
@@ -262,7 +267,7 @@ assign [class="recordmydesktop"] $wf5
 assign [class="recordMyDesktop"] $wf5
 
 # Workspace music (fa-volume-up, fa-music is better but doesn't appear: )
-set $wf6 
+set $wf6 ""
 bindsym $mod+F6 workspace $wf6
 bindsym $mod+Shift+F6 move container to workspace $wf6
 assign [title="music"] $wf6
@@ -270,21 +275,21 @@ assign [class="mpv"] $wf6
 assign [title="*mpsyt*"] $wf6
 
 # Workspace draw (fa-file-image-o)
-set $wf7 
+set $wf7 ""
 bindsym $mod+F7 workspace $wf7
 bindsym $mod+Shift+F7 move container to workspace $wf7
 assign [class="Gimp"] $wf7
 assign [class="mypaint"] $wf7
 
 # Workspace reading (fa-book)
-set $wf8 
+set $wf8 ""
 bindsym $mod+F8 workspace $wf8
 bindsym $mod+Shift+F8 move container to workspace $wf8
 assign [title="calibre"] $wf8
 assign [class="writing"] $wf8
 
 # Workspace twitch (fa-twitch)
-set $wf9 
+set $wf9 ""
 bindsym $mod+F9 workspace $wf9
 bindsym $mod+Shift+F9 move container to workspace $wf9
 workspace $wf9 output DVI-I-0
@@ -292,7 +297,7 @@ assign [title="twitch"] $wf9
 assign [class="obs"] $wf9
 
 # Workspace games (fa-steam)
-set $wf10 
+set $wf10 ""
 bindsym $mod+F10 workspace $wf10
 bindsym $mod+Shift+F10 move container to workspace $wf10
 assign [class="steam"] $wf10
@@ -361,13 +366,14 @@ exec nm-applet&  # network manager
 ###########################################################################
 #                                 open-env                                #
 ###########################################################################
-set $mode_startup (t)emps  (d)ev-proto (N)ormal  W
+set $mode_startup (t)emps  (d)ev-proto (N)ormal  W   (e)nv-current
 mode "$mode_startup" {
     bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
     bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
     bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
     bindsym W exec ~/scripts/open-env-twitch.sh, mode "default"
     bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
+    bindsym e exec ~/scripts/open-env-current.sh, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -375,6 +381,7 @@ mode "$mode_startup" {
 }
 bindsym $mod+ccedilla mode "$mode_startup"
 
+bindsym $mod+shift+e exec ~/scripts/open-env-current.sh
 
 
 
