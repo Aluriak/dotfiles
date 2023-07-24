@@ -20,7 +20,7 @@ export LANG=fr_FR.UTF-8
 export XDG_CONFIG_HOME=/home/lucas/.config
 
 # PATH
-export PATH="$PATH:/home/lucas/bin"
+export PATH="$PATH:/home/lucas/bin:/home/lucas/scripts"
 
 # Python
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring

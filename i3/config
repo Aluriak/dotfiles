@@ -18,7 +18,7 @@ new_float none
 bar {
     status_command ~/scripts/keyboard.sh i3status
     mode hide
-# status_command $HOME/.i3/conky-i3bar
+    # status_command $HOME/.i3/conky-i3bar
     # ensure trayicons are put on the primary output
     tray_output primary
 }
@@ -81,7 +81,7 @@ bindsym $mod+exclam scratchpad show
 # hide edge borders, horizontal and vertical
 hide_edge_borders both
 
-bindsym $mod+W exec "i3-msg move workspace to output right"
+bindsym $mod+W exec "i3-msg move workspace to output next"
 # bindsym $mod+Shift+W exec i3-input -F 'rename workspace to %s' -P 'New name: '
 
 # resize window (you can also use the mouse for that)
@@ -176,8 +176,8 @@ bindsym $mod+XF86Mail exec "thunderbird"
 bindsym $mod+U exec "thunar"
 bindsym XF86Calculator exec "$term --title 'quickterm' -e bc"
 bindsym Print exec "scrot"
-bindsym Scroll_Lock exec ~/scripts/switch_wallpaper.sh  # «defil» key
-bindsym $mod+Scroll_Lock exec eval $(cat ~/.fehbg_unchanged_todel)  # «defil» key
+bindsym Scroll_Lock exec ~/scripts/switch-background.sh  # «defil» key
+exec ~/scripts/switch-background.sh
 # bluetooth
 bindsym $mod+shift+question exec "~/scripts/start-bluetooth"
 

@@ -63,6 +63,7 @@ alias ni='nice -n 19 ionice -c3'  # see http://sebsauvage.net/links/?PfISxw
 alias driver_status="hwinfo --gfx | grep 'Driver Status'"
 alias font_update="fc-cache -fv"
 alias errcho='>&2 echo'
+alias trace_perms='namei -olm '
 
 # Aliases env
 alias wk='watch -n 1 lsblk'
@@ -162,11 +163,14 @@ alias vi="${EDITOR}"
 alias vo="${EDITOR} -O"
 alias vp="${EDITOR} -p"
 alias vs="${EDITOR} -S Session.vim"
-alias vims="${EDITOR} -S "
-alias Vim="${EDITOR} -O"
 alias V='Vim'
 alias vu="${EDITOR} -c PlugUpgrade -c PlugUpdate -c qa"
 alias vv="${EDITOR} -u ~/.vimrc.simple"
+
+alias vg="vim_then_git"
+alias vgp="vim_then_git -p"
+alias vgo="vim_then_git -O"
+alias vvg="vim_then_git -u ~/.vimrc.simple"
 
 # Aliases virtualenv
 alias crenv='crenv_func'  # see functions.sh
@@ -185,3 +189,6 @@ alias cal='cal --three'
 # Aliases make
 alias mn='make --dry-run'
 alias mt='make t'  # recipe name for tests
+
+# Aliases pass
+alias psc='pass show -c '

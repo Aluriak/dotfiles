@@ -2,10 +2,10 @@
 # and the much more important DOTCONF.
 
 HOST=$(hostname)
-if [[ $HOST == "hamilton.irisa.fr" ]];
+if [[ $HOST == "hamilton" ]];
 then
     HOST="hamilton"
-    DOTCONF="fedora_noroot"
+    DOTCONF="arch"
 elif [[ $HOST == "dijkstra" ]];
 then
     DOTCONF="ubuntu"

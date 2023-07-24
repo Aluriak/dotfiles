@@ -145,11 +145,12 @@ call plug#end()
 
 
 " setup: bépo transcription
-if system("xkblayout-state print '%v'") == "bepoz"
-    source ~/.vimrc.bepoz
+let keyboard_state = system("/home/lucas/scripts/keyboard.sh show -n")
+if keyboard_state == "bepoz"
+    source /home/lucas/.vimrc.bepoz
     let g:keymap = "bepoz"
-elseif system("xkblayout-state print '%v'") == "bepo"
-    source ~/.vimrc.bepo
+elseif keyboard_state == "bepo"
+    source /home/lucas/.vimrc.bepo
     let g:keymap = "bepo"
 else
     let g:keymap = "default"

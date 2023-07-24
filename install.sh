@@ -14,15 +14,20 @@ fi
 
 
 # install dotfiles
-ln -fs $hpath/.Xdefaults ~/
-ln -fs $hpath/.zshrc ~/
-ln -fs $hpath/vim/vimrc ~/.vimrc
-ln -fs $hpath/vim/vimrc.bepo ~/.vimrc.bepo
-ln -fs $hpath/vim/vimrc.bepoz ~/.vimrc.bepoz
-ln -fs $hpath/vim/vimrc.simple ~/.vimrc.simple
-ln -fs $hpath/vim/nvimrc ~/.config/nvim/init.vim
-ln -fs $hpath/kitty.conf ~/.config/kitty/
-ln -fs $hpath/i3/config ~/.i3/
+function install_dotfile() {
+    mkdir -p $(dirname "$hpath/$1")
+    ln -fs $hpath/$1 $2
+    echo "installed $hpath/$1 at $2"
+}
+install_dotfile .Xdefaults ~/
+install_dotfile .zshrc ~/
+install_dotfile vim/vimrc ~/.vimrc
+install_dotfile vim/vimrc.bepo ~/.vimrc.bepo
+install_dotfile vim/vimrc.bepoz ~/.vimrc.bepoz
+install_dotfile vim/vimrc.simple ~/.vimrc.simple
+install_dotfile vim/nvimrc ~/.config/nvim/init.vim
+install_dotfile kitty.conf ~/.config/kitty/
+install_dotfile i3/config ~/.i3/
 
 # install scripts
 ./install-scripts.sh

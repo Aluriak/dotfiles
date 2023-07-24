@@ -5,6 +5,7 @@
 #   keyboard.sh switch
 #   keyboard.sh show
 #   keyboard.sh i3status
+no_trailing_newline=[[ $2 == '-n']]
 
 detect_current() {
     layout=$(setxkbmap -query | grep layout | cut - -c 13-)
@@ -14,16 +15,16 @@ detect_current() {
     then
         if [[ $variant == "bepoz" ]];
         then
-            echo "bepoz"
+            echo -n "bepoz"
         elif [[ $variant == "bepo" ]];
         then
-            echo "bepo"
+            echo -n "bepo"
         else
-            echo "azerty"
+            echo -n "azerty"
         fi
     elif [[ $layout == "us" ]];
     then
-        echo "qwerty"
+        echo -n "qwerty"
     fi
 }
 
@@ -55,7 +56,12 @@ k_set () {
 k_show () {
     # show the keyboard current layout
     layout=$(detect_current)
-    echo $layout
+    if $no_trailing_newline
+    then
+        echo -n $layout
+    else
+        echo    $layout
+    fi
     notify-send --expire-time=400 "$layout"
 }
 
@@ -97,7 +103,7 @@ then
 
 elif [[ $1 == "show" ]];
 then
-    k_show
+    k_show $2
 
 
 elif [[ $1 == "setup" ]];

@@ -486,6 +486,17 @@ function rename-pics() {
 }
 
 
+# Calling vim, then git add -p on edited files
+function vim_then_git() {
+    vim $@
+    for arg in $@; do
+        if [[ -f "$arg" ]]; then
+            git add -p "$arg"
+        fi
+    done
+}
+
+
 function wr () {
     # write with keyboard inputs the given parameters
     sleep 2
@@ -506,3 +517,10 @@ function cpc() {
     cat $@ | xclip -sel clip
     edit_clipboard
 }
+# get given command in clipboard, then edit it
+function ccc_func() {
+    {"$@"} 2>&1 | xclip -sel clip
+    edit_clipboard
+}
+# this alias is here to ensure that the first argument will be aliased too
+alias 'ccc'='ccc_func '

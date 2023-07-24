@@ -1,1 +1,1 @@
-sh bepoz/add-bepoz-if-needed.sh
+sudo sh bepoz/add-bepoz-if-needed.sh
