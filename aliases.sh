@@ -88,6 +88,7 @@ alias gps='git push'
 alias grb='git rebase'
 alias gss='git stash'
 alias gcl='git clone'
+alias cif="pit -t stderr 2> /tmp/t ; cat /tmp/t | xargs git commit --fixup ; rm /tmp/t"
 
 # Aliases grep
 alias grep='grep --color=auto'
@@ -114,6 +115,9 @@ alias 'cd...'='cd ../../..'
 alias 'cd....'='cd ../../../..'
 alias 'cd.....'='cd ../../../../..'
 alias 'cd......'='cd ../../../../../..'
+
+# Aliases scripts
+alias 'pit'='~/scripts/pick-commit.py'
 
 # Aliases soft
 alias boilr='~/bin/boilr'  # see https://github.com/tmrts/boilr
