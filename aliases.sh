@@ -157,9 +157,13 @@ alias ydl='youtube-dl'
 alias yt='mpsyt'
 
 # Aliases ssh
-alias sshag='eval $(ssh-agent) && ssh-add'
+alias sshag='create_or_load_ssh_agent'
+alias sshload='load_ssh_agent'
+alias sshinit='create_ssh_agent'
 alias sshad='sshag'
 alias ssha='sshag'
+alias sshclear='clear_ssh_agent'
+alias sshclose='clear_ssh_agent'
 
 # Aliases vim
 alias vd="${EDITOR} -d"

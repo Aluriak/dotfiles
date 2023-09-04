@@ -19,6 +19,38 @@ function gree() {
 }
 
 
+# Run ssh-agent, or, if it seems to have been created since startup, load it.
+function load_ssh_agent() {
+    if [[ -f "$HOME/.ssh-agent-proc" ]];
+    then
+        source "$HOME/.ssh-agent-proc"
+    fi
+}
+function create_or_load_ssh_agent() {
+    load_ssh_agent
+    if [[ $SSH_AGENT_PID ]];
+    then
+        workingagent=$(ps "-$SSH_AGENT_PID" | grep ssh-agent)
+        if [[ "$workingagent" ]];
+        then
+            echo Agent loaded
+            return
+        fi
+    fi
+    echo A new agent is to be created
+    create_ssh_agent
+}
+function create_ssh_agent() {
+        to_eval=$(ssh-agent)
+        eval $to_eval
+        echo $to_eval > "$HOME/.ssh-agent-proc"
+        ssh-add
+}
+function clear_ssh_agent() {
+    killall ssh-agent
+}
+
+
 # create a virtualenv, source it, and populate it with requirements.txt if any.
 function crenv_func() {
     virtualenv venv -p /usr/bin/python3
