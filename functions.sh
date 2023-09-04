@@ -145,15 +145,14 @@ function open-kitty {
     uid=$(shuf -i 1-99999999999 -n 1)
     if [[ -d "$1" ]]
     then
-        kitty -T $2 --detach -d "$1" --listen-on=unix:@mykitty-${uid}
-        sleep 1  # wait for kitty to be there before sending the commands
-        for arg in ${@:3}
-        do
-            kitty @ --to=unix:@mykitty-${uid} send-text "${arg}\n"
-        done
-    else
-        echo "Invalid path: $1"
+        diropt="-d \"$1\""
     fi
+    kitty -T $2 --detach $diropt --listen-on=unix:@mykitty-${uid}
+    sleep 1  # wait for kitty to be there before sending the commands
+    for arg in ${@:3}
+    do
+        kitty @ --to=unix:@mykitty-${uid} send-text "${arg}\n"
+    done
 }
 
 
