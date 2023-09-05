@@ -267,6 +267,17 @@ function sonar_except() {
     sonar $1 $2 --exclude-dir="$3" ${@:4}
 }
 
+# Like sonar, but run vim on found files instead of printing matches to the doc
+function vonar() {
+    files=$(sonar $1 $2  --exclude-dir="$3" | cut -d ':' -f1 | uniq)
+    if [[ $files ]];
+    then
+        # echo found: $files
+        echo $files | xargs vim -c "/$1" -p
+    else
+        echo "no file matching given pattern"
+    fi
+}
 
 # Convert all *.srt files in directory in unicode with iconv.
 # If second argument is given, it is the input format for iconv. Default is ISO-8859-1.
