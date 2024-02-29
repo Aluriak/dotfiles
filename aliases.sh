@@ -89,6 +89,7 @@ alias grb='git rebase'
 alias gss='git stash'
 alias gcl='git clone'
 alias cif="pit -t stderr 2> /tmp/t ; cat /tmp/t | xargs git commit --fixup ; rm /tmp/t"
+alias gsc="pit -t stderr 2> /tmp/t ; cat /tmp/t | xargs git log -1 -p ; rm /tmp/t"
 
 # Aliases grep
 alias grep='grep --color=auto'

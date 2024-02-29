@@ -522,6 +522,7 @@ nnoremap <leader>i i?<Esc>r
 nnoremap <leader>a a?<Esc>r
 
 " Modif selon type de fichier
+filetype on
 filetype plugin indent on       "Indentation selon extension de fichier (nécessaire pour vundle)
 syntax on                       "affichage des couleurs
 au BufNewFile,BufRead *.pde setf arduino
