@@ -13,6 +13,7 @@
     st = status
 
     ci = commit
+    cis = commit -S  # signing
     cif = commit --fixup
     cifp = commit --fixup HEAD
     cim = commit -m
@@ -28,6 +29,8 @@
     df = diff
     dfs = diff --staged
     diffstat = diff --stat -r
+    wdf = diff --word-diff
+    wdfs = diff --staged --word-diff
 
     lg = log -p
     lo = log --decorate
@@ -38,6 +41,8 @@
     who = shortlog -s --
 
     ps = push
+    psf = push --force-with-lease  # don't force push if remote history has changed since last sync
+    psaume = push --set-upstream origin --all
     pl = pull
 
     rb = rebase
@@ -45,9 +50,27 @@
     rbc = rebase --continue
     rbs = rebase --skip
 
+    rst = restore
+    rt = restore
+    rs = restore
+    rst = restore --staged
+
     ss = stash
     sa = stash apply
     sp = stash pop
     sl = stash list
     sd = stash drop
     sh = stash show
+
+[user]
+	signingkey = ~/.ssh/key.pub
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[rerere]
+	enabled = true
+[rebase]
+	autosquash = true
+[gpg]
+	format = ssh  # use my ssh key instead of gpg one to sign
