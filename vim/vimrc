@@ -33,6 +33,8 @@ call plug#begin('~/.vim/plugged')
 " features
         " random tag generator
                 Plug 'aluriak/vim-deedee'
+        " splitter as title
+                Plug 'aluriak/vim-splitter'
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
         " quick opening/manipulation of header + source files
@@ -314,6 +316,9 @@ let g:DeedeeSize = 6
 let g:DeedeeMode = 'a'
 let g:DeedeeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 noremap <Leader>t :Deedee<cr>
+
+" setup: splitter
+noremap <Leader>s :Splitter<cr>
 
 " setup: extradite
 let g:extradite_diff_split = 'belowright vertical split'
