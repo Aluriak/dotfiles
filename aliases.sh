@@ -105,6 +105,7 @@ alias os='open -s'
 alias opens='open -s'
 alias uuid='ls -l /dev/disk/by-uuid'
 alias se='~/scripts/set-env-current.py'
+alias sf='switch_files'
 
 # Aliases moves
 alias 'dp'='pwd | xclip'
@@ -161,8 +162,9 @@ alias yt='mpsyt'
 alias sshag='create_or_load_ssh_agent'
 alias sshload='load_ssh_agent'
 alias sshinit='create_ssh_agent'
-alias sshad='sshag'
 alias ssha='sshag'
+alias sshagd='clear_ssh_agent'
+alias sshad='clear_ssh_agent'
 alias sshclear='clear_ssh_agent'
 alias sshclose='clear_ssh_agent'
 
@@ -200,4 +202,5 @@ alias mn='make --dry-run'
 alias mt='make t'  # recipe name for tests
 
 # Aliases pass
-alias psc='pass show -c '
+alias psc='pass show -c'
+alias pe='pass edit'

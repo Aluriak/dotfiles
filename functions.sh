@@ -48,6 +48,7 @@ function create_ssh_agent() {
 }
 function clear_ssh_agent() {
     killall ssh-agent
+    rm "$HOME/.ssh-agent-proc"
 }
 
 
@@ -536,6 +537,29 @@ function vim_then_git() {
             git add -p "$arg"
         fi
     done
+}
+
+
+# switch files $1 and $2
+function switch_files () {
+    if [ -f "$1" ]
+    then
+        if [ -f "$2" ]
+        then
+            tmp="${1}.tmp"
+            while [ -f "$tmp" ]
+            do
+                tmp="${tmp}.tmp"
+            done
+            mv "$1" "$tmp"
+            mv "$2" "$1"
+            mv "$tmp" "$2"
+        else
+            echo "No file $2 found"
+        fi
+    else
+        echo "No file $1 found"
+    fi
 }
 
 
