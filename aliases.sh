@@ -17,7 +17,7 @@ alias n='notify-after '  # see functions.sh
 alias o='open'
 alias p='python3'
 alias q='exit'
-alias r='ranger-cd'  # see functions.sh
+alias r='redo_with_another_command'  # see functions.sh
 alias s='git status'
 alias t='edit_clipboard'  # see functions.sh
 alias u='xclip -o'
@@ -107,6 +107,8 @@ alias uuid='ls -l /dev/disk/by-uuid'
 alias se='~/scripts/set-env-current.py'
 alias sf='switch_files'
 
+alias dellastcmd='history -d -2'
+
 # Aliases moves
 alias 'dp'='pwd | xclip'
 alias 'pd'='cd $(xclip -o) && clear && ls'
@@ -149,9 +151,6 @@ alias nv="${EDITOR}"
 alias p2='python2'
 alias p3='python3'
 alias prr='pip install -r requirements.txt'
-alias rd='ranger-cd'  # see functions.sh
-alias rg='ranger-cd'
-alias rgr='ranger-cd'
 alias vk='vimoku'
 alias weechat='weechat-curses'
 alias woman='eg'
@@ -195,7 +194,7 @@ alias xo='xclip -o'
 alias ini='xclip -sel clip < '
 
 # Aliases cal
-alias cal='cal --three'
+alias cal='cal --three -m'
 
 # Aliases make
 alias mn='make --dry-run'
