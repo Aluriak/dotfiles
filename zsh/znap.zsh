@@ -7,8 +7,8 @@ znap prompt caiogondim/bullet-train.zsh
 
 
 # bordel varié trouvé sur la doc
-znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance}
-znap source ohmyzsh/ohmyzsh plugins/{git,pip}
+#znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance}
+#znap source ohmyzsh/ohmyzsh plugins/{git,pip}
 
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
