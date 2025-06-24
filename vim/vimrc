@@ -150,7 +150,7 @@ scriptencoding utf-8
 
 
 " setup: bépo transcription
-let keyboard_state = system("/home/lucas/scripts/keyboard.sh show -n")
+let keyboard_state = trim(system("/home/lucas/scripts/keyboard.sh show"))
 if keyboard_state == "bepoz"
     source /home/lucas/.vimrc.bepoz
     let g:keymap = "bepoz"
