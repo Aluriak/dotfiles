@@ -1,5 +1,13 @@
 # functions repository
 
+# rerun last command, with $1 as the binary
+#  >>> ll f.txt
+#  >>> r v    # -> will run `v f.txt`
+function redo_with_another_command() {
+    cmd=$(history -1 | head -n 1 | sed -r "s/^\s*[0-9:\s]*\s*([^ ]+)(.*)$/$1 \2/")
+    echo "$cmd"
+    zsh -i -c "$cmd"
+}
 
 # like `tree .` but coloring anything matching the given expr
 function gree() {
