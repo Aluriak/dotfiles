@@ -282,7 +282,7 @@ function vonar() {
     if [[ $files ]];
     then
         # echo found: $files
-        echo $files | xargs vim -c "/$1" -p
+        echo $files | xargs -o vim -c "/$1" -p
     else
         echo "no file matching given pattern"
     fi
