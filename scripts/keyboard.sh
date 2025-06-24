@@ -1,3 +1,4 @@
+#!/bin/zsh
 # keyboard management script
 # usage examples:
 #   keyboard.sh setup
@@ -5,7 +6,7 @@
 #   keyboard.sh switch
 #   keyboard.sh show
 #   keyboard.sh i3status
-no_trailing_newline=[[ $2 == '-n']]
+#
 
 detect_current() {
     layout=$(setxkbmap -query | grep layout | cut - -c 13-)
@@ -56,12 +57,7 @@ k_set () {
 k_show () {
     # show the keyboard current layout
     layout=$(detect_current)
-    if $no_trailing_newline
-    then
-        echo -n $layout
-    else
-        echo    $layout
-    fi
+    /usr/bin/echo $2 "$layout"
     notify-send --expire-time=400 "$layout"
 }
 
