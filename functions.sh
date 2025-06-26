@@ -27,6 +27,52 @@ function gree() {
 }
 
 
+function run_ruff_and_mypy_and_pytest() {
+    ddindex=${@[(ie)--]}   # NB: zsh-only: at which index is double-dash in cli arguments
+    #echo $ddindex
+    if [[ $ddindex -le $# ]]; then
+        # argument $ddindex is a double dash
+        mypyoptions="${@:1:$ddindex-1}"
+        argfiles="${@:$ddindex+1:$#}"
+    else
+        # no double dash means all params are files/dir to run checkers on
+        mypyoptions=
+        argfiles=$@
+    fi
+
+    echo "Checking $argfiles"
+    echo "Mypy options: $mypyoptions"
+
+    [[ -e venv/bin/mypy ]] && mypy_path=venv/bin/mypy || mypy_path=$(which mypy 2> /dev/null)   # use bin in venv if available
+    [[ -e venv/bin/ruff ]] && ruff_path=venv/bin/ruff || ruff_path=$(which ruff 2> /dev/null)
+    [[ -e venv/bin/pytest ]] && pytest_path=venv/bin/pytest || pytest_path=$(which pytest 2> /dev/null)
+    echo "Mypy binary found at $mypy_path"
+    echo "Ruff binary found at $ruff_path"
+    echo "Pytest binary found at $pytest_path"
+
+
+    if [[ -e $ruff_path ]]
+    then
+        echo "Running ruff…"
+        $ruff_path check --ignore=E741,E701,F401,E402,F403,E731  $argfiles
+    else
+        echo "No ruff binary found"
+    fi
+
+    if [[ $? && -e $mypy_path ]]
+    then
+        echo "Running mypy…"
+        $mypy_path --pretty --disable-error-code var-annotated --disable-error-code no-redef --disable-error-code import-untyped --implicit-optional --warn-unused-ignores --check-untyped-defs $mypyoptions $argfiles
+    fi
+
+    if [[ $? && -e $pytest_path ]]
+    then
+        echo "Running pytest…"
+        $pytest_path --doctest-module -vv $pytestoptions $argfiles
+    fi
+}
+
+
 # Run ssh-agent, or, if it seems to have been created since startup, load it.
 function load_ssh_agent() {
     if [[ -f "$HOME/.ssh-agent-proc" ]];

@@ -1,5 +1,5 @@
 # Aliases uniletter
-alias a="${EDITOR}"
+alias a="run_ruff_and_mypy_and_pytest"
 alias b='bell'  # see functions.sh
 alias c='extend_autojump_subdir'  # see functions.sh
 alias d='date'
