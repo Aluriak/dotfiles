@@ -192,8 +192,8 @@ bindsym XF86WakeUp exec "playonlinux --run SpaceEngine"
 bindsym $mod+g [urgent=latest] focus
 
 # edit clipboard
-# bindsym $mod+y  exec $term -x ""
-#
+bindsym $mod+y exec "$term --title 'quickterm' -e ~/scripts/edit_clipboard.sh&"
+
 # numeric workspaces assignation.
 assign [title="^wk-1$"] 1
 assign [title="^wk-2$"] 2
