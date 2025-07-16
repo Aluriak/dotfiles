@@ -29,10 +29,10 @@ bar {
 #                           focus and layout                              #
 ###########################################################################
 # change focus
-bindsym $mod+C focus left
-bindsym $mod+T focus down
-bindsym $mod+S focus up
-bindsym $mod+R focus right
+bindsym $mod+c focus left
+bindsym $mod+t focus down
+bindsym $mod+s focus up
+bindsym $mod+r focus right
 
 # move focused window
 bindsym $mod+Shift+C move left
@@ -56,8 +56,8 @@ bindsym $mod+v split v
 bindsym $mod+Shift+F fullscreen
 
 # change container layout (stacked, tabbed, default)
-#bindsym $mod+H layout stacking
-#bindsym $mod+F layout tabbed
+#bindsym $mod+h layout stacking
+#bindsym $mod+f layout tabbed
 #bindsym $mod+ccedilla layout default
 bindsym $mod+l layout toggle all
 
@@ -181,9 +181,9 @@ exec ~/scripts/switch-background.sh
 # bluetooth
 bindsym $mod+shift+question exec "~/scripts/start-bluetooth"
 
-bindsym $mod+X exec dmenu_run
-bindsym $mod+D exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
-bindsym $mod+O exec "$term --title 'quickterm' -e /usr/bin/htop"
+bindsym $mod+x exec "dmenu_run"
+bindsym $mod+d exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
+bindsym $mod+o exec "$term --title 'quickterm' -e /usr/bin/htop"
 
 # Others
 bindsym XF86WakeUp exec "playonlinux --run SpaceEngine"
