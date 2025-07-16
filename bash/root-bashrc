@@ -1,0 +1,94 @@
+
+alias 'cd.'='cd ..'
+alias 'cd..'='cd ../..'
+
+alias v=vim
+alias vp='vim -p '
+alias vd='vim -d '
+alias vo='vim -O '
+
+alias uc='pstree -s -u $$'
+
+alias m=make
+
+alias tf='tail -f'
+
+function countbyext() {
+	exts=$(ls -f | cut -d '.' -f2 | sort | uniq)
+
+	for ext in $exts;
+	do
+		echo "$ext:" $(ls -f | grep ".$ext" | wc -l)
+	done
+}
+
+function vault-login() {
+	export VAULT_TOKEN=$(vault login -token-only $1)
+}
+
+function boute() {
+	# kill all processes belonging to given user, or sacha by default (if you don't know why sacha, it's because you don't know sacha)
+	[[ $1 ]] && target=$1 || target=sacha
+	echo "$(whoami) boute $target hors de $(hostname)"
+	ps --no-headers -u $target  | cut -b 1-7 | sed 's/^ //g' | xargs -d\\n -n1 kill -9
+	
+}
+
+
+
+# print files containing the regex
+#   sonar <regex> [dir] [supplementary grep options]
+# ex: sonar IMAGE .
+#     sonar def src/ -w
+#     sonar def . wl
+# see http://stackoverflow.com/a/16957078
+function sonar() {
+    grep -rnI ${@:3} --color $2 -e "$1"
+    # r: recursive
+    # n: line number
+    # I: ignore binary files
+    # Others (usage as third parameter):
+    # w: full word match only
+    # l: filename only
+}
+
+# switch files $1 and $2
+function switch_files () {
+    tmp="${1}.tmp"
+    if [ -f "$1" ]
+    then
+    if [ -f "$2" ]
+    then
+    while [ -f "$tmp" ]
+    do
+        tmp="${tmp}.tmp"
+    done
+    mv "$1" "$tmp"
+    mv "$2" "$1"
+    mv "$tmp" "$2"
+    fi
+    fi
+}
+
+
+
+alias ss='systemctl status '
+alias sr='systemctl restart '
+alias sp='systemctl stop '
+alias sp='systemctl stop '
+alias scat='systemctl cat '
+alias sc='systemctl '
+alias sdr='systemctl daemon-reload'
+alias suu='su --login -s /bin/bash '
+
+alias l='journalctl -feu '
+alias sf='switch_files'
+
+
+function srl () {
+	sr $1 ; l $1
+}
+function frp () {
+	namei -olm $(realpath $1)
+}
+
