@@ -18,15 +18,20 @@ then
         manjaro-bluetooth \
         moreutils \
         mplayer \
-        pip \
+        pass \
+        pavucontrol \
         python \
-        python \
+        python-pip \
+        python-virtualenv \
         scrot \
+        signal-desktop \
+        steam-runtime-native \
         thunar \
         thunderbird \
         vim \
-        virtualenv \
         vlc \
         wine \
+        xsane \
+        yay \
         zsh
 fi
