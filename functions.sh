@@ -179,7 +179,7 @@ function bell-after() {
 
 # create a directory, and go in it
 function mkdor() {
-    mkdir $@
+    mkdir -p $@
     cd $1
 }
 
