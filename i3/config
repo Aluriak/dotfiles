@@ -173,13 +173,13 @@ bindsym $mod+XF86Mail exec "thunderbird"
 # bindsym $mod+J exec "$term --title 'weechat' -e weechat-curses"
 
 # Utils
-bindsym $mod+U exec "thunar"
 bindsym XF86Calculator exec "$term --title 'quickterm' -e bc"
 bindsym Print exec "scrot"
 bindsym Scroll_Lock exec ~/scripts/switch-background.sh  # «defil» key
 exec ~/scripts/switch-background.sh
 # bluetooth
 bindsym $mod+shift+question exec "~/scripts/start-bluetooth"
+bindsym $mod+shift+N exec "~/scripts/start-bluetooth"
 
 bindsym $mod+X exec dmenu_run
 bindsym $mod+D exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
@@ -216,6 +216,8 @@ assign [title="Bluetooth"] output DVI-I-0
 ###########################################################################
 # Kill focused window
 bindsym $mod+Shift+A kill
+
+bindsym $mod+comma exec sh ~/click.sh
 
 # Global rules
 for_window [title="quickterm"] floating enable
@@ -302,6 +304,8 @@ bindsym $mod+F10 workspace $wf10
 bindsym $mod+Shift+F10 move container to workspace $wf10
 assign [class="steam"] $wf10
 assign [class="Steam"] $wf10
+assign [title="steam"] $wf10
+assign [title="Steam"] $wf10
 
 # apps rules
 for_window [title="floatncmpcpp"] floating enable
@@ -348,6 +352,7 @@ exec ~/scripts/keyboard.sh setup&
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
 exec ~/.screenlayout/both-hdmi-dvi.sh&
+# exec ~/.screenlayout/hdmi-only.sh&
 exec ~/scripts/switch_wallpaper.sh&
 
 # things
@@ -356,6 +361,10 @@ exec $term -e "htop"&
 assign [class="^starting_term$"] 2
 exec "$term  --class starting_term --title 'quickterm'&"
 exec firefox&
+exec signal-desktop&
+
+exec thunderbird&
+exec steam-native&
 
 # services
 exec volumeicon&  # tray icon about sound
@@ -366,20 +375,32 @@ exec nm-applet&  # network manager
 ###########################################################################
 #                                 open-env                                #
 ###########################################################################
-set $mode_startup (t)emps  (d)ev-proto (N)ormal  W   (e)nv-current
-mode "$mode_startup" {
-    bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
-    bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
-    bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
-    bindsym W exec ~/scripts/open-env-twitch.sh, mode "default"
-    bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
-    bindsym e exec ~/scripts/open-env-current.sh, mode "default"
+set $mode_screens 1:HDMI-DVI  2:DVI-HDMI  3:HDMI
+mode "$mode_screens" {
+    bindsym 1 exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
+    bindsym 2 exec ~/.screenlayout/both-dvi-hdmi.sh, mode "default"
+    bindsym 3 exec ~/.screenlayout/hdmi-only.sh, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Space  mode "default"
 }
-bindsym $mod+ccedilla mode "$mode_startup"
+bindsym $mod+ccedilla mode "$mode_screens"
+
+# set $mode_startup (t)emps  (d)ev-proto (N)ormal  W   (e)nv-current
+# mode "$mode_startup" {
+    # bindsym t exec /home/lucas/scripts/open-env-temps.sh, mode "default"
+    # bindsym d exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+    # bindsym p exec /home/lucas/scripts/open-env-proto.sh, mode "default"
+    # bindsym W exec ~/scripts/open-env-twitch.sh, mode "default"
+    # bindsym N exec ~/.screenlayout/both-hdmi-dvi.sh, mode "default"
+    # bindsym e exec ~/scripts/open-env-current.sh, mode "default"
+
+    # bindsym Return mode "default"
+    # bindsym Escape mode "default"
+    # bindsym Space  mode "default"
+# }
+# bindsym $mod+ccedilla mode "$mode_startup"
 
 bindsym $mod+shift+e exec ~/scripts/open-env-current.sh
 
