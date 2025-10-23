@@ -141,6 +141,8 @@ alias iru='pip install -r requirements.txt -U'
 alias lk='~/scripts/push_link/push_link.sh'
 alias meh='feh'
 alias mpl='mplayer'
+alias mplvostfr='mplayer -alang eng -slang fre'
+alias mplvost='mplayer -alang eng -slang eng'
 alias mps='mpsyt'
 alias ntop='nethogs'
 alias nv="${EDITOR}"
@@ -150,8 +152,10 @@ alias prr='pip install -r requirements.txt'
 alias rd='ranger-cd'  # see functions.sh
 alias rg='ranger-cd'
 alias rgr='ranger-cd'
+alias sunshine=toggle_sunshine
 alias vk='vimoku'
 alias weechat='weechat-curses'
+alias weget='wget -np -r'
 alias woman='eg'
 alias ydl='youtube-dl'
 alias yt='mpsyt'
@@ -196,3 +200,4 @@ alias mt='make t'  # recipe name for tests
 
 # Aliases pass
 alias psc='pass show -c '
+alias pe='pass edit'
