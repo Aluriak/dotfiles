@@ -21,6 +21,9 @@ bar {
     # status_command $HOME/.i3/conky-i3bar
     # ensure trayicons are put on the primary output
     tray_output primary
+
+    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    font pango: Source Code Pro 15
 }
 
 
