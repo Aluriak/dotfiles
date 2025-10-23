@@ -141,6 +141,9 @@ call plug#end()
 " vimrc begin here
 """""""""""""""""""""""""""""""""""""""""""""
 
+" setup: encoding
+set encoding=utf-8
+scriptencoding utf-8
 
 
 
@@ -254,8 +257,6 @@ nmap lr <Plug>Coerce
 " setup: airline & solarized
 let g:airline_powerline_fonts = 1
 set noshowmode
-"to fix the font and lot of strange characters and colors
-set encoding=utf-8
 let g:airline_theme='wombat'
 set t_Co=256
 "set fillchars+=stl:\ ,stlnc:\
@@ -528,7 +529,6 @@ au BufNewFile,BufRead *.mkd setf markdown
 au BufNewFile,BufRead *.adb setf ada
 au BufNewFile,BufRead *.ads setf ada
 au BufNewFile,BufRead *.py  setf python
-au BufNewFile,BufRead *.tex set encoding=utf-8
 au BufNewFile,BufRead *.rb set shiftwidth=2
 au BufNewFile,BufRead {M,m}akefile set noexpandtab
 

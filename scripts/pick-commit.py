@@ -230,11 +230,11 @@ def run(number: int = 0, target: str = 'stdout'):
     both = target.lower() in {'b', 'both'}
     if both or target in {'stdout', 's', 't', 'term', sys.stdout}:
         print(choice)
-    if both or target in {'stderr', 'e', sys.stderr}:
-        print(choice, file=sys.stderr)
     if both or target in {'clip', 'c'}:
         ps = subprocess.Popen(['xclip'], stdin=subprocess.PIPE)
         ps.communicate(choice.encode())
+    if target in {'stderr', 'e', sys.stderr}:
+        print(choice, file=sys.stderr)
 
 
 def parse_cli() -> argparse.Namespace:
