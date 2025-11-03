@@ -593,6 +593,15 @@ function rotateimg() {
     mv .out.jpg "$1"
 }
 
+function port_user() {
+    if [[ $1 ]];
+    then
+        sudo ss -lptn "sport = :$1"
+    else
+        echo "Need an argument : port number"
+    fi
+}
+
 # for each given file, set it as background image, and ask for its new name (empty to keep it).
 function rename-pics() {
     for file in $@
