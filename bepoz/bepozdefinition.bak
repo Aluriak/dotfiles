@@ -42,6 +42,9 @@ xkb_symbols "bepoz" {
     key <AC09> { [               r,            R,     U03B1,           trademark ] }; // r R α ™
     key <AC10> { [               n,            N,     U03B2,           dead_tilde] }; // n N β ~
 
+    // E provides belong
+    key <AC04> { [               e,            E,     euro,           in ] }; // e E € ™
+
     // Space don't provides unbreakable space with maj (generally maj+space is mistakely typed after a capital or letters like : or ;)
     key <SPCE> { [           space, space,     underscore,   nobreakspace ] }; // ␣ (espace insécable) _ (espace insécable fin)
 };

@@ -299,7 +299,7 @@ function bell-after() {
 
 # create a directory, and go in it
 function mkdor() {
-    mkdir $@
+    mkdir -p $@
     cd $1
 }
 
@@ -687,3 +687,21 @@ function ccc_func() {
 }
 # this alias is here to ensure that the first argument will be aliased too
 alias 'ccc'='ccc_func '
+
+
+# start or stop sunshine unit
+function toggle_sunshine() {
+    if [[ $(systemctl --user is-active sunshine | grep 'inactive') ]]
+    then
+        echo "Starting sunshine…"
+        systemctl start --user sunshine
+        # ensure only one screen
+        sh ~/.screenlayout/hdmi-only.sh
+        sleep 1  # wait for the interface to awake
+        firefox "https://localhost:47990/"
+    else
+        echo "Stopping sunshine…"
+        systemctl stop --user sunshine
+    fi
+
+}
