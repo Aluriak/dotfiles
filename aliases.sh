@@ -122,6 +122,7 @@ alias 'cd......'='cd ../../../../../..'
 
 # Aliases scripts
 alias 'pit'='~/scripts/pick-commit.py'
+alias ev='python -c "import os; from pprint import pprint;pprint(dict(os.environ))"'
 
 # Aliases soft
 alias boilr='~/bin/boilr'  # see https://github.com/tmrts/boilr
