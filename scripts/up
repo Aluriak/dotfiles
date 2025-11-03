@@ -11,6 +11,11 @@
 #  - use the package attr shown in setup.cfg as `version: attr: llib.theversion` to obtain current version
 #  - autodetect which uptype should be done, based on commits messages made after last version, if they start with (bug)fix, feat or break
 
+if [[ -d .git/ ]]
+then
+    git pull
+fi
+
 uptype=$1
 
 # to fed next variable, call next function
@@ -182,15 +187,38 @@ git diff --staged
 isahead=$(echo $gitout | grep -E '\[ahead [0-9]+\]')
 if [[ $isahead ]]
 then
-    echo -n "Commit ?[y/a/N]"
+    echo -n "Commit ?[Y/a/n]"
 else
-    echo -n "Commit ?[y/N]"
+    echo -n "Commit ?[Y/n]"
 fi
 read ok
-if [[ $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
 then
     git commit -m "$newversion"
 elif [[ $isahead && ( $ok == a || $ok == A ) ]]
 then
     git commit --amend -m "$newversion"
+else
+    exit
+fi
+
+if [[ -f Makefile && $(cat Makefile | grep 'upload:') ]]
+then
+    echo -n "Upload ?[Y/n]"
+    read ok
+    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    then
+        make upload
+    fi
+fi
+
+
+if [[ -d .git/ ]]
+then
+    echo -n "Push ?[Y/n]"
+    read ok
+    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    then
+        git push
+    fi
 fi
