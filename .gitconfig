@@ -40,6 +40,10 @@
     alltags = log --decorate --oneline --simplify-by-decoration
     who = shortlog -s --
 
+    # search among all commit history (including patch with -p)
+    ls = log -S
+    lsp = log -pS
+
     ps = push
     psf = push --force-with-lease  # don't force push if remote history has changed since last sync
     psaume = push --set-upstream origin --all
