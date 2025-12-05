@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [[ ! $1 || ! $2 ]];
+then
+    echo "usage: <seconds between calls> <command>"
+    exit
+fi
+N=$1
+CMD=$2
+OLDOUT=▇×
+echo "Will run every ${N}s : $CMD"
+
+while true
+do
+	NEWOUT=$(eval $CMD)
+	if [[ "$NEWOUT" != "$OLDOUT" ]]
+	then
+		echo -e "$(date --rfc-3339=seconds): $NEWOUT"
+		OLDOUT="$NEWOUT"
+	fi
+	sleep $N
+done
