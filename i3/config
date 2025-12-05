@@ -24,6 +24,9 @@ bar {
 
     font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
     font pango: Source Code Pro 15
+
+    #  when ws is named like `N:X`, use N for sorting and X as name
+    strip_workspace_numbers yes
 }
 
 
@@ -229,7 +232,7 @@ for_window [title="hiddenterm"] move scratchpad
 
 # For find class/title of a window: xprop
 # Workspace www (fa-browser-firefox)
-set $wf1 ""
+set $wf1 "101:"
 bindsym $mod+F1 workspace $wf1
 bindsym $mod+Shift+F1 move container to workspace $wf1
 assign [class="Navigator"] $wf1
