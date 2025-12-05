@@ -35,7 +35,7 @@ function guess_uptype_based_on_commits() {
         elif [[ "${line,,}" =~ ^(bug)?fix.*|^fixup.* ]]
         then
             hasfix=1
-            echo "\tdetected bugfix ($line)"
+            echo -e "\tdetected bugfix ($line)"
         elif [[ "${line,,}" =~ ^feat.* ]]
         then
             hasfeat=1
@@ -43,7 +43,7 @@ function guess_uptype_based_on_commits() {
         elif [[ "${line,,}" =~ ^break.* ]]
         then
             hasbreak=1
-            echo "\tdetected breaking change ($line)"
+            echo -e "\tdetected breaking change ($line)"
         fi
     done < <(git log --format="%s")
     if [[ $hasbreak ]]
@@ -65,19 +65,19 @@ then
     echo "looking into setup.cfg…"
     seen_version=$(cat setup.cfg | grep -E '^version')
     # echo $seen_version
-    setupcfg_version=$(echo $seen_version | sed -E 's/^version\s?=\s?([0-9\.]+).*$/\1/')
-    module_version=$(echo $seen_version | sed -E 's/^version\s?=\s?attr:\s?(.*)$/\1/')
+    setupcfg_version=$(echo $seen_version | sed -E 's/^version\s?=\s?([0-9\.a-z]+).*$/\1/')
+    module_version=$(echo $seen_version | sed -E 's/^version\s?=\s?attr:\s?([0-9\.]*[a-z\.]*)$/\1/')
     # echo $seen_version
-    if [[ $module_version ]]
+    if [[ $module_version != $seen_version ]]
     then
         echo "setup.cfg redirects to $module_version…"
         module=$(echo $module_version | cut -d . -f 1)
         attrs=$(echo $module_version | cut -d . -f 2-)
         version=$(python -c "import $module as m; print(m.$attrs)")
         writingbackvia=module_version
-    elif [[ $setupcfg_version ]]
+    elif [[ $setupcfg_version != $seen_version ]]
     then
-        version=setupcfg_version
+        version=$setupcfg_version
         writingbackvia=setupcfg_version
     fi
 elif [[ -e __init__.py ]]
