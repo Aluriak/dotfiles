@@ -72,16 +72,21 @@ if [[ -e setup.cfg ]]
 then
     echo "looking into setup.cfg…"
     seen_version=$(cat setup.cfg | grep -E '^version')
-    # echo $seen_version
-    setupcfg_version=$(echo $seen_version | sed -E 's/^version\s?=\s?([0-9\.a-z]+).*$/\1/')
-    module_version=$(echo $seen_version | sed -E 's/^version\s?=\s?attr:\s?([0-9\.]*[a-z\.]*)$/\1/')
+    echo seen_version: $seen_version
+    setupcfg_version=$(echo $seen_version | sed -E 's/^version\s?=\s?([0-9\.a-z]+)\s*$/\1/')
+    module_version=$(echo $seen_version | sed -E 's/^version\s?=\s?attr:\s?([0-9\/a-z\._-]*)$/\1/')
+    echo "setupcfg_version: $setupcfg_version"
+    echo "module_version: $module_version"
     # echo $seen_version
     if [[ $module_version != $seen_version ]]
     then
         echo "setup.cfg redirects to $module_version…"
         module=$(echo $module_version | cut -d . -f 1)
         attrs=$(echo $module_version | cut -d . -f 2-)
-        version=$(python -c "import $module as m; print(m.$attrs)")
+        echo "module: $module"
+        echo "attrs: $attrs"
+        version=$(cat ${module}/__init__.py| grep -E "^${attrs}\s*=" | head -n 1 | sed -E "s/^${attrs}\s*=\s*(.*)$/\\1/" | tr -d "'\"")
+        echo "module __init__ version: $version"
         writingbackvia=module_version
     elif [[ $setupcfg_version != $seen_version ]]
     then
@@ -98,8 +103,9 @@ then
         writingbackvia=init_version
     fi
 fi
-echo "version is $version"
-if [[ ! $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "0.1.1") ]]
+
+
+if [[ ! $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "$version") ]]
 then
     echo "Version does not look like a valid version number: '$version'"
     echo -n "Continue nonetheless ?[y/N]"
@@ -116,6 +122,7 @@ then
         exit
     fi
 fi
+echo "version is $version"
 v_major=$(echo $version | cut -d . -f1)
 v_minor=$(echo $version | cut -d . -f2)
 v_bugfx=$(echo $version | cut -d . -f3)
@@ -131,7 +138,7 @@ while
         [[ "$uptype" == 'y' ]] && y='Y' || y='y'
         [[ "$uptype" == 'z' ]] && z='Z' || z='z'
         echo -n "Which uptype ? [$x.$y.$z]"
-        if [[ $ASSUMEDEFAULTPROMPT ]]
+        if [[ $ASSUMEDEFAULTPROMPT && $uptype ]]
         then
             [[ "$uptype" == 'x' ]] && answer='x'
             [[ "$uptype" == 'y' ]] && answer='y'
@@ -265,7 +272,7 @@ then
     else
         read ok
     fi
-    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == O ]]
     then
         git push
     fi
