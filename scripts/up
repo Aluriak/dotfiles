@@ -91,6 +91,20 @@ then
     fi
 fi
 echo "version is $version"
+if [[ $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "0.1.1") ]]
+then
+    # pass
+else
+    echo "Version does not look like a valid version number: '$version'"
+    echo "Continue nonetheless ?[y/N]"
+    read ok
+    if [[ $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    then
+        # pass
+    else
+        exit
+    fi
+fi
 v_major=$(echo $version | cut -d . -f1)
 v_minor=$(echo $version | cut -d . -f2)
 v_bugfx=$(echo $version | cut -d . -f3)
@@ -133,6 +147,7 @@ while
     fi
     [[ ! $uptype ]]
 do true ; done
+echo "Current version: $v_major.$v_minor.$v_bugfx"
 
 
 # operate the uptype
