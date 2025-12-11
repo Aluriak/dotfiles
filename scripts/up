@@ -2,20 +2,27 @@
 # Try to find local python package, its version, to update it and finally commit it.
 # Suffers many limits:
 #  - Version has to be in the setup.cfg or __init__.py
-#  - version must be in the form \d.\d.\d
+#  - version must be in the form \d\.\d\.\d[a-z0-9\.]*
 #  - will aggressively replace in the whole target file any occurence of old version by the new one. Watch out when upgrading from version 127.0.0.
 #  - will commit changes of the entires __init__.py or setup.cfg file
 # But it will hopefully:
 #  - not try to commit in the absence of git repository
 #  - propose to amend previous commit only if it was not pushed (using git status -b and looking for [ahead X] substring in output)
 #  - use the package attr shown in setup.cfg as `version: attr: llib.theversion` to obtain current version
-#  - autodetect which uptype should be done, based on commits messages made after last version, if they start with (bug)fix, feat or break
+#  - autodetect which uptype should be done, based on commits messages made after last version, if they start with (bug)fix, feat, break or major
 
 if [[ -d .git/ ]]
 then
     git pull
 fi
 
+ASSUMEDEFAULTPROMPT=$([[ "$1" == "-d" || "$2" == "-d" ]] && echo 1)
+if [[ $ASSUMEDEFAULTPROMPT ]]
+then
+    echo '-d option set: Will assume defaults on all prompts'
+else
+    echo 'no -d option: Will prompt user for confirmations'
+fi
 uptype=$1
 
 # to fed next variable, call next function
@@ -40,10 +47,11 @@ function guess_uptype_based_on_commits() {
         then
             hasfeat=1
             echo -e "detected new feature ($line)"
-        elif [[ "${line,,}" =~ ^break.* ]]
+        elif [[ "${line,,}" =~ ^break.* || "${line,,}" =~ ^major.* ]]
         then
             hasbreak=1
             echo -e "\tdetected breaking change ($line)"
+            break  # we can't find more than that
         fi
     done < <(git log --format="%s")
     if [[ $hasbreak ]]
@@ -91,16 +99,19 @@ then
     fi
 fi
 echo "version is $version"
-if [[ $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "0.1.1") ]]
+if [[ ! $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "0.1.1") ]]
 then
-    # pass
-else
     echo "Version does not look like a valid version number: '$version'"
-    echo "Continue nonetheless ?[y/N]"
-    read ok
+    echo -n "Continue nonetheless ?[y/N]"
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
     if [[ $ok == y || $ok == Y || $ok == o || $ok == yes ]]
     then
-        # pass
+        :  # this is the null statement in bash
     else
         exit
     fi
@@ -120,7 +131,14 @@ while
         [[ "$uptype" == 'y' ]] && y='Y' || y='y'
         [[ "$uptype" == 'z' ]] && z='Z' || z='z'
         echo -n "Which uptype ? [$x.$y.$z]"
-        read answer
+        if [[ $ASSUMEDEFAULTPROMPT ]]
+        then
+            [[ "$uptype" == 'x' ]] && answer='x'
+            [[ "$uptype" == 'y' ]] && answer='y'
+            [[ "$uptype" == 'z' ]] && answer='z'
+        else
+            read answer
+        fi
         if [[ "$answer" ]]
         then
             uptype="$answer"
@@ -206,7 +224,12 @@ then
 else
     echo -n "Commit ?[Y/n]"
 fi
-read ok
+if [[ $ASSUMEDEFAULTPROMPT ]]
+then
+    ok=
+else
+    read ok
+fi
 if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
 then
     git commit -m "$newversion"
@@ -220,7 +243,12 @@ fi
 if [[ -f Makefile && $(cat Makefile | grep 'upload:') ]]
 then
     echo -n "Upload ?[Y/n]"
-    read ok
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
     if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
     then
         make upload
@@ -231,7 +259,12 @@ fi
 if [[ -d .git/ ]]
 then
     echo -n "Push ?[Y/n]"
-    read ok
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
     if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
     then
         git push
