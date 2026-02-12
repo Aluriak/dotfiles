@@ -1,1 +1,1 @@
-source ~/Documents/dotfiles/loadall.sh
+source ~/.dotfiles/loadall.sh

@@ -1,6 +1,16 @@
 
 
+if [[ $whoami == 'root' ]]
+then
+    echo "this script should not be run as root"
+    exit
+fi
+
+
 hpath=$(pwd)
+
+# ensure local dir is accessible from ~/.dotfiles
+ln -s $(pwd) ~/.dotfiles
 
 
 if [ ! -e zsh/zsh-snap/zsh-snap/znap.zsh ];
