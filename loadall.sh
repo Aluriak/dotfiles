@@ -19,4 +19,4 @@ source $(dirname $0)/aliases.sh
 source $(dirname $0)/hosts/${HOST}.sh
 
 # non-public sources
-[[ -e source $(dirname $0)/privates.sh ]] && source $(dirname $0)/privates.sh
+[[ -f $(dirname $0)/privates.sh ]] && source $(dirname $0)/privates.sh
