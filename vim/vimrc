@@ -33,6 +33,8 @@ call plug#begin('~/.vim/plugged')
 " features
         " random tag generator
                 Plug 'aluriak/vim-deedee'
+        " splitter as title
+                Plug 'aluriak/vim-splitter'
         " subvertion with {} and coercition
                 Plug 'aluriak/vim-abolish'
         " quick opening/manipulation of header + source files
@@ -148,7 +150,7 @@ scriptencoding utf-8
 
 
 " setup: bépo transcription
-let keyboard_state = system("/home/lucas/scripts/keyboard.sh show -n")
+let keyboard_state = trim(system("/home/lucas/scripts/keyboard.sh show"))
 if keyboard_state == "bepoz"
     source /home/lucas/.vimrc.bepoz
     let g:keymap = "bepoz"
@@ -314,6 +316,9 @@ let g:DeedeeSize = 6
 let g:DeedeeMode = 'a'
 let g:DeedeeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 noremap <Leader>t :Deedee<cr>
+
+" setup: splitter
+noremap <Leader>s :Splitter<cr>
 
 " setup: extradite
 let g:extradite_diff_split = 'belowright vertical split'
@@ -522,6 +527,7 @@ nnoremap <leader>i i?<Esc>r
 nnoremap <leader>a a?<Esc>r
 
 " Modif selon type de fichier
+filetype on
 filetype plugin indent on       "Indentation selon extension de fichier (nécessaire pour vundle)
 syntax on                       "affichage des couleurs
 au BufNewFile,BufRead *.pde setf arduino

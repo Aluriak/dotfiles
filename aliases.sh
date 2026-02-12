@@ -1,5 +1,5 @@
 # Aliases uniletter
-alias a="${EDITOR}"
+alias a="run_ruff_and_mypy_and_pytest"
 alias b='bell'  # see functions.sh
 alias c='extend_autojump_subdir'  # see functions.sh
 alias d='date'
@@ -17,7 +17,7 @@ alias n='notify-after '  # see functions.sh
 alias o='open'
 alias p='python3'
 alias q='exit'
-alias r='ranger-cd'  # see functions.sh
+alias r='redo_with_another_command'  # see functions.sh
 alias s='git status'
 alias t='edit_clipboard'  # see functions.sh
 alias u='xclip -o'
@@ -89,6 +89,7 @@ alias grb='git rebase'
 alias gss='git stash'
 alias gcl='git clone'
 alias cif="pit -t stderr 2> /tmp/t ; cat /tmp/t | xargs git commit --fixup ; rm /tmp/t"
+alias gsc="pit -t stderr 2> /tmp/t ; cat /tmp/t | xargs git log -1 -p ; rm /tmp/t"
 
 # Aliases grep
 alias grep='grep --color=auto'
@@ -104,6 +105,9 @@ alias os='open -s'
 alias opens='open -s'
 alias uuid='ls -l /dev/disk/by-uuid'
 alias se='~/scripts/set-env-current.py'
+alias sf='switch_files'
+
+alias dellastcmd='history -d -2'
 
 # Aliases moves
 alias 'dp'='pwd | xclip'
@@ -118,6 +122,7 @@ alias 'cd......'='cd ../../../../../..'
 
 # Aliases scripts
 alias 'pit'='~/scripts/pick-commit.py'
+alias ev='python -c "import os; from pprint import pprint;pprint(dict(os.environ))"'
 
 # Aliases soft
 alias boilr='~/bin/boilr'  # see https://github.com/tmrts/boilr
@@ -149,9 +154,7 @@ alias nv="${EDITOR}"
 alias p2='python2'
 alias p3='python3'
 alias prr='pip install -r requirements.txt'
-alias rd='ranger-cd'  # see functions.sh
-alias rg='ranger-cd'
-alias rgr='ranger-cd'
+alias r=''
 alias sunshine=toggle_sunshine
 alias vk='vimoku'
 alias weechat='weechat-curses'
@@ -164,8 +167,9 @@ alias yt='mpsyt'
 alias sshag='create_or_load_ssh_agent'
 alias sshload='load_ssh_agent'
 alias sshinit='create_ssh_agent'
-alias sshad='sshag'
 alias ssha='sshag'
+alias sshagd='clear_ssh_agent'
+alias sshad='clear_ssh_agent'
 alias sshclear='clear_ssh_agent'
 alias sshclose='clear_ssh_agent'
 
@@ -196,12 +200,13 @@ alias xo='xclip -o'
 alias ini='xclip -sel clip < '
 
 # Aliases cal
-alias cal='cal --three'
+alias cal='cal --three -m'
 
 # Aliases make
 alias mn='make --dry-run'
 alias mt='make t'  # recipe name for tests
 
 # Aliases pass
-alias psc='pass show -c '
+alias psc='pass show -c'
 alias pe='pass edit'
+alias pg='pass generate'

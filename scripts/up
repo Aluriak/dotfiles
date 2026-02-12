@@ -1,0 +1,279 @@
+#!/bin/bash
+# Try to find local python package, its version, to update it and finally commit it.
+# Suffers many limits:
+#  - Version has to be in the setup.cfg or __init__.py
+#  - version must be in the form \d\.\d\.\d[a-z0-9\.]*
+#  - will aggressively replace in the whole target file any occurence of old version by the new one. Watch out when upgrading from version 127.0.0.
+#  - will commit changes of the entires __init__.py or setup.cfg file
+# But it will hopefully:
+#  - not try to commit in the absence of git repository
+#  - propose to amend previous commit only if it was not pushed (using git status -b and looking for [ahead X] substring in output)
+#  - use the package attr shown in setup.cfg as `version: attr: llib.theversion` to obtain current version
+#  - autodetect which uptype should be done, based on commits messages made after last version, if they start with (bug)fix, feat, break or major
+
+if [[ -d .git/ ]]
+then
+    git pull
+fi
+
+ASSUMEDEFAULTPROMPT=$([[ "$1" == "-d" || "$2" == "-d" ]] && echo 1)
+if [[ $ASSUMEDEFAULTPROMPT ]]
+then
+    echo '-d option set: Will assume defaults on all prompts'
+else
+    echo 'no -d option: Will prompt user for confirmations'
+fi
+uptype=$1
+
+# to fed next variable, call next function
+autodetected_uptype=
+function guess_uptype_based_on_commits() {
+    hasfix=
+    hasfeat=
+    hasbreak=
+    while read -r line
+    do
+        # line looks like current version (or at least looks like one if there is no detected version)
+        if [[ "$line" == "$version" || !$version && "$line" =~ ^[0-9]\+\.[0-9]\+\.[0-9]\+$ ]]
+        then
+            break
+
+        # check when line looks like a fix, minor or major change
+        elif [[ "${line,,}" =~ ^(bug)?fix.*|^fixup.* ]]
+        then
+            hasfix=1
+            echo -e "\tdetected bugfix ($line)"
+        elif [[ "${line,,}" =~ ^feat.* ]]
+        then
+            hasfeat=1
+            echo -e "detected new feature ($line)"
+        elif [[ "${line,,}" =~ ^break.* || "${line,,}" =~ ^major.* ]]
+        then
+            hasbreak=1
+            echo -e "\tdetected breaking change ($line)"
+            break  # we can't find more than that
+        fi
+    done < <(git log --format="%s")
+    if [[ $hasbreak ]]
+    then
+        autodetected_uptype='x'
+    elif [[ $hasfeat ]]
+    then
+        autodetected_uptype='y'
+    elif [[ $hasfix ]]
+    then
+        autodetected_uptype='z'
+    else
+        echo "Cannot guess uptype based on sole commits descriptions"
+    fi
+}
+
+if [[ -e setup.cfg ]]
+then
+    echo "looking into setup.cfg…"
+    seen_version=$(cat setup.cfg | grep -E '^version')
+    echo seen_version: $seen_version
+    setupcfg_version=$(echo $seen_version | sed -E 's/^version\s?=\s?([0-9\.a-z]+)\s*$/\1/')
+    module_version=$(echo $seen_version | sed -E 's/^version\s?=\s?attr:\s?([0-9\/a-z\._-]*)$/\1/')
+    echo "setupcfg_version: $setupcfg_version"
+    echo "module_version: $module_version"
+    # echo $seen_version
+    if [[ $module_version != $seen_version ]]
+    then
+        echo "setup.cfg redirects to $module_version…"
+        module=$(echo $module_version | cut -d . -f 1)
+        attrs=$(echo $module_version | cut -d . -f 2-)
+        echo "module: $module"
+        echo "attrs: $attrs"
+        version=$(cat ${module}/__init__.py| grep -E "^${attrs}\s*=" | head -n 1 | sed -E "s/^${attrs}\s*=\s*(.*)$/\\1/" | tr -d "'\"")
+        echo "module __init__ version: $version"
+        writingbackvia=module_version
+    elif [[ $setupcfg_version != $seen_version ]]
+    then
+        version=$setupcfg_version
+        writingbackvia=setupcfg_version
+    fi
+elif [[ -e __init__.py ]]
+then
+    echo "looking into __init__.py…"
+    init_version=$(cat __init__.py | grep -E '^_*version_*\s*=\s*.([0-9\.]+).$' | sed -E 's/^_*version_*\s*=\s*.([0-9\.]+).$/\1/')
+    if [[ $init_version ]]
+    then
+        version=$init_version
+        writingbackvia=init_version
+    fi
+fi
+
+
+if [[ ! $(grep -e "[0-9]\+\.[0-9]\+\.[0-9]\+[\.a-z0-9]*" <<< "$version") ]]
+then
+    echo "Version does not look like a valid version number: '$version'"
+    echo -n "Continue nonetheless ?[y/N]"
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
+    if [[ $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    then
+        :  # this is the null statement in bash
+    else
+        exit
+    fi
+fi
+echo "version is $version"
+v_major=$(echo $version | cut -d . -f1)
+v_minor=$(echo $version | cut -d . -f2)
+v_bugfx=$(echo $version | cut -d . -f3)
+
+
+# decide which uptype the user wants
+while
+    if [[ ! $uptype ]]
+    then
+        guess_uptype_based_on_commits
+        uptype=$autodetected_uptype
+        [[ "$uptype" == 'x' ]] && x='X' || x='x'
+        [[ "$uptype" == 'y' ]] && y='Y' || y='y'
+        [[ "$uptype" == 'z' ]] && z='Z' || z='z'
+        echo -n "Which uptype ? [$x.$y.$z]"
+        if [[ $ASSUMEDEFAULTPROMPT && $uptype ]]
+        then
+            [[ "$uptype" == 'x' ]] && answer='x'
+            [[ "$uptype" == 'y' ]] && answer='y'
+            [[ "$uptype" == 'z' ]] && answer='z'
+        else
+            read answer
+        fi
+        if [[ "$answer" ]]
+        then
+            uptype="$answer"
+        fi
+    fi
+    if [[ $uptype == x || $uptype == m || $uptype == a || $uptype == j ]]
+    then
+        uptype=major
+    elif [[ $uptype == y || $uptype == i || $uptype == n ]]
+    then
+        uptype=minor
+    elif [[ $uptype == z || $uptype == b || $uptype == f ]]
+    then
+        uptype=bugfix
+    elif [[ $uptype == c || $uptype == d ]]
+    then
+        uptype=$autodetected_uptype
+    elif [[ $uptype == q ]]
+    then
+        exit
+    else
+        uptype=
+
+    fi
+    [[ ! $uptype ]]
+do true ; done
+echo "Current version: $v_major.$v_minor.$v_bugfx"
+
+
+# operate the uptype
+if [[ $uptype == major ]]
+then
+    v_major=$(expr $v_major + 1)
+    v_minor=0
+    v_bugfx=0
+elif [[ $uptype == minor ]]
+then
+    v_minor=$(expr $v_minor + 1)
+    v_bugfx=0
+elif [[ $uptype == bugfix ]]
+then
+    v_bugfx=$(expr $v_bugfx + 1)
+fi
+newversion="$v_major.$v_minor.$v_bugfx"
+echo "With $uptype update: $newversion"
+
+if [[ $writingbackvia == setupcfg_version ]]
+then
+    # echo "Modifying setup.cfg"
+    sed -i "s/$version/$newversion/" "setup.cfg"
+    target=setup.cfg
+elif [[ $writingbackvia == module_version ]]
+then
+    # echo "looking in module $module for file __init__.py and attribute $attrs…"
+    sed -i "s/$version/$newversion/" "$module/__init__.py"
+    target=$module/__init__.py
+elif [[ $writingbackvia == init_version ]]
+then
+    sed -i "s/$version/$newversion/" "__init__.py"
+    target=__init__.py
+fi
+
+gitout=$(git status --porcelain -b)
+# output if not git repo: (none)
+# output if equal: prod...origin/prod
+# output if ahead: prod...origin/prod [ahead 1]
+if [[ ! $gitout ]]
+then
+    echo "Not in a git repository. The end."
+    exit
+fi
+
+echo "previous commit is:"
+git log -1
+echo "Prepare commit…"
+git add "$target"
+git diff --staged
+
+isahead=$(echo $gitout | grep -E '\[ahead [0-9]+\]')
+if [[ $isahead ]]
+then
+    echo -n "Commit ?[Y/a/n]"
+else
+    echo -n "Commit ?[Y/n]"
+fi
+if [[ $ASSUMEDEFAULTPROMPT ]]
+then
+    ok=
+else
+    read ok
+fi
+if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+then
+    git commit -m "$newversion"
+elif [[ $isahead && ( $ok == a || $ok == A ) ]]
+then
+    git commit --amend -m "$newversion"
+else
+    exit
+fi
+
+if [[ -f Makefile && $(cat Makefile | grep 'upload:') ]]
+then
+    echo -n "Upload ?[Y/n]"
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
+    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
+    then
+        make upload
+    fi
+fi
+
+
+if [[ -d .git/ ]]
+then
+    echo -n "Push ?[Y/n]"
+    if [[ $ASSUMEDEFAULTPROMPT ]]
+    then
+        ok=
+    else
+        read ok
+    fi
+    if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == O ]]
+    then
+        git push
+    fi
+fi

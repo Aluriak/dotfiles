@@ -1,5 +1,13 @@
 # functions repository
 
+# rerun last command, with $1 as the binary
+#  >>> ll f.txt
+#  >>> r v    # -> will run `v f.txt`
+function redo_with_another_command() {
+    cmd=$(history -1 | head -n 1 | sed -r "s/^\s*[0-9:\s]*\s*([^ ]+)(.*)$/$1 \2/")
+    echo "$cmd"
+    zsh -i -c "$cmd"
+}
 
 # like `tree .` but coloring anything matching the given expr
 function gree() {
@@ -15,6 +23,52 @@ function gree() {
     else
         tree | less
         echo "usage: $0 <pattern to colorize> <dir> <pattern to remove>"
+    fi
+}
+
+
+function run_ruff_and_mypy_and_pytest() {
+    ddindex=${@[(ie)--]}   # NB: zsh-only: at which index is double-dash in cli arguments
+    #echo $ddindex
+    if [[ $ddindex -le $# ]]; then
+        # argument $ddindex is a double dash
+        mypyoptions="${@:1:$ddindex-1}"
+        argfiles="${@:$ddindex+1:$#}"
+    else
+        # no double dash means all params are files/dir to run checkers on
+        mypyoptions=
+        argfiles=$@
+    fi
+
+    echo "Checking $argfiles"
+    echo "Mypy options: $mypyoptions"
+
+    [[ -e venv/bin/mypy ]] && mypy_path=venv/bin/mypy || mypy_path=$(which mypy 2> /dev/null)   # use bin in venv if available
+    [[ -e venv/bin/ruff ]] && ruff_path=venv/bin/ruff || ruff_path=$(which ruff 2> /dev/null)
+    [[ -e venv/bin/pytest ]] && pytest_path=venv/bin/pytest || pytest_path=$(which pytest 2> /dev/null)
+    echo "Mypy binary found at $mypy_path"
+    echo "Ruff binary found at $ruff_path"
+    echo "Pytest binary found at $pytest_path"
+
+
+    if [[ -e $ruff_path ]]
+    then
+        echo "Running ruff…"
+        $ruff_path check --ignore=E741,E701,F401,E402,F403,E731  $argfiles
+    else
+        echo "No ruff binary found"
+    fi
+
+    if [[ $? && -e $mypy_path ]]
+    then
+        echo "Running mypy…"
+        $mypy_path --pretty --disable-error-code var-annotated --disable-error-code no-redef --disable-error-code import-untyped --implicit-optional --warn-unused-ignores --check-untyped-defs $mypyoptions $argfiles
+    fi
+
+    if [[ $? && -e $pytest_path ]]
+    then
+        echo "Running pytest…"
+        $pytest_path --doctest-module -vv $pytestoptions $argfiles
     fi
 }
 
@@ -48,6 +102,7 @@ function create_ssh_agent() {
 }
 function clear_ssh_agent() {
     killall ssh-agent
+    rm "$HOME/.ssh-agent-proc"
 }
 
 
@@ -84,6 +139,14 @@ function add-bom() {
             fi
     done
 }
+
+
+# run given command, exit just after
+function bg() {
+    $@
+    exit
+}
+
 
 # use git clone on given github repository from username aluriak
 #  then jump in it
@@ -143,15 +206,12 @@ function open-term {
 function open-kitty {
     # open-kitty <dir> <title> <command1> <command2> ... <commandn>
     uid=$(shuf -i 1-99999999999 -n 1)
-    if [[ -d "$1" ]]
-    then
-        diropt="-d \"$1\""
-    fi
-    kitty -T $2 --detach $diropt --listen-on=unix:@mykitty-${uid}
+    socket="unix:/tmp/kitty-rc-${uid}"
+    /usr/bin/kitty --title $2 --detach -d \"$1\" --listen-on=${socket} --config ~/.config/kitty/kitty.conf
     sleep 1  # wait for kitty to be there before sending the commands
     for arg in ${@:3}
     do
-        kitty @ --to=unix:@mykitty-${uid} send-text "${arg}\n"
+        /usr/bin/kitty @ --to=${socket} send-text "${arg}\n"
     done
 }
 
@@ -175,10 +235,39 @@ function doom() {
 }
 
 
-# run given command, exit just after
-function bg() {
-    $@
-    exit
+# get a terminal color, the nearest from given hex value
+function term_from_hex(){
+    hex=${1#"#"}
+    r=$(printf '0x%0.2s' "$hex")
+    g=$(printf '0x%0.2s' ${hex#??})
+    b=$(printf '0x%0.2s' ${hex#????})
+    printf '%03d' "$(( (r<75?0:(r-35)/40)*6*6 +
+                       (g<75?0:(g-35)/40)*6   +
+                       (b<75?0:(b-35)/40)     + 16 ))"
+}
+
+# get the hex value equivalent to a term color value
+function hex_from_term(){
+    dec=$(($1%256))   ### input must be a number in range 0-255.
+    if [ "$dec" -lt "16" ]; then
+        bas=$(( dec%16 ))
+        mul=128
+        [ "$bas" -eq "7" ] && mul=192
+        [ "$bas" -eq "8" ] && bas=7
+        [ "$bas" -gt "8" ] && mul=255
+        a="$((  (bas&1)    *mul ))"
+        b="$(( ((bas&2)>>1)*mul ))"
+        c="$(( ((bas&4)>>2)*mul ))"
+        printf 'dec= %3s basic= #%02x%02x%02x\n' "$dec" "$a" "$b" "$c"
+    elif [ "$dec" -gt 15 ] && [ "$dec" -lt 232 ]; then
+        b=$(( (dec-16)%6  )); b=$(( b==0?0: b*40 + 55 ))
+        g=$(( (dec-16)/6%6)); g=$(( g==0?0: g*40 + 55 ))
+        r=$(( (dec-16)/36 )); r=$(( r==0?0: r*40 + 55 ))
+        printf 'dec= %3s color= #%02x%02x%02x\n' "$dec" "$r" "$g" "$b"
+    else
+        gray=$(( (dec-232)*10+8 ))
+        printf 'dec= %3s  gray= #%02x%02x%02x\n' "$dec" "$gray" "$gray" "$gray"
+    fi
 }
 
 
@@ -273,7 +362,7 @@ function vonar() {
     if [[ $files ]];
     then
         # echo found: $files
-        echo $files | xargs vim -c "/$1" -p
+        echo $files | xargs -o vim -c "/$1" -p
     else
         echo "no file matching given pattern"
     fi
@@ -504,6 +593,15 @@ function rotateimg() {
     mv .out.jpg "$1"
 }
 
+function port_user() {
+    if [[ $1 ]];
+    then
+        sudo ss -lptn "sport = :$1"
+    else
+        echo "Need an argument : port number"
+    fi
+}
+
 # for each given file, set it as background image, and ask for its new name (empty to keep it).
 function rename-pics() {
     for file in $@
@@ -536,6 +634,29 @@ function vim_then_git() {
             git add -p "$arg"
         fi
     done
+}
+
+
+# switch files $1 and $2
+function switch_files () {
+    if [ -f "$1" ]
+    then
+        if [ -f "$2" ]
+        then
+            tmp="${1}.tmp"
+            while [ -f "$tmp" ]
+            do
+                tmp="${tmp}.tmp"
+            done
+            mv "$1" "$tmp"
+            mv "$2" "$1"
+            mv "$tmp" "$2"
+        else
+            echo "No file $2 found"
+        fi
+    else
+        echo "No file $1 found"
+    fi
 }
 
 

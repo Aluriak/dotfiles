@@ -34,4 +34,21 @@ then
         xsane \
         yay \
         zsh
+elif [[ $DOTCONF == "rhel" ]];
+then
+    echo "installing system package with dnf…"
+    sudo dnf install -y \
+        blueman \
+        cmake \
+        evince \
+        firefox \
+        gimp \
+        git \
+        kitty \
+        moreutils \
+        pip \
+        python3 \
+        thunderbird \
+        vim \
+        zsh
 fi
