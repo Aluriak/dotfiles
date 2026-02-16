@@ -227,9 +227,9 @@ git diff --staged
 isahead=$(echo $gitout | grep -E '\[ahead [0-9]+\]')
 if [[ $isahead ]]
 then
-    echo -n "Commit ?[Y/a/n]"
+    echo -n "Commit&Tag ?[Y/a/n]"
 else
-    echo -n "Commit ?[Y/n]"
+    echo -n "Commit&Tag ?[Y/n]"
 fi
 if [[ $ASSUMEDEFAULTPROMPT ]]
 then
@@ -240,9 +240,11 @@ fi
 if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == yes ]]
 then
     git commit -m "$newversion"
+    git tag "v$newversion"
 elif [[ $isahead && ( $ok == a || $ok == A ) ]]
 then
     git commit --amend -m "$newversion"
+    git tag "v$newversion"
 else
     exit
 fi
@@ -275,5 +277,6 @@ then
     if [[ !$ok || $ok == y || $ok == Y || $ok == o || $ok == O ]]
     then
         git push
+        git push --tags
     fi
 fi
