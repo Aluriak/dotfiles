@@ -1,5 +1,86 @@
 #!/bin/sh
 
-bluetoothctl power on
-bluetoothctl connect E4:22:A5:30:67:BF
-blueman-manager
+rfkill unblock bluetooth
+
+if [[ $1 == 'hard' ]]
+then
+    killall blueman-manager
+
+    while [[ $(echo -e "select 8C:68:8B:61:0C:51\n" | bluetoothctl | grep '0C:51 not available') ]];
+    do
+
+        echo "unblocking bluetooth…"
+        rfkill block bluetooth
+        sleep .1
+        rfkill unblock bluetooth
+        sleep .1
+
+        sudo systemctl restart bluetooth
+        echo | systemctl status bluetooth
+        sleep .1
+
+        echo "modprobe restart btusb"
+        modprobe -r btusb
+        sleep .1
+        modprobe btusb
+        sleep .1
+
+    done
+
+fi
+
+
+# if [[ $1 == 'hard' ]]
+# then
+    # killall blueman-manager
+    # sudo systemctl restart bluetooth
+    # systemctl status bluetooth
+    # sleep .1
+
+    # while [[ $(rfkill list | grep  Bluetooth -A2 | grep yes) ]]
+    # do
+        # echo "unblocking bluetooth…"
+        # rfkill block bluetooth
+        # sleep .1
+        # rfkill unblock bluetooth
+    # done
+
+
+    # while [[ $(echo -e "select 8C:68:8B:61:0C:51\npower on" | bluetoothctl | grep '8C' | grep 'not available') ]];
+    # do
+        # echo "modprobe restart btusb"
+        # sudo modprobe -r btusb
+        # sleep .1
+        # sudo modprobe  btusb
+    # done
+
+# fi
+
+sleep 0.1
+
+# selecting the external device, power it on, connect to headset
+echo -e "select 8C:68:8B:61:0C:51\npower on\nconnect E4:22:A5:30:67:BF\n" | bluetoothctl
+if [[ $1 == 'hard' ]]
+then
+    while [[ $(echo -e "select 8C:68:8B:61:0C:51\npower on\nconnect E4:22:A5:30:67:BF\n" | bluetoothctl | grep 'Échec') ]];
+    do
+        echo "pairing…"
+        sleep 2
+        if [[ $(($RANDOM%10)) == 0 ]];
+        then
+            break
+        fi
+    done
+fi
+
+blueman-manager &
+# bluetoothctl connect E4:22:A5:30:67:BF
+
+sleep 1
+setxkbmap fr bepoz
+
+# change latency to 30ms (to avoid stuttering)
+pactl set-port-latency-offset bluez_card.E4_22_A5_30_67_BF headset-output 50000
+
+sleep 5
+setxkbmap fr bepoz

@@ -25,7 +25,7 @@ then
         python-virtualenv \
         scrot \
         signal-desktop \
-        steam-runtime-native \
+        steam-native-runtime \
         thunar \
         thunderbird \
         vim \
