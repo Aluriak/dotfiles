@@ -37,7 +37,12 @@ install_dotfile vim/vimrc.bepoz ~/.vimrc.bepoz
 install_dotfile vim/vimrc.simple ~/.vimrc.simple
 install_dotfile vim/nvimrc ~/.config/nvim/init.vim
 install_dotfile kitty.conf ~/.config/kitty/
-install_dotfile i3/config ~/.i3/
+
+if [[ -f "i3/${HOST}.config" ]];
+    install_dotfile "i3/${HOST}.config" ~/.i3/config
+else
+    install_dotfile i3/config ~/.i3/
+fi
 
 # install scripts
 ./install-scripts.sh
