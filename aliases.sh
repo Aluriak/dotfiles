@@ -154,6 +154,7 @@ alias nv="${EDITOR}"
 alias p2='python2'
 alias p3='python3'
 alias prr='pip install -r requirements.txt'
+alias qq='qrencode -t UTF8i'
 alias r=''
 alias sunshine=toggle_sunshine
 alias vk='vimoku'
