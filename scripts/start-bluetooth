@@ -2,9 +2,13 @@
 
 rfkill unblock bluetooth
 
+echo "Powering the adaptater…"
 if [[ $1 == 'hard' ]]
 then
     killall blueman-manager
+    sudo systemctl stop bluetooth
+    sleep .2
+    sudo systemctl restart bluetooth
 
     while [[ $(echo -e "select 8C:68:8B:61:0C:51\n" | bluetoothctl | grep '0C:51 not available') ]];
     do
@@ -15,50 +19,26 @@ then
         rfkill unblock bluetooth
         sleep .1
 
-        sudo systemctl restart bluetooth
-        echo | systemctl status bluetooth
+        echo "modprobe restart btusb…"
+        sudo /usr/bin/modprobe -r btusb
         sleep .1
+        sudo /usr/bin/modprobe btusb
+        sleep 1.1
 
-        echo "modprobe restart btusb"
-        modprobe -r btusb
-        sleep .1
-        modprobe btusb
-        sleep .1
+        echo "restart bluetooth…"
+        sudo systemctl restart bluetooth
+        #systemctl --no-pager status bluetooth
+        sleep .5
 
     done
 
 fi
 
 
-# if [[ $1 == 'hard' ]]
-# then
-    # killall blueman-manager
-    # sudo systemctl restart bluetooth
-    # systemctl status bluetooth
-    # sleep .1
-
-    # while [[ $(rfkill list | grep  Bluetooth -A2 | grep yes) ]]
-    # do
-        # echo "unblocking bluetooth…"
-        # rfkill block bluetooth
-        # sleep .1
-        # rfkill unblock bluetooth
-    # done
-
-
-    # while [[ $(echo -e "select 8C:68:8B:61:0C:51\npower on" | bluetoothctl | grep '8C' | grep 'not available') ]];
-    # do
-        # echo "modprobe restart btusb"
-        # sudo modprobe -r btusb
-        # sleep .1
-        # sudo modprobe  btusb
-    # done
-
-# fi
-
 sleep 0.1
 
 # selecting the external device, power it on, connect to headset
+echo "Trying to pair…"
 echo -e "select 8C:68:8B:61:0C:51\npower on\nconnect E4:22:A5:30:67:BF\n" | bluetoothctl
 if [[ $1 == 'hard' ]]
 then
