@@ -183,10 +183,6 @@ bindsym XF86Calculator exec "$term --title 'quickterm' -e bc"
 bindsym Print exec "scrot"
 bindsym Scroll_Lock exec ~/scripts/switch-background.sh  # «defil» key
 exec ~/scripts/switch-background.sh
-# bluetooth
-bindsym $mod+shift+question exec "~/scripts/start-bluetooth"
-bindsym $mod+shift+ctrl+question exec "~/scripts/start-bluetooth hard"
-bindsym $mod+shift+N exec "~/scripts/start-bluetooth"
 
 bindsym $mod+x exec "dmenu_run"
 bindsym $mod+d exec "$term --title 'quickterm' -e ~/scripts/instantdate.sh"
@@ -416,6 +412,28 @@ bindsym $mod+ccedilla mode "$mode_screens"
 
 bindsym $mod+shift+e exec ~/scripts/open-env-current.sh
 
+###########################################################################
+#                                  bluetooth                              #
+###########################################################################
+set $mode_bluetooth 1:(c)asque  2:(o)penrun  3:(b)oth  4:(m)anager
+mode "$mode_bluetooth" {
+    bindsym c       exec --no-startup-id "~/scripts/bluetooth.sh casque", mode "default"
+    bindsym 1       exec --no-startup-id "~/scripts/bluetooth.sh casque", mode "default"
+    bindsym Shift+c exec --no-startup-id "~/scripts/bluetooth.sh casque --reset", mode "default"
+    bindsym o       exec --no-startup-id "~/scripts/bluetooth.sh openrun", mode "default"
+    bindsym 2       exec --no-startup-id "~/scripts/bluetooth.sh openrun", mode "default"
+    bindsym Shift+o exec --no-startup-id "~/scripts/bluetooth.sh openrun --reset", mode "default"
+    bindsym b       exec --no-startup-id "~/scripts/bluetooth.sh casque openrun", mode "default"
+    bindsym 3       exec --no-startup-id "~/scripts/bluetooth.sh casque openrun", mode "default"
+    bindsym Shift+b exec --no-startup-id "~/scripts/bluetooth.sh casque openrun --reset", mode "default"
+    bindsym m       exec --no-startup-id "blueman-manager", mode "default"
+    bindsym 4       exec --no-startup-id "blueman-manager", mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Space  mode "default"
+}
+bindsym $mod+shift+question mode "$mode_bluetooth"
+bindsym $mod+N mode "$mode_bluetooth"
 
 
 ###########################################################################
