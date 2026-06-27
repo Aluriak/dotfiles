@@ -415,19 +415,18 @@ bindsym $mod+shift+e exec ~/scripts/open-env-current.sh
 ###########################################################################
 #                                  bluetooth                              #
 ###########################################################################
-set $mode_bluetooth 1:(c)asque  2:(o)penrun  3:(b)oth  4:(m)anager
+set $mode_bluetooth 1:(c)asque  2:(o)penrun  3:(b)oth  4:(m)anager  5:(r)eset
 mode "$mode_bluetooth" {
-    bindsym c       exec --no-startup-id "~/scripts/bluetooth.sh casque", mode "default"
-    bindsym 1       exec --no-startup-id "~/scripts/bluetooth.sh casque", mode "default"
-    bindsym Shift+c exec --no-startup-id "~/scripts/bluetooth.sh casque --reset", mode "default"
-    bindsym o       exec --no-startup-id "~/scripts/bluetooth.sh openrun", mode "default"
-    bindsym 2       exec --no-startup-id "~/scripts/bluetooth.sh openrun", mode "default"
-    bindsym Shift+o exec --no-startup-id "~/scripts/bluetooth.sh openrun --reset", mode "default"
-    bindsym b       exec --no-startup-id "~/scripts/bluetooth.sh casque openrun", mode "default"
-    bindsym 3       exec --no-startup-id "~/scripts/bluetooth.sh casque openrun", mode "default"
-    bindsym Shift+b exec --no-startup-id "~/scripts/bluetooth.sh casque openrun --reset", mode "default"
+    bindsym c       exec --no-startup-id "~/scripts/bluetooth.sh connect casque", mode "default"
+    bindsym 1       exec --no-startup-id "~/scripts/bluetooth.sh connect casque", mode "default"
+    bindsym o       exec --no-startup-id "~/scripts/bluetooth.sh connect openrun", mode "default"
+    bindsym 2       exec --no-startup-id "~/scripts/bluetooth.sh connect openrun", mode "default"
+    bindsym b       exec --no-startup-id "~/scripts/bluetooth.sh connect casque openrun", mode "default"
+    bindsym 3       exec --no-startup-id "~/scripts/bluetooth.sh connect casque openrun", mode "default"
     bindsym m       exec --no-startup-id "blueman-manager", mode "default"
     bindsym 4       exec --no-startup-id "blueman-manager", mode "default"
+    bindsym r       exec --no-startup-id "~/scripts/bluetooth.sh reset", mode "default"
+    bindsym 5       exec --no-startup-id "~/scripts/bluetooth.sh reset", mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym Space  mode "default"
