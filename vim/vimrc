@@ -56,7 +56,7 @@ call plug#begin('~/.vim/plugged')
         " multiple cursor edition
                 Plug 'terryma/vim-multiple-cursors'
         " complementation
-                Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
+                "Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
         " snippets (synergies: YouCompleteMe)
                 Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
         " tabs and file tree
@@ -71,7 +71,7 @@ call plug#begin('~/.vim/plugged')
         " bookmarks (signatures)
                 Plug 'kshenoy/vim-signature'
         " replacements by cycles
-                Plug 'AndrewRadev/switch.vim'
+                "Plug 'AndrewRadev/switch.vim'
         " syntax checker
                 Plug 'scrooloose/syntastic'
                 Plug 'myint/syntastic-extras'
