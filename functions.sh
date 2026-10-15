@@ -523,7 +523,6 @@ function open() {
 #  if directory is empty/full of hidden files.
 #  Parse parameters in order to call verbosels_onefile correctly.
 function verbosels() {
-    [[ -n "$ZSH_VERSION" ]] && setopt local_options nonomatch
     local -a opts paths
     for arg in "$@"; do
         if [[ "$arg" == -* ]]; then
@@ -543,6 +542,7 @@ function verbosels() {
 }
 
 function _verbosels_onefile() {
+    [[ -n "$ZSH_VERSION" ]] && setopt local_options nonomatch
     local path=$1; shift
 
     if [[ -f "$path" || ! -e "$path" ]]; then
