@@ -522,64 +522,53 @@ function open() {
 # Wrapper around ls command, printing dedicated messages
 #  if directory is empty/full of hidden files.
 #  Parse parameters in order to call verbosels_onefile correctly.
-#  Code review: http://codereview.stackexchange.com/a/139237/115420
 function verbosels() {
-    # extract options and filepaths
-    ls_options=()  # empty array
-    ls_filepaths=()  # empty array
-    for parameter in "$@"; do
-        # it's an option if it's start with a dash
-        if [[ "$parameter" == -* ]]; then
-            #echo "OPTION: |$parameter|"
-            ls_options+=($parameter)
-        else  # it's a path: call ls on it
-            # get escaped version of given filename
-            filepath=$(print -r -- "${(q)parameter}")
-            ls_filepaths+=($filepath)
-            #echo "FILEPATH: |$filepath|"
-        fi
-    done
-    # working directory if no directory given
-    if [ ${#ls_filepaths[@]} = 0 ]
-    then
-        ls_filepaths+=(".")
-    fi
-    first=1  # false after the first iteration
-    # call verbosels_onefile for each filepath
-    for filepath in $ls_filepaths; do
-        # print space only between ls calls
-        if [ ! "$first" ]; then
-            echo  # line jump
+    [[ -n "$ZSH_VERSION" ]] && setopt local_options nonomatch
+    local -a opts paths
+    for arg in "$@"; do
+        if [[ "$arg" == -* ]]; then
+            opts+=("$arg")
         else
-            first=  # empty
+            paths+=("$arg")
         fi
-        #echo "CMD: |verbosels_onefile ${^ls_options} $filepath|"
-        _verbosels_onefile $filepath ${^ls_options}
+    done
+    (( ${#paths[@]} )) || paths=(".")
+
+    local first=1
+    for p in "${paths[@]}"; do
+        (( first )) || echo
+        first=0
+        _verbosels_onefile "$p" "${opts[@]}"
     done
 }
 
-
-# Perform an ls call on only one directory/file, that must be in first parameter.
-# The other parameters remain untouched.
-# The ls call take into account any aliases on ls.
-# This function is called by the higher level verbosels function.
 function _verbosels_onefile() {
-    state=$("$DOTFILES_DIR/scripts/verbosels.py" "$1")
-    if [ $state == 1 ]; then  # existing files
-        # keep OSX compatibility by putting options first
-        # ${@:2}: access to all param but the first
-        command ls "${@:2}" "$1"
-    elif [[ $state == 2 ]]; then  # hidden only
-        echo "$1 contains only hidden files" 1>&2
-    elif [[ $state == 3 ]]; then  # empty
-        echo "$1 is empty" 1>&2
-    elif [[ $state == 4 ]]; then  # it's a file
-        command ls "${@:2}" "$1"
-    elif [[ $state == 5 ]]; then  # path don't exists
-        command ls "${@:2}" "$1"
+    local path=$1; shift
+
+    if [[ -f "$path" || ! -e "$path" ]]; then
+        command /usr/bin/ls "$@" "$path"
+        return
+    fi
+
+    local show_hidden=0
+    for o in "$@"; do
+        [[ "$o" == --all || "$o" == --almost-all || "$o" == -*[aA]* ]] && show_hidden=1
+    done
+
+    # Compte les entrées visibles / toutes entrées (hors . et ..),
+    # sans dépendre de dotglob, nullglob ou des qualifiers zsh.
+    local nb_visible nb_all
+    nb_visible=$(/usr/bin/find "$path" -mindepth 1 -maxdepth 1 ! -name '.*' | /usr/bin/wc -l)
+    nb_all=$(/usr/bin/find "$path" -mindepth 1 -maxdepth 1 | /usr/bin/wc -l)
+
+    if (( nb_all == 0 )); then
+        echo "$path is empty" >&2
+    elif (( nb_visible == 0 && ! show_hidden )); then
+        echo "$path contains only hidden files" >&2
+    else
+        command /usr/bin/ls "$@" "$path"
     fi
 }
-
 
 # rotate an image with given angle, or 90 degrees
 function rotateimg() {
