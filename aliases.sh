@@ -210,4 +210,5 @@ alias mt='make t'  # recipe name for tests
 # Aliases pass
 alias psc='pass show -c'
 alias pe='pass edit'
-alias pg='pass generate'
+alias pg='pass generate -c'
+alias np='openssl rand -hex 32 | xclip -sel clip -r'

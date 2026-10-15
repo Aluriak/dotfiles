@@ -677,6 +677,11 @@ function ccc_func() {
 # this alias is here to ensure that the first argument will be aliased too
 alias 'ccc'='ccc_func '
 
+function shapass() {
+    PASSWORD=$(base64 < /dev/urandom | head -c24)
+    echo "$PASSWORD"
+    echo -n "$PASSWORD" | sha256sum | tr -d '-'
+}
 
 # start or stop sunshine unit
 function toggle_sunshine() {
