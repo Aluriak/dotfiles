@@ -12,10 +12,10 @@ fi
 if [[ "$1" == "blurr" && -x /usr/bin/spectacle ]]
 then
     # take screenshot, blurr it, and lock screen with it
-    spectacle -bfn -o "~/Pictures/lockscreen-todel.png"
+    spectacle -bfn -o ~/Pictures/lockscreen-todel.png
 
-    # convert "~/Pictures/lockscreen-todel.png" -blur 0x5 ~/Pictures/lockscreen.png  # slow
-    convert "~/Pictures/lockscreen-todel.png" -resize 10% -resize 1000% "~/Pictures/lockscreen.png"  # quicker
+    # convert ~/Pictures/lockscreen-todel.png -blur 0x5 ~/Pictures/lockscreen.png  # slow
+    convert ~/Pictures/lockscreen-todel.png -resize 10% -resize 1000% ~/Pictures/lockscreen.png  # quicker
     rm -f ~/Pictures/lockscreen-todel.png
 
     IMAGE=~/Pictures/lockscreen.png
