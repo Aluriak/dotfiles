@@ -160,7 +160,7 @@ bindsym $mod+Left  workspace prev
 ###########################################################################
 # volume
 bindsym XF86AudioRaiseVolume exec       "~/scripts/setsound.sh +3%"
-bindsym XF86AudioLowerVolume exec       "~/scripts/setsound.sh +3%"
+bindsym XF86AudioLowerVolume exec       "~/scripts/setsound.sh -3%"
 bindsym XF86AudioMute exec              "~/scripts/setsound.sh toggle"
 bindsym XF86AudioPause nop
 bindsym XF86AudioPlay nop
@@ -253,7 +253,7 @@ bindsym $mod+F3 workspace $wf3
 bindsym $mod+Shift+F3 move container to workspace $wf3
 assign [title="weechat"] $wf3
 assign [class="Pidgin"] $wf3
-assign [class="Signal"] $wf3
+assign [class="^[Ss]ignal"] $wf3
 
 # Workspace torrent (fa-exchange)
 set $wf4 ""
@@ -355,6 +355,7 @@ exec ~/scripts/keyboard.sh setup&
 # graphic
 exec redshift&  # blue light manager
 exec blueman-applet&  # bluetooth manager
+exec ~/scripts/bluetooth.sh reset&
 # exec ~/.screenlayout/both-hdmi-dvi.sh&
 # exec ~/.screenlayout/hdmi-only.sh&
 exec ~/.screenlayout/main-second.sh&
@@ -417,11 +418,11 @@ bindsym $mod+shift+e exec ~/scripts/open-env-current.sh
 ###########################################################################
 set $mode_bluetooth 1:(c)asque  2:(o)penrun  3:(b)oth  4:(m)anager  5:(r)eset
 mode "$mode_bluetooth" {
-    bindsym c       exec --no-startup-id "~/scripts/bluetooth.sh connect casque", mode "default"
+    bindsym c       exec --no-startup-id "~/scripts/bluetooth.sh connect casque --reset", mode "default"
     bindsym 1       exec --no-startup-id "~/scripts/bluetooth.sh connect casque", mode "default"
-    bindsym o       exec --no-startup-id "~/scripts/bluetooth.sh connect openrun", mode "default"
+    bindsym o       exec --no-startup-id "~/scripts/bluetooth.sh connect openrun --reset", mode "default"
     bindsym 2       exec --no-startup-id "~/scripts/bluetooth.sh connect openrun", mode "default"
-    bindsym b       exec --no-startup-id "~/scripts/bluetooth.sh connect casque openrun", mode "default"
+    bindsym b       exec --no-startup-id "~/scripts/bluetooth.sh connect casque openrun --reset", mode "default"
     bindsym 3       exec --no-startup-id "~/scripts/bluetooth.sh connect casque openrun", mode "default"
     bindsym m       exec --no-startup-id "blueman-manager", mode "default"
     bindsym 4       exec --no-startup-id "blueman-manager", mode "default"
