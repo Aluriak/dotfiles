@@ -105,6 +105,17 @@ function clear_ssh_agent() {
     rm "$HOME/.ssh-agent-proc"
 }
 
+ssh-sudo() {
+  create_or_load_ssh_agent
+  local host="$1" user="${2:-lucas}" pw
+  pw="$(pass show "$host/$user" | head -n 1)"
+  if [ -z "$pw" ]; then
+    echo "ssh-sudo : pas de mdp dans pass ($host/$user)" >&2
+    return 1
+  fi
+  ssh -tt "$host" "echo '${pw}' | sudo -S sh -c 'exec \${SHELL:-/bin/bash} </dev/tty'"
+}
+
 
 # create a virtualenv, source it, and populate it with requirements.txt if any.
 function crenv_func() {
