@@ -593,6 +593,11 @@ function rotateimg() {
     mv .out.jpg "$1"
 }
 
+function pack() {
+    tar acf ${2:-pack}.tar.gz $1
+    tar ftv ${2:-pack}.tar.gz
+}
+
 function port_user() {
     if [[ $1 ]];
     then
