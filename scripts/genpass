@@ -36,6 +36,7 @@ Some of them are filtered because all characters have not a width of 1.
 
 """
 
+import os
 import sys
 import shutil
 import secrets
@@ -84,5 +85,6 @@ if __name__ == "__main__":
             else:
                 print("One parameter doesn't start with a + or a -."
                       " Will be ignored.")
-        print(password(shutil.get_terminal_size().columns, tuple(alphabet)))
+        psize = int(os.environ.get('GENPASS_PWD_SIZE', shutil.get_terminal_size().columns))
+        print(password(psize, tuple(alphabet)))
 
