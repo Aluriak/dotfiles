@@ -23,6 +23,7 @@ exemple:
     - ascii alphanum
     - full ascii
     - unicode
+    - token_urlsafe
 - use SystemRandom, which is non-predictible/reproductible
 
 the unicode is based on [Markus Kuhn’s UTF-8 decoder stress test](https://www.w3.org/2001/06/utf-8-test/UTF-8-demo.html)
@@ -37,6 +38,7 @@ Some of them are filtered because all characters have not a width of 1.
 
 import sys
 import shutil
+import secrets
 from random import SystemRandom as Random
 from itertools import islice
 
@@ -44,6 +46,7 @@ from itertools import islice
 ALPHABETS = {
     'numeric': '0123456789',
     'alphanum': '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+    'b64url': """_-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz""",
     'ascii': """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~""",
     'unicode': """!"&'()+,-./0123456789:;<=>@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]`abcdefghijklmnopqrstuvwxyz|£©¬´µÀÆÖÞßæéðöüÿıœŠŸžɐɑɔəɛʃʊʏʳˈː·๏ཀཁགངཅཆཇཉཏཐདནཔཕབམཙཚཛཝཞཟའཡརལཤསཧཨཀྵཪཫཬაბგდევზთიკლმნოპრსტუფქყშცწხჰሀሄህሆለላሌልሎሕመሙማምሞሥረሩሪራርሮሰሲሳስሶሽቀቁቅቆበቢባቤብተቱታቴትነናንኝአእከካክወዋውዓዕዘዜዞየዩያይደዳድጄጅገጉጋጌግጎጠጣጥጨፈፉፋፍ።፥ᚢᚦᚩᚪᚫᚱᚳᚹᚻᚾᛁᛏᛒᛖᛗᛚᛞᛥḂẄἀἁἄἐἔἠἡἢἧἰἱἶὀὁὃὄὅὐὑὓὖὥὦὰάὲέὴήὶίὸόὺύὼώ᾿ῃῆῇῖῦῶ´῾–—‘’‚“”„†‡•…‰‾₀₂€ℂℕℚℝ™ℤ←↑→↗↨↻⇌⇒⇔⇣∀∂∆∇∈∏∑−∞∧∨∪∮≠≡≤≪⊂⊃⊆⊤⊥⋅⌀⌈⌉⌊⌋⌷⍎⍕⍳⍴⑀─━│┃┄┅┆┇┊┋┌┍┎┏┐┑┒┓└┕┖┗┘┙┚┛├┝┠┣┤┥┨┫┬┯┰┳┴┷┸┻┼┿╀╁╂╃╄╅╆╋╌╍╎╏═║╒╓╔╕╖╗╘╙╚╛╜╝╞╟╠╡╢╣╤╥╦╧╨╩╪╫╭╮╯╰╱╲╳╴╵╶╷╸╹╺╻╼╽╾╿▁▂▃▄▅▆▇█▉▊▋▌▍▎▏░▒▓►☺♀⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿⡀⡁⡂⡃⡄⡅⡆⡇⡈⡉⡊⡋⡌⡍⡎⡏⡐⡑⡒⡓⡔⡕⡖⡗⡘⡙⡚⡛⡜⡝⡞⡟⡠⡡⡢⡣⡤⡥⡦⡧⡨⡩⡪⡫⡬⡭⡮⡯⡰⡱⡲⡳⡴⡵⡶⡷⡸⡹⡺⡻⡼⡽⡾⡿⢀⢁⢂⢃⢄⢅⢆⢇⢈⢉⢊⢋⢌⢍⢎⢏⢐⢑⢒⢓⢔⢕⢖⢗⢘⢙⢚⢛⢜⢝⢞⢟⢠⢡⢢⢣⢤⢥⢦⢧⢨⢩⢪⢫⢬⢭⢮⢯⢰⢱⢲⢳⢴⢵⢶⢷⢸⢹⢺⢻⢼⢽⢾⢿⣀⣁⣂⣃⣄⣅⣆⣇⣈⣉⣊⣋⣌⣍⣎⣏⣐⣑⣒⣓⣔⣕⣖⣗⣘⣙⣚⣛⣜⣝⣞⣟⣠⣡⣢⣣⣤⣥⣦⣧⣨⣩⣪⣫⣬⣭⣮⣯⣰⣱⣲⣳⣴⣵⣶⣷⣸⣹⣺⣻⣼⣽⣾ⴰⴱⴲⴳⴴⴵⴶⴷⴸⴹⴺⴻⴼⴽⴾⴿⵀⵁⵂⵃⵄⵅⵆⵇⵈⵉⵊⵋⵌⵍⵎⵏⵐⵑⵒⵓⵔⵕⵖⵗⵘⵙⵚⵛⵜⵝⵞⵟⵠⵡⵢⵣⵤⵥﬁﺍﺎﺏﺐﺑﺒﺕﺖﺗﺘﺙﺚﺛﺜﺝﺞﺟﺠﺡﺢﺣﺤﺥﺦﺧﺨﺩﺪﺫﺬﺭﺮﺯﺰﺱﺲﺳﺴﺵﺶﺷﺸﺹﺺﺻﺼﺽﺾﺿﻀﻁﻂﻃﻄﻅﻆﻇﻈﻉﻊﻋﻌﻍﻎﻏﻐﻑﻒﻓﻔﻕﻖﻗﻘﻙﻚﻛﻜﻝﻞﻟﻠﻡﻢﻣﻤﻥﻦﻧﻨﻩﻪﻫﻬﻭﻮﻱﻲﻳﻴ�𐌀𐌁𐌂𐌃𐌄𐌅𐌆𐌇𐌈𐌉𐌊𐌋𐌌𐌍𐌎𐌏𐌐𐌑𐌒𐌓𐌔𐌕𐌖𐌗𐌘𐌙𐌚𐌛𐌜𐌝𐌞𐌠𐌡𐌢𐌣""",
 }
@@ -56,7 +59,7 @@ def password(size:int, alphabet:str) -> str:
     return ''.join(islice(gen_from(alphabet), 0, size))
 
 def gen_from(alphabet:str) -> iter:
-    random = Random()
+    random = secrets.SystemRandom()
     while True:
         yield random.choice(alphabet)
 
